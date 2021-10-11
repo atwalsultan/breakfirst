@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, Text, View } from 'react-native'
-import { NavigationContainer } from '@react-navigation/native';
+import { StyleSheet } from 'react-native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import IntroScreen1 from '../screens/onboarding/IntroScreen1';
