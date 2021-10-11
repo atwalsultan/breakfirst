@@ -8,7 +8,7 @@ import HomeScreen from './components/screens/HomeScreen';
 import LibraryScreen from './components/screens/LibraryScreen';
 import StatsScreen from './components/screens/StatsScreen';
 import ProfileScreen from './components/screens/ProfileScreen';
-import OnboardingStack from './components/stacks/OnboardingStack';
+import AuthenticationStack from './components/stacks/AuthenticationStack';
 
 const Tab = createBottomTabNavigator();
 // const Tab = createMaterialBottomTabNavigator();
@@ -22,7 +22,8 @@ export default function App() {
 				<Tab.Screen name="Stats" component={StatsScreen} />
 				<Tab.Screen name="Profile" component={ProfileScreen} />
 			</Tab.Navigator> */}
-			<OnboardingStack />
+
+			<AuthenticationStack />
 		</NavigationContainer>
 	);
 }
