@@ -11,8 +11,8 @@ const Stack = createNativeStackNavigator();
 const AuthenticationStack = () => {
     return (
         <Stack.Navigator>
-            <Stack.Screen name="Login" component={LoginScreen} />
-            <Stack.Screen name="Signup" component={SignupScreen} />
+            <Stack.Screen name="Login" component={LoginScreen} options={{headerShown: false}} />
+            <Stack.Screen name="Signup" component={SignupScreen} options={{headerShown: false}} />
             <Stack.Screen name="Onboarding" component={OnboardingStack} options={{headerShown: false}} />
         </Stack.Navigator>
     )
