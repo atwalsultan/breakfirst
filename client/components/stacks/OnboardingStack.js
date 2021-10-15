@@ -13,11 +13,11 @@ const Stack = createNativeStackNavigator();
 const OnboardingStack = () => {
     return (
         <Stack.Navigator>
-            <Stack.Screen name="Intro1" component={IntroScreen1} />
-            <Stack.Screen name="Intro2" component={IntroScreen2} />
-            <Stack.Screen name="OB1" component={OnboardingScreen1} />
-            <Stack.Screen name="OB2" component={OnboardingScreen2} />
-            <Stack.Screen name="OB3" component={OnboardingScreen3} />
+            <Stack.Screen name="Intro1" component={IntroScreen1} options={{headerShown: false}} />
+            <Stack.Screen name="Intro2" component={IntroScreen2} options={{headerShown: false}} />
+            <Stack.Screen name="OB1" component={OnboardingScreen1} options={{headerShown: false}} />
+            <Stack.Screen name="OB2" component={OnboardingScreen2} options={{headerShown: false}} />
+            <Stack.Screen name="OB3" component={OnboardingScreen3} options={{headerShown: false}} />
         </Stack.Navigator>
     )
 }

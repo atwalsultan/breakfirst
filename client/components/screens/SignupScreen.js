@@ -8,7 +8,7 @@ const SignupScreen = ({ navigation }) => {
             <Box style={styles.image}></Box>
 
             <Text style={styles.h1}>Sign Up</Text>
-            <Text style={styles.h2}>It's time to do some exercises!</Text>
+            <Text style={styles.text}>It's time to do some exercises!</Text>
             <TextInput placeholder="Email" style={styles.input} />
             <TextInput placeholder="Username" style={styles.input} />
             <TextInput placeholder="Password" style={styles.input} />
@@ -44,8 +44,8 @@ export default SignupScreen
 const styles = StyleSheet.create({
     container: {
         paddingHorizontal: 16,
-        paddingBottom: 42,
-        paddingTop: 75,
+        paddingBottom: 8,
+        paddingTop: 68,
         flex: 1,
     },
     image: {
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
         textAlign: "center",
         marginBottom: 8
     },
-    h2: {
+    text: {
         fontSize: 18,
         fontWeight: "400",
         textAlign: "center",
@@ -76,7 +76,9 @@ const styles = StyleSheet.create({
         backgroundColor: "rgba(0,0,0,0.1)",
         paddingVertical: 16,
         textAlign: 'center',
-        alignSelf: "center"
+        alignSelf: "center",
+        fontSize: 18,
+        fontWeight: '400'
     },
     loginInfo: {
         flexGrow: 1,
