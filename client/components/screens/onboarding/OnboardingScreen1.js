@@ -1,7 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { Box } from 'native-base';
 import GoalWorkspaceList from '../../lists/GoalWorkspaceList';
+import OBNextButton from '../../buttons/OBNextButton';
+
 
 const OnboardingScreen1 = ({ navigation }) => {
     const data = [
@@ -25,14 +27,9 @@ const OnboardingScreen1 = ({ navigation }) => {
             <GoalWorkspaceList data={data} />
 
             <View style={styles.flexEndView}>
-                <TouchableOpacity>
-                    <Text style={styles.nextButton} onPress={() => {
-                        // navigation.replace("Intro2");
-                        navigation.navigate("OB2");
-                    }}>
-                        Next
-                    </Text>
-                </TouchableOpacity>
+                <View style={styles.nextButton}>
+                    <OBNextButton navigation={navigation} next="OB2" />
+                </View>
                 <Text style={styles.questionNumber}>Question 1/3</Text>
             </View>
         </Box>
@@ -63,14 +60,7 @@ const styles = StyleSheet.create({
         marginBottom: 32
     },
     nextButton: {
-        backgroundColor: "rgba(0,0,0,0.1)",
         marginBottom: 52,
-        paddingVertical: 16,
-        paddingHorizontal: 50,
-        textAlign: 'center',
-        alignSelf: "center",
-        fontSize: 18,
-        fontWeight: '400',
     },
     flexEndView: {
         flexGrow: 1,

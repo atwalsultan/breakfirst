@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { Box } from 'native-base';
+import OBNextButton from '../../buttons/OBNextButton';
 
 const IntroScreen2 = ({ navigation }) => {
     return (
@@ -10,14 +11,7 @@ const IntroScreen2 = ({ navigation }) => {
             <Text style={styles.h1}>Sit less and move more.</Text>
             <Text style={styles.text}>BreakFirst will help you relieve stress, minimize the risk of injury and improve your health. Set the reminder now!</Text>
 
-            <TouchableOpacity>
-                <Text style={styles.nextButton} onPress={() => {
-                    // navigation.replace("Intro2");
-                    navigation.navigate("OB1");
-                }}>
-                    Next
-                </Text>
-            </TouchableOpacity>
+            <OBNextButton navigation={navigation} next="OB1" />
 
             <View style={styles.skipInfo}>
                 <Text style={styles.skipLink} onPress={() => {
@@ -53,15 +47,6 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: "400",
         marginBottom: 64
-    },
-    nextButton: {
-        width: "45%",
-        backgroundColor: "rgba(0,0,0,0.1)",
-        paddingVertical: 16,
-        textAlign: 'center',
-        alignSelf: "center",
-        fontSize: 18,
-        fontWeight: '400',
     },
     skipInfo: {
         flexGrow: 1,
