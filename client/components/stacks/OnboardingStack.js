@@ -2,11 +2,11 @@ import * as React from 'react';
 import { StyleSheet } from 'react-native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import IntroScreen1 from '../screens/onboarding/IntroScreen1';
-import IntroScreen2 from '../screens/onboarding/IntroScreen2';
-import OnboardingScreen1 from '../screens/onboarding/OnboardingScreen1';
-import OnboardingScreen2 from '../screens/onboarding/OnboardingScreen2';
-import OnboardingScreen3 from '../screens/onboarding/OnboardingScreen3';
+import IntroScreen1 from '../screens/onboarding-stack/IntroScreen1';
+import IntroScreen2 from '../screens/onboarding-stack/IntroScreen2';
+import OnboardingScreen1 from '../screens/onboarding-stack/OnboardingScreen1';
+import OnboardingScreen2 from '../screens/onboarding-stack/OnboardingScreen2';
+import OnboardingScreen3 from '../screens/onboarding-stack/OnboardingScreen3';
 
 const Stack = createNativeStackNavigator();
 

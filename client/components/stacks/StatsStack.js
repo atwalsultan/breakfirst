@@ -1,14 +1,14 @@
-import * as React from 'react';
+import React from 'react';
 import { StyleSheet, Text, View } from 'react-native'
 
-const LibraryScreen = () => {
+const StatsStack = () => {
     return (
         <View>
-            <Text>Library Screen</Text>
+            <Text></Text>
         </View>
     )
 }
 
-export default LibraryScreen
+export default StatsStack
 
 const styles = StyleSheet.create({})
