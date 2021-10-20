@@ -13,11 +13,14 @@ const LoginScreen = ({ navigation }) => {
             <TextInput placeholder="Password" style={styles.input} />
             <Text style={styles.forgotPassword}>Forgot password?</Text>
 
-            <TouchableOpacity>
-                <Text style={styles.loginButton} onPress={() => {
-                    navigation.replace("Onboarding");
-                    navigation.navigate("Onboarding");
-                }}>
+            <TouchableOpacity style={styles.loginButton} onPress={() => {
+                // Logic to log in
+                
+                // So that user cannot get back to this page once navigated to the onboarding stack
+                navigation.replace("Onboarding");
+                navigation.navigate("Onboarding");
+            }}>
+                <Text style={styles.loginButtonText}>
                     Login
                 </Text>
             </TouchableOpacity>
@@ -25,10 +28,7 @@ const LoginScreen = ({ navigation }) => {
             <View style={styles.signupInfo}>
                 <Text style={styles.signupText}>Do not have an account?</Text>
                 <Text style={styles.signupLink} onPress={() => {
-                    // Logic to log in
-
                     // So that user cannot get back to this page once navigated to the onboarding stack
-                    navigation.replace("Signup");
                     navigation.navigate("Signup");
                 }}>
                     Signup here.
@@ -77,11 +77,13 @@ const styles = StyleSheet.create({
         marginBottom: 32,
     },
     loginButton: {
-        width: "45%",
         backgroundColor: "rgba(0,0,0,0.1)",
         paddingVertical: 16,
-        textAlign: 'center',
+        width: "45%",
         alignSelf: "center",
+    },
+    loginButtonText: {
+        textAlign: 'center',
         fontSize: 18,
         fontWeight: '400',
     },
