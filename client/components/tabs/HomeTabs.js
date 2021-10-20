@@ -15,7 +15,7 @@ const HomeTabs = () => {
             <Tab.Screen name="Home" component={HomeScreen} />
             <Tab.Screen name="Library" component={LibraryScreen} />
             <Tab.Screen name="Stats" component={StatsScreen} />
-            <Tab.Screen name="Profile" component={ProfileScreen} />
+            <Tab.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }} />
         </Tab.Navigator>
     )
 }
