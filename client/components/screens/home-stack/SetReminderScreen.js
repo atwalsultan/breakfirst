@@ -3,13 +3,6 @@ import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Box } from 'native-base';
 
 const SetReminderScreen = ({ navigation }) => {
-    const data = [
-        {text: "Label", id: 1},
-        {text: "Interval", id: 2},
-        {text: "Sound", id: 3},
-        {text: "Silent Mode", id: 4},
-        {text: "Save for next time", id: 5},
-    ]
 
     return (
         <Box style={styles.container} safeAreaTop>
@@ -24,26 +17,40 @@ const SetReminderScreen = ({ navigation }) => {
 
             <Box style={styles.times}></Box>
 
-            <Box style={styles.card}>
-                <Text style={styles.cardTitle}>Label</Text>
-                <Text style={styles.cardText}>My task</Text>
-            </Box>
-            <Box style={styles.card}>
-                <Text style={styles.cardTitle}>Interval</Text>
-                <Text style={styles.cardText}>30 mins</Text>
-            </Box>
-            <Box style={styles.card}>
-                <Text style={styles.cardTitle}>Sound</Text>
-                <Text style={styles.cardText}>Lazy Day</Text>
-            </Box>
-            <Box style={styles.card}>
-                <Text style={styles.cardTitle}>Silent Mode</Text>
-                <Text style={styles.cardText}>PH</Text>
-            </Box>
-            <Box style={styles.card}>
-                <Text style={styles.cardTitle}>Save for next time</Text>
-                <Text style={styles.cardText}>PH</Text>
-            </Box>
+            <TouchableOpacity>
+                <Box style={styles.card}>
+                    <Text style={styles.cardTitle}>Label</Text>
+                    <Text style={styles.cardText}>My task</Text>
+                </Box>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => navigation.navigate('SetIntervalScreen')}>
+                <Box style={styles.card}>
+                    <Text style={styles.cardTitle}>Interval</Text>
+                    <Text style={styles.cardText}>30 mins</Text>
+                </Box>
+            </TouchableOpacity>
+
+            <TouchableOpacity>
+                <Box style={styles.card}>
+                    <Text style={styles.cardTitle}>Sound</Text>
+                    <Text style={styles.cardText}>Lazy Day</Text>
+                </Box>
+            </TouchableOpacity>
+
+            <TouchableOpacity>
+                <Box style={styles.card}>
+                    <Text style={styles.cardTitle}>Silent Mode</Text>
+                    <Text style={styles.cardText}>PH</Text>
+                </Box>
+            </TouchableOpacity>
+
+            <TouchableOpacity>
+                <Box style={styles.card}>
+                    <Text style={styles.cardTitle}>Save for next time</Text>
+                    <Text style={styles.cardText}>PH</Text>
+                </Box>
+            </TouchableOpacity>
 
             <TouchableOpacity style={styles.nextButton} onPress={() => {
                 navigation.goBack();
