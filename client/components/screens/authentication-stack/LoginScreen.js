@@ -27,12 +27,15 @@ const LoginScreen = ({ navigation }) => {
 
             <View style={styles.signupInfo}>
                 <Text style={styles.signupText}>Do not have an account?</Text>
-                <Text style={styles.signupLink} onPress={() => {
-                    // So that user cannot get back to this page once navigated to the onboarding stack
+
+                <TouchableOpacity onPress={() => {
+                    // So that user cannot get back to this screen after navigating to the onboarding stack
                     navigation.navigate("Signup");
                 }}>
-                    Signup here.
-                </Text>
+                    <Text style={styles.signupLink}>
+                        Signup here.
+                    </Text>
+                </TouchableOpacity>
             </View>
         </Box>
     )
