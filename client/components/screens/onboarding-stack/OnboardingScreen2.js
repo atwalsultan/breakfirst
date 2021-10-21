@@ -13,11 +13,11 @@ const OnboardingScreen2 = ({ navigation }) => {
 
     return (
         <Box style={styles.container} safeAreaTop>
-            <Text style={styles.backLink} onPress={() => {
+             <TouchableOpacity onPress={() => {
                 navigation.goBack()
             }}>
-                Back
-            </Text>
+                <Text style={styles.backLink}>Back</Text>
+            </TouchableOpacity>
 
             <Text style={styles.h1}>Your workspace is:</Text>
             <Text style={styles.text}>We'll recommend exercises based on your choice.</Text>

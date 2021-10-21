@@ -1,16 +1,17 @@
 import * as React from 'react';
-import { StyleSheet, View, Button } from 'react-native';
+import { StyleSheet, Button } from 'react-native';
+import { Box } from 'native-base';
 
 const HomeScreen = ({ navigation }) => {
     return (
-        <View>
+        <Box safeAreaTop>
             <Button title="Change Schedule" onPress={() => {
                 navigation.navigate("HomeStack", { screen: 'ChangeScheduleScreen' });
             }}/>
             <Button title="Set Up Reminder" onPress={() => {
                 navigation.navigate("HomeStack", { screen: 'SetReminderScreen' });
             }}/>
-        </View>
+        </Box>
     )
 }
 
