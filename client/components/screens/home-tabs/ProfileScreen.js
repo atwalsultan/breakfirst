@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Box } from 'native-base';
-import { NavigationContainer } from '@react-navigation/native';
 
 const ProfileScreen = ({ navigation }) => {
     return (
