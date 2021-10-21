@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Box } from 'native-base';
 import OBNextButton from '../../buttons/OBNextButton';
 
@@ -14,11 +14,13 @@ const IntroScreen1 = ({ navigation }) => {
             <OBNextButton navigation={navigation} next="Intro2" />
 
             <View style={styles.skipInfo}>
-                <Text style={styles.skipLink} onPress={() => {
+                <TouchableOpacity onPress={() => {
                     navigation.navigate("OB1")
                 }}>
-                    Skip
-                </Text>
+                    <Text style={styles.skipLink}>
+                        Skip
+                    </Text>
+                </TouchableOpacity>
             </View>
         </Box>
     )
