@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Box } from 'native-base';
 import GoalWorkspaceList from '../../lists/GoalWorkspaceList';
 import OBNextButton from '../../buttons/OBNextButton';
@@ -15,11 +15,11 @@ const OnboardingScreen1 = ({ navigation }) => {
 
     return (
         <Box style={styles.container} safeAreaTop>
-            <Text style={styles.backLink} onPress={() => {
+            <TouchableOpacity onPress={() => {
                 navigation.goBack()
             }}>
-                Back
-            </Text>
+                <Text style={styles.backLink}>Back</Text>
+            </TouchableOpacity>
 
             <Text style={styles.h1}>What's your goal?</Text>
             <Text style={styles.text}>We'll help you customize your break schedule.</Text>

@@ -1,12 +1,14 @@
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Box } from 'native-base';
 
 const GoalWorkspaceCard = ({ item }) => {
     return (
-        <Box style={styles.card}>
-            <Text style={styles.cardText}>{item.text}</Text>
-        </Box>
+        <TouchableOpacity>
+            <Box style={styles.card}>
+                <Text style={styles.cardText}>{item.text}</Text>
+            </Box>
+        </TouchableOpacity>
     )
 }
 

@@ -7,11 +7,11 @@ const SetReminderScreen = ({ navigation }) => {
     return (
         <Box style={styles.container} safeAreaTop>
             <Box style={styles.header}>
-                <Text style={styles.backLink} onPress={() => {
+                <TouchableOpacity style={styles.backLink} onPress={() => {
                     navigation.goBack();
                 }}>
-                    Cancel
-                </Text>
+                    <Text style={styles.backLinkText}>Cancel</Text>
+                </TouchableOpacity>
                 <Text style={styles.heading}>Reminder</Text>
             </Box>
 
@@ -77,10 +77,12 @@ const styles = StyleSheet.create({
         marginBottom: 24
     },
     backLink: {
-        fontSize: 18,
-        fontWeight: '400',
         position: 'absolute',
         left: 0,
+    },
+    backLinkText: {
+        fontSize: 18,
+        fontWeight: '400',
     },
     heading: {
         fontSize: 20,
