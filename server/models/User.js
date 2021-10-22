@@ -45,7 +45,6 @@ UserSchema.statics.findByCredentials = async (email, password, username) => {
 
     if (!user) {
         throw new Error("Try again credentials don't match");
-      
       }
   
     const isMatch = await bcrypt.compare(password, user.password);
@@ -56,9 +55,6 @@ UserSchema.statics.findByCredentials = async (email, password, username) => {
   
     return user;
   };
-// ====================================================
 
-
-// The first argument to mongoose.model should be singular because when this model will be saved to the database
-// mongoose automatically converts it to plural.
-module.exports = User = mongoose.model("user", UserSchema);
+  const User = mongoose.model("user", UserSchema);
+  module.exports = User;
