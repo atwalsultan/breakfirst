@@ -6,7 +6,7 @@ const HomeScreen = ({ navigation }) => {
     return (
         <Box style={styles.container} safeAreaTop>
             <ScrollView style={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
-                <Text style={styles.heading}>Today'sitting time:</Text>
+                <Text style={styles.heading}>Today's sitting time</Text>
 
                 <Box style={styles.graphic}></Box>
 
