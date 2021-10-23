@@ -16,9 +16,9 @@ const LoginScreen = ({ navigation }) => {
             <TouchableOpacity style={styles.loginButton} onPress={() => {
                 // Logic to log in
                 
-                // So that user cannot get back to this page once navigated to the onboarding stack
-                navigation.replace("Onboarding");
-                navigation.navigate("Onboarding");
+                // So that user cannot get back to this page once navigated to the app stack
+                navigation.replace("AppStack")
+                navigation.navigate("AppStack")
             }}>
                 <Text style={styles.loginButtonText}>
                     Login
@@ -29,7 +29,6 @@ const LoginScreen = ({ navigation }) => {
                 <Text style={styles.signupText}>Do not have an account?</Text>
 
                 <TouchableOpacity onPress={() => {
-                    // So that user cannot get back to this screen after navigating to the onboarding stack
                     navigation.navigate("Signup");
                 }}>
                     <Text style={styles.signupLink}>
