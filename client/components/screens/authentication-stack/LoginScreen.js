@@ -10,7 +10,7 @@ const LoginScreen = ({ navigation }) => {
             <Text style={styles.h1}>Log In</Text>
             <Text style={styles.text}>Don't forget to take a break!</Text>
             <TextInput placeholder="Email" style={styles.input} />
-            <TextInput placeholder="Password" style={styles.input} />
+            <TextInput secureTextEntry={true} placeholder="Password" style={styles.input} />
             <Text style={styles.forgotPassword}>Forgot password?</Text>
 
             <TouchableOpacity style={styles.loginButton} onPress={() => {
