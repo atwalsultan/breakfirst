@@ -1,9 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Box } from 'native-base';
-import { alignSelf } from 'styled-system';
 
-const ExerciseDetailsScreen = ({ navigation }) => {
+const ExerciseDetailsScreen = ({ route, navigation }) => {
+    const exercise = route.params.exercise;
+
     return (
         <Box style={styles.container} safeAreaTop>
             <TouchableOpacity onPress={() => {
@@ -14,8 +15,8 @@ const ExerciseDetailsScreen = ({ navigation }) => {
 
             <Box style={styles.exerciseImage}></Box>
 
-            <Text style={styles.exerciseTitle}>Save the neck</Text>
-            <Text style={styles.exerciseDescription}>Please follow the cat to relax your neck and back. Click the button below to add this exercise to your collection.</Text>
+            <Text style={styles.exerciseTitle}>{exercise.name}</Text>
+            <Text style={styles.exerciseDescription}>{exercise.description}</Text>
 
             <TouchableOpacity style={styles.saveButton} onPress={() => {
                 navigation.goBack();
