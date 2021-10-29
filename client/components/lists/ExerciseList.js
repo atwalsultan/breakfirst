@@ -1,44 +1,25 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
 
 import ExerciseCard from '../cards/ExerciseCard';
 
 const ExerciseList = ({ navigation }) => {
-    const exerciseList = [
-        {
-            "name": "Neck saver",
-            "description": "Lorem ipsum dolor sit amet lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet lorem ipsum dolor sit amet",
-            "image": ""
-        },
-        {
-            "name": "Say hello",
-            "description": "Lorem ipsum dolor sit amet lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet lorem ipsum dolor sit amet",
-            "image": ""
-        },
-        {
-            "name": "Wing flap",
-            "description": "Lorem ipsum dolor sit amet lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet lorem ipsum dolor sit amet",
-            "image": ""
-        },
-        {
-            "name": "Bike throttle",
-            "description": "Lorem ipsum dolor sit amet lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet lorem ipsum dolor sit amet",
-            "image": ""
-        },
-        {
-            "name": "Arm rotation",
-            "description": "Lorem ipsum dolor sit amet lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet lorem ipsum dolor sit amet",
-            "image": ""
-        },
-        {
-            "name": "Wrist rotation",
-            "description": "Lorem ipsum dolor sit amet lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet lorem ipsum dolor sit amet",
-            "image": ""
-        },
-    ]
+    const [exercises, setExercises] = useState([]);
+
+    const getExercises = async () => {
+        const url = 'http://192.168.1.92:8080/exercises';
+        const response = await fetch(url);   // Fetch page
+		const responseJsonArray = await response.json();  // Get response text
+
+        setExercises(responseJsonArray);
+    }
+
+    useEffect(() => {
+        getExercises();
+    }, [])
 
     return (
-        exerciseList.map((exercise, index) => (
+        exercises.map((exercise, index) => (
             <ExerciseCard exercise={exercise} index={index} navigation={navigation} key={index} />
         ))
     )

@@ -11,8 +11,8 @@ const SignupScreen = ({ navigation }) => {
             <Text style={styles.text}>It's time to do some exercises!</Text>
             <TextInput placeholder="Email" style={styles.input} />
             <TextInput placeholder="Username" style={styles.input} />
-            <TextInput placeholder="Password" style={styles.input} />
-            <TextInput placeholder="Confirm Password" style={styles.input} />
+            <TextInput placeholder="Password" secureTextEntry={true} style={styles.input} />
+            <TextInput placeholder="Confirm Password" secureTextEntry={true} style={styles.input} />
 
             <TouchableOpacity style={styles.signupButton} onPress={() => {
                 // Logic to sign up user and log in
