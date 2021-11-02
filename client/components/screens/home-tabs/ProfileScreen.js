@@ -1,8 +1,21 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Box } from 'native-base';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const ProfileScreen = ({ navigation }) => {
+    const logout = async () => {
+        try {
+            await AsyncStorage.removeItem('user');
+
+            //  So that user can not navigate back to this page after logging out
+            navigation.replace("Login");
+        }
+        catch(e) {
+            console.log(e);
+        }
+    }
+
     return (
         <Box style={styles.container} safeAreaTop>
             <Text style={styles.heading}>Profile</Text>
@@ -43,10 +56,8 @@ const ProfileScreen = ({ navigation }) => {
             </Box>
 
             <TouchableOpacity onPress={() => {
-                // So that user can not navigate back to this screen after logging out
-                navigation.replace("Login");
-
-                navigation.navigate("Login");
+                // Log user out
+                logout();
             }}>
                 <Text style={styles.logoutLink}>
                     Log out Sultan Singh Atwal

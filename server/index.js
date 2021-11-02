@@ -37,7 +37,7 @@ app.get("/app/profile", (req, res)=>{
 });
 
 app.use("/app/tests", tests);
-app.use("/exercises", exercises);
+app.use("/app/exercises", exercises);
 
 // Specify port and listen
 app.listen(PORT, () => {
