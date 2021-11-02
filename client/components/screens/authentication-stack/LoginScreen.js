@@ -1,28 +1,69 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import { Box } from 'native-base';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LoginScreen = ({ navigation }) => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const login = async () => {
+        const response = await fetch("http://192.168.1.92:8080/auth/login", {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                "email": email,
+                "password": password
+            })
+        });
+
+        if (response.status === 200) {
+            // Save token
+            const responseJson = await response.json();
+
+            try {
+                let user = {
+                    username: responseJson.username,
+                    email: responseJson.email,
+                    token: responseJson.token,
+                    id: responseJson.id
+                };
+
+                await AsyncStorage.setItem('user', JSON.stringify(user));
+
+                // So that user cannot get back to this page once navigated to the app stack
+                navigation.replace("AppStack");
+            }
+            catch (e) {
+                console.log(e);
+            }
+        }
+
+        else {
+            // Show error
+            const responseJson = await response.json();
+            console.log(responseJson);
+        }
+
+    }
+
     return (
         <Box style={styles.container} safeAreaTop>
             <Box style={styles.image}></Box>
 
             <Text style={styles.h1}>Log In</Text>
             <Text style={styles.text}>Don't forget to take a break!</Text>
-            <TextInput placeholder="Email" style={styles.input} />
-            <TextInput secureTextEntry={true} placeholder="Password" style={styles.input} />
+            <TextInput placeholder="Email" style={styles.input} value={email} onChangeText={(text) => setEmail(text)} />
+            <TextInput secureTextEntry={true} placeholder="Password" style={styles.input} value={password} onChangeText={(text) => setPassword(text)} />
             <Text style={styles.forgotPassword}>Forgot password?</Text>
 
             <TouchableOpacity style={styles.loginButton} onPress={() => {
-                // Logic to log in
-                
-                // So that user cannot get back to this page once navigated to the app stack
-                navigation.replace("AppStack")
-                navigation.navigate("AppStack")
+                // Log user in
+                login();
             }}>
-                <Text style={styles.loginButtonText}>
-                    Login
-                </Text>
+                <Text style={styles.loginButtonText}>Login</Text>
             </TouchableOpacity>
 
             <View style={styles.signupInfo}>

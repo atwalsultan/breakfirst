@@ -1,25 +1,69 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
-import { Box, Button } from 'native-base';
+import { Box } from 'native-base';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const SignupScreen = ({ navigation }) => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [username, setUsername] = useState("");
+
+    const signup = async () => {
+        const response = await fetch("http://192.168.1.92:8080/auth/signup", {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                "email": email,
+                "password": password,
+                "username": username
+            })
+        });
+
+        if (response.status === 200) {
+            // Save token
+            const responseJson = await response.json();
+
+            try {
+                let user = {
+                    username: responseJson.username,
+                    email: responseJson.email,
+                    token: responseJson.token,
+                    id: responseJson.id
+                };
+
+                await AsyncStorage.setItem('user', JSON.stringify(user));
+
+                // So that user cannot get back to this page once navigated to the app stack
+                navigation.replace("Onboarding");
+            }
+            catch (e) {
+                console.log(e);
+            }
+        }
+
+        else {
+            // Show error
+            const responseJson = await response.json();
+            console.log(responseJson);
+        }
+    }
+
     return (
         <Box style={styles.container} safeAreaTop>
             <Box style={styles.image}></Box>
 
             <Text style={styles.h1}>Sign Up</Text>
             <Text style={styles.text}>It's time to do some exercises!</Text>
-            <TextInput placeholder="Email" style={styles.input} />
-            <TextInput placeholder="Username" style={styles.input} />
-            <TextInput placeholder="Password" secureTextEntry={true} style={styles.input} />
+            <TextInput placeholder="Email" style={styles.input} value={email} onChangeText={(text) => setEmail(text)} />
+            <TextInput placeholder="Username" style={styles.input} value={username} onChangeText={(text) => setUsername(text)} />
+            <TextInput placeholder="Password" secureTextEntry={true} style={styles.input} value={password} onChangeText={(text) => setPassword(text)} />
             <TextInput placeholder="Confirm Password" secureTextEntry={true} style={styles.input} />
 
             <TouchableOpacity style={styles.signupButton} onPress={() => {
-                // Logic to sign up user and log in
-
-                // So that user cannot get back to this page once navigated to the onboarding stack
-                navigation.replace("Onboarding");
-                navigation.navigate("Onboarding");
+                // Sign up user and log in
+                signup();
             }}>
                 <Text style={styles.signupButtonText}>
                     Signup
