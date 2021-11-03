@@ -36,9 +36,9 @@ router.post("/signup", async (req, res) => {
             .send({ message: "Expecting email, name and password" });
     }
     try {
-        const user = await User.create({ email, password, username });
+        const user = await User.create({ email, password, username, goal: 1, workspace: 1 });
         const token = generateToken(user);
-        return res.send({ username, email, token, id: user._id });
+        return res.send({ username, email, token, id: user._id, goal: user.goal, workspace: user.workspace });
     }
     catch (err) {
         const error = handleError(err);

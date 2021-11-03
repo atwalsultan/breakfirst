@@ -2,10 +2,10 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Box } from 'native-base';
 
-const GoalWorkspaceCard = ({ item }) => {
+const GoalWorkspaceCard = ({ item, selected, setSelected }) => {
     return (
-        <TouchableOpacity>
-            <Box style={styles.card}>
+        <TouchableOpacity onPress={() => setSelected(item.id)}>
+            <Box style={[styles.card, {borderColor: selected === item.id ? '#355C97' : 'transparent'}]}>
                 <Text style={styles.cardText}>{item.text}</Text>
             </Box>
         </TouchableOpacity>
@@ -19,8 +19,10 @@ const styles = StyleSheet.create({
         marginBottom: 16,
         paddingVertical: 12,
         paddingHorizontal: 16,
-        backgroundColor: 'rgba(0,0,0,0.05)',
-        borderRadius:4
+        backgroundColor: '#FFFFFF',
+        borderRadius:4,
+        borderWidth: 1.5,
+        borderStyle: 'solid',
     },
     cardText: {
         fontSize: 18,

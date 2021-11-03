@@ -20,6 +20,14 @@ const UserSchema = new Schema({
         type:String,
         unique:true,
         required:[true, "please enter username"]
+    },
+    goal: {
+        type:Number,
+        required:true,
+    },
+    workspace: {
+      type:Number,
+      required:true,
     }
 });
 

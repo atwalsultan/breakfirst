@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Box } from 'native-base';
+import { Entypo } from '@expo/vector-icons';
+
 import GoalWorkspaceList from '../../lists/GoalWorkspaceList';
 import OBNextButton from '../../buttons/OBNextButton';
 
@@ -16,7 +18,7 @@ const OnboardingScreen2 = ({ navigation }) => {
              <TouchableOpacity onPress={() => {
                 navigation.goBack()
             }}>
-                <Text style={styles.backLink}>Back</Text>
+                <Entypo name="chevron-left" size={24} color="black" style={styles.backLink} />
             </TouchableOpacity>
 
             <Text style={styles.h1}>Your workspace is:</Text>
@@ -44,11 +46,11 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     backLink: {
-        fontSize: 14,
-        marginBottom: 32
+        marginTop: 16,
+        marginBottom: 25
     },
     h1: {
-        fontSize: 30,
+        fontSize: 28,
         fontWeight: "700",
         marginBottom: 8
     },
