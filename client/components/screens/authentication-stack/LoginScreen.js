@@ -96,14 +96,14 @@ const styles = StyleSheet.create({
         marginBottom: 32,
     },
     h1: {
-        fontSize: 30,
-        fontWeight: "700",
+        fontSize: 28,
+        fontFamily: 'josefin-bold',
         textAlign: "center",
         marginBottom: 8
     },
     text: {
         fontSize: 18,
-        fontWeight: "400",
+        fontFamily: 'josefin-regular',
         textAlign: "center",
         marginBottom: 32
     },
@@ -111,11 +111,12 @@ const styles = StyleSheet.create({
         padding: 16,
         backgroundColor: 'rgba(0,0,0,0.05)',
         fontSize: 18,
+        fontFamily: 'josefin-regular',
         marginBottom: 16
     },
     forgotPassword: {
         fontSize: 16,
-        fontWeight: "400",
+        fontFamily: 'josefin-regular',
         textAlign: "right",
         marginBottom: 32,
     },
@@ -128,7 +129,7 @@ const styles = StyleSheet.create({
     loginButtonText: {
         textAlign: 'center',
         fontSize: 18,
-        fontWeight: '400',
+        fontFamily: 'josefin-regular',
     },
     signupInfo: {
         flexGrow: 1,
@@ -138,9 +139,10 @@ const styles = StyleSheet.create({
     },
     signupText: {
         fontSize: 16,
+        fontFamily: 'josefin-regular',
     },
     signupLink: {
-        fontWeight: '700',
+        fontFamily: 'josefin-bold',
         fontSize: 16,
         marginLeft: 2
     }

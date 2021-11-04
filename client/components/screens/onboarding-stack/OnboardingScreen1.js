@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Box } from 'native-base';
 import { Entypo } from '@expo/vector-icons';
@@ -13,7 +13,9 @@ const OnboardingScreen1 = ({ navigation }) => {
         {text: "Prevent physical stiffness", id: 2},
         {text: "Relieve stress and anxiety", id: 3},
         {text: "Stay active throughout the day", id: 4},
-    ]
+    ];
+
+    const [selected, setSelected] = useState(1);
 
     return (
         <Box style={styles.container} safeAreaTop>
@@ -26,11 +28,11 @@ const OnboardingScreen1 = ({ navigation }) => {
             <Text style={styles.h1}>What's your goal?</Text>
             <Text style={styles.text}>We'll help you customize your break schedule.</Text>
 
-            <GoalWorkspaceList data={data} />
+            <GoalWorkspaceList data={data} selected={selected} setSelected={setSelected} />
 
             <View style={styles.flexEndView}>
                 <View style={styles.nextButton}>
-                    <OBNextButton navigation={navigation} next="OB2" />
+                    <OBNextButton navigation={navigation} next="OB2" selected={selected} />
                 </View>
                 <Text style={styles.questionNumber}>Question 1/3</Text>
             </View>
@@ -53,13 +55,14 @@ const styles = StyleSheet.create({
     },
     h1: {
         fontSize: 28    ,
-        fontWeight: "700",
+        fontFamily: 'josefin-bold',
         marginBottom: 8
     },
     text: {
         fontSize: 16,
-        fontWeight: "400",
-        marginBottom: 32
+        fontFamily: 'josefin-regular',
+        marginBottom: 32,
+        color: 'rgba(20, 35, 57, 0.6)',
     },
     nextButton: {
         marginBottom: 52,
@@ -71,6 +74,6 @@ const styles = StyleSheet.create({
     },
     questionNumber: {
         fontSize: 18,
-        fontWeight: '600'
+        fontFamily: 'josefin-semi-bold',
     }
 })

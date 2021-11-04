@@ -39,13 +39,14 @@ const styles = StyleSheet.create({
     },
     heading: {
         fontSize: 25,
-        fontWeight: '600',
+        fontFamily: 'josefin-semi-bold',
         marginBottom: 8
     },
     text: {
         fontSize: 14,
-        fontWeight: '400',
-        marginBottom: 16
+        fontFamily: 'josefin-regular',
+        marginBottom: 16,
+        color: 'rgba(20, 35, 57, 0.6)'
     },
     exerciseContainer: {
         flexDirection: 'row',
@@ -63,6 +64,6 @@ const styles = StyleSheet.create({
     },
     sedantaryFactsText: {
         fontSize: 22,
-        fontWeight: '400'
+        fontFamily: 'josefin-regular',
     }
 })

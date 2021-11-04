@@ -42,12 +42,12 @@ const styles = StyleSheet.create({
     },
     h1: {
         fontSize: 28,
-        fontWeight: "700",
+        fontFamily: 'josefin-bold',
         marginBottom: 16
     },
     text: {
         fontSize: 18,
-        fontWeight: "400",
+        fontFamily: 'josefin-regular',
         marginBottom: 64
     },
     skipInfo: {
@@ -59,6 +59,6 @@ const styles = StyleSheet.create({
     skipLink: {
         textAlign: 'center',
         fontSize: 18,
-        fontWeight: '600',
+        fontFamily: 'josefin-semi-bold',
     }
 })

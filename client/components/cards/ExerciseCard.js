@@ -44,6 +44,6 @@ const styles = StyleSheet.create({
     },
     exerciseName: {
         fontSize: 16,
-        fontWeight: '400'
+        fontFamily: 'josefin-regular',
     },
 })
