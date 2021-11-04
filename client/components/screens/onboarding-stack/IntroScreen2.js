@@ -1,11 +1,19 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Box } from 'native-base';
+import { Entypo } from '@expo/vector-icons';
+
 import OBNextButton from '../../buttons/OBNextButton';
 
 const IntroScreen2 = ({ navigation }) => {
     return (
         <Box style={styles.container} safeAreaTop>
+            <TouchableOpacity onPress={() => {
+                navigation.goBack()
+            }}>
+                <Entypo name="chevron-left" size={24} color="black" style={styles.backLink} />
+            </TouchableOpacity>
+
             <Box style={styles.image}></Box>
 
             <Text style={styles.h1}>Sit less and move more.</Text>
@@ -32,8 +40,11 @@ const styles = StyleSheet.create({
     container: {
         paddingHorizontal: 16,
         paddingBottom: 24,
-        paddingTop: 68,
         flex: 1,
+    },
+    backLink: {
+        marginTop: 16,
+        marginBottom: 25
     },
     image: {
         height: '40%',
@@ -42,12 +53,12 @@ const styles = StyleSheet.create({
     },
     h1: {
         fontSize: 28,
-        fontWeight: "700",
+        fontFamily: 'josefin-bold',
         marginBottom: 16
     },
     text: {
         fontSize: 18,
-        fontWeight: "400",
+        fontFamily: 'josefin-regular',
         marginBottom: 64
     },
     skipInfo: {
@@ -59,6 +70,6 @@ const styles = StyleSheet.create({
     skipLink: {
         textAlign: 'center',
         fontSize: 18,
-        fontWeight: '600',
+        fontFamily: 'josefin-semi-bold',
     }
 })

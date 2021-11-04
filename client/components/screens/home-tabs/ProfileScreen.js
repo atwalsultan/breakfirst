@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     },
     heading: {
         fontSize: 25,
-        fontWeight: '600',
+        fontFamily: 'josefin-semi-bold',
         marginBottom: 24
     },
     overview: {
@@ -94,20 +94,20 @@ const styles = StyleSheet.create({
     },
     name: {
         fontSize: 18,
-        fontWeight: '400',
+        fontFamily: 'josefin-regular',
         marginBottom: 6
     },
     email: {
         fontSize: 16,
-        fontWeight: '400',
+        fontFamily: 'josefin-regular',
         color: 'rgba(0,0,0,0.4)'
     },
     settings: {
         marginBottom: 128,
     },
     settingsHeading: {
-        fontSize: 18,
-        fontWeight: '500',
+        fontSize: 20,
+        fontFamily: 'josefin-regular',
         marginBottom: 4
     },
     card: {
@@ -122,10 +122,10 @@ const styles = StyleSheet.create({
     },
     cardTitle: {
         fontSize: 18,
-        fontWeight: '400',
+        fontFamily: 'josefin-regular',
     },
     logoutLink: {
         fontSize: 18,
-        fontWeight: '400'
+        fontFamily: 'josefin-regular',
     }
 })

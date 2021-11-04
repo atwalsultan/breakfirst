@@ -38,7 +38,7 @@ router.post("/signup", async (req, res) => {
     try {
         const user = await User.create({ email, password, username, goal: 1, workspace: 1 });
         const token = generateToken(user);
-        return res.send({ username, email, token, id: user._id, goal: user.goal, workspace: user.workspace });
+        return res.send({ username, email, token, id: user._id });
     }
     catch (err) {
         const error = handleError(err);
@@ -58,10 +58,11 @@ router.post("/login", async (req, res) => {
             email: user.email,
             id: user._id,
             userame: user.username,
-            token: generateToken(user)
+            token: generateToken(user),
         });
     }
     catch (e) {
+        console.log(e)
         res.status(400).send({ message: "The credentials don't match. Please try again" });
     }
 });

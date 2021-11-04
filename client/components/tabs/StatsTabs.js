@@ -11,9 +11,10 @@ const StatsTabs = () => {
         <Tab.Navigator
             screenOptions={{
                 tabBarIndicatorStyle: { backgroundColor: 'rgba(0,0,0,0.1)', height: '100%' },
+                tabBarLabelStyle: { fontFamily: 'josefin-regular', textTransform: 'capitalize', fontSize: 18 }
             }}
         >
-            <Tab.Screen name="Report" component={ReportScreen} options={{ tabBarLabel: "My Report" }} />
+            <Tab.Screen name="Report" component={ReportScreen} options={{ tabBarLabel: "My Record" }} />
             <Tab.Screen name="Group" component={GroupScreen} options={{ tabBarLabel: "My Groups" }} />
         </Tab.Navigator>
     )

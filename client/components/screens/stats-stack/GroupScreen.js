@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     },
     heading: {
         fontSize: 20,
-        fontWeight: '500',
+        fontFamily: 'josefin-semi-bold',
         marginTop: 8,
         marginBottom: 16
     },
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     },
     groupText: {
         fontSize: 18,
-        fontWeight: '400'
+        fontFamily: 'josefin-regular',
     },
     newGroupMarker: {
         height: 52,

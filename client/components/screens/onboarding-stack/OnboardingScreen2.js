@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Box } from 'native-base';
 import { Entypo } from '@expo/vector-icons';
@@ -11,7 +11,9 @@ const OnboardingScreen2 = ({ navigation }) => {
         {text: "Work from home", id: 1},
         {text: "Work in a cubicle", id: 2},
         {text: "Work in an open office", id: 3},
-    ]
+    ];
+
+    const [selected, setSelected] = useState(1);
 
     return (
         <Box style={styles.container} safeAreaTop>
@@ -24,11 +26,11 @@ const OnboardingScreen2 = ({ navigation }) => {
             <Text style={styles.h1}>Your workspace is:</Text>
             <Text style={styles.text}>We'll recommend exercises based on your choice.</Text>
 
-            <GoalWorkspaceList data={data} />
+            <GoalWorkspaceList data={data} selected={selected} setSelected={setSelected} />
 
             <View style={styles.flexEndView}>
                 <View style={styles.nextButton}>
-                    <OBNextButton navigation={navigation} next="OB3" />
+                    <OBNextButton navigation={navigation} next="OB3" selected={selected} />
                 </View>
                 <Text style={styles.questionNumber}>Question 2/3</Text>
             </View>
@@ -51,13 +53,14 @@ const styles = StyleSheet.create({
     },
     h1: {
         fontSize: 28,
-        fontWeight: "700",
+        fontFamily: 'josefin-bold',
         marginBottom: 8
     },
     text: {
         fontSize: 16,
-        fontWeight: "400",
-        marginBottom: 32
+        fontFamily: 'josefin-regular',
+        marginBottom: 32,
+        color: 'rgba(20, 35, 57, 0.6)',
     },
     nextButton: {
         marginBottom: 52,
@@ -69,6 +72,6 @@ const styles = StyleSheet.create({
     },
     questionNumber: {
         fontSize: 18,
-        fontWeight: '600'
+        fontFamily: 'josefin-semi-bold',
     }
 })

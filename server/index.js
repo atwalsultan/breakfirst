@@ -6,6 +6,7 @@ const PORT = 8080;
 const tests = require("./routes/tests");
 const users = require("./routes/users");
 const exercises = require("./routes/exercises");
+const onboarding = require("./routes/onboarding");
 
 // CORS
 const cors = require("cors");
@@ -38,6 +39,8 @@ app.get("/app/profile", (req, res)=>{
 
 app.use("/app/tests", tests);
 app.use("/app/exercises", exercises);
+
+app.use("/app/onboarding", onboarding);
 
 // Specify port and listen
 app.listen(PORT, () => {

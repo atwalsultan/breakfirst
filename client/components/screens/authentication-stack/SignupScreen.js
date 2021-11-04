@@ -4,9 +4,9 @@ import { Box } from 'native-base';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const SignupScreen = ({ navigation }) => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("sultan.singh.atwal@gmail.com");
+    const [password, setPassword] = useState("sultan");
+    const [username, setUsername] = useState("sultan");
 
     const signup = async () => {
         const response = await fetch("http://192.168.1.92:8080/auth/signup", {
@@ -101,13 +101,13 @@ const styles = StyleSheet.create({
     },
     h1: {
         fontSize: 30,
-        fontWeight: "700",
+        fontFamily: 'josefin-bold',
         textAlign: "center",
         marginBottom: 8
     },
     text: {
         fontSize: 18,
-        fontWeight: "400",
+        fontFamily: 'josefin-regular',
         textAlign: "center",
         marginBottom: 32
     },
@@ -115,7 +115,8 @@ const styles = StyleSheet.create({
         padding: 16,
         backgroundColor: 'rgba(0,0,0,0.05)',
         fontSize: 18,
-        marginBottom: 16
+        marginBottom: 16,
+        fontFamily: 'josefin-regular',
     },
     signupButton: {
         backgroundColor: "rgba(0,0,0,0.1)",
@@ -126,7 +127,7 @@ const styles = StyleSheet.create({
     signupButtonText: {
         textAlign: 'center',
         fontSize: 18,
-        fontWeight: '400'
+        fontFamily: 'josefin-regular',
     },
     loginInfo: {
         flexGrow: 1,
@@ -136,9 +137,10 @@ const styles = StyleSheet.create({
     },
     loginText: {
         fontSize: 16,
+        fontFamily: 'josefin-regular',
     },
     loginLink: {
-        fontWeight: '700',
+        fontFamily: 'josefin-bold',
         fontSize: 16,
         marginLeft: 2
     }

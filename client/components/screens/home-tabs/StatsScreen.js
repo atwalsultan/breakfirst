@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     },
     heading: {
         fontSize: 25,
-        fontWeight: '600',
+        fontFamily: 'josefin-semi-bold',
         marginBottom: 16
     },
 })

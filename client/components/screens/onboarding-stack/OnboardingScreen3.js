@@ -1,14 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Box } from 'native-base';
 import { Entypo } from '@expo/vector-icons';
 
-import GoalWorkspaceList from '../../lists/GoalWorkspaceList';
+import GoalWorkspaceCard from '../../cards/GoalWorkspaceCard';
 
 const OnboardingScreen3 = ({ navigation }) => {
-    const data =[
-        { text: "I don't have a fixed working schedule", id: 1 }
-    ]
+    const [selected, setSelected] = useState(1);
 
     return (
         <Box style={styles.container} safeAreaTop>
@@ -26,7 +24,7 @@ const OnboardingScreen3 = ({ navigation }) => {
 
             <Text style={styles.or}>Or</Text>
 
-            <GoalWorkspaceList data={data} />
+            <GoalWorkspaceCard item={{ text: "I don't have a fixed working schedule", id: 1 }} selected={selected} setSelected={setSelected} />
 
             <TouchableOpacity style={styles.startButton} onPress={() => {
                 navigation.replace("AppStack")
@@ -56,13 +54,14 @@ const styles = StyleSheet.create({
     },
     h1: {
         fontSize: 28,
-        fontWeight: "700",
+        fontFamily: 'josefin-bold',
         marginBottom: 8
     },
     text: {
         fontSize: 16,
-        fontWeight: "400",
-        marginBottom: 32
+        fontFamily: 'josefin-regular',
+        marginBottom: 32,
+        color: 'rgba(20, 35, 57, 0.6)'
     },
     schedule: {
         height: "35%",
@@ -71,7 +70,7 @@ const styles = StyleSheet.create({
     },
     or: {
         fontSize: 20,
-        fontWeight: '600',
+        fontFamily: 'josefin-semi-bold',
         marginBottom: 8
     },
     flexEndView: {
@@ -92,13 +91,13 @@ const styles = StyleSheet.create({
     },
     startButtonText: {
         fontSize: 18,
-        fontWeight: '400',
+        fontFamily: 'josefin-regular',
         textAlign: 'center',
         color: '#FFFFFF',
     },
     questionNumber: {
         fontSize: 18,
-        fontWeight: '600'
+        fontFamily: 'josefin-semi-bold',
     },
 })
 

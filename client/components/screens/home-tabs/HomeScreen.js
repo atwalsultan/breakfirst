@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     },
     heading: {
         fontSize: 25,
-        fontWeight: '600',
+        fontFamily: 'josefin-semi-bold',
         marginBottom: 24
     },
     graphic: {
@@ -127,13 +127,13 @@ const styles = StyleSheet.create({
         marginRight: 8
     },
     sittingTimeLabel: {
-        fontSize: 18,
-        fontWeight: '500',
+        fontSize: 16,
+        fontFamily: 'josefin-regular',
         color: 'rgba(0,0,0,0.6)',
     },
     sittingTimeText: {
-        fontSize: 18,
-        fontWeight: '500',
+        fontSize: 16,
+        fontFamily: 'josefin-regular',
         marginLeft: 24
     },
     nextBreak: {
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
     },
     nextBreakLabel: {
         fontSize: 14,
-        fontWeight: '400',
+        fontFamily: 'josefin-regular',
         color: 'rgba(0,0,0,0.6)',
         marginBottom: 8
     },
@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
     },
     nextBreakTimeText: {
         fontSize: 28,
-        fontWeight: '400',
+        fontFamily: 'josefin-regular',
         marginLeft: 8
     },
     dailySchedule: {
@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
     },
     dailyScheduleText: {
         fontSize: 22,
-        fontWeight: '600',
+        fontFamily: 'josefin-semi-bold',
         marginRight: 8
     },
     schedule: {
@@ -184,7 +184,7 @@ const styles = StyleSheet.create({
     },
     mySchedulesHeading: {
         fontSize: 22,
-        fontWeight: '600',
+        fontFamily: 'josefin-semi-bold',
         marginBottom: 16
     },
     newTaskSchedule: {
@@ -197,7 +197,7 @@ const styles = StyleSheet.create({
     },
     newTaskScheduleText: {
         fontSize: 18,
-        fontWeight: '400',
+        fontFamily: 'josefin-regular',
         marginLeft: 8
     },
     savedSchedules: {
@@ -206,7 +206,7 @@ const styles = StyleSheet.create({
     savedSchedulesHeader: {
         marginBottom: 8,
         fontSize: 18,
-        fontWeight: '400',
+        fontFamily: 'josefin-regular',
         color: 'rgba(0,0,0,0.8)'
     },
     savedSchedule: {
@@ -220,11 +220,11 @@ const styles = StyleSheet.create({
     },
     savedScheduleTime: {
         fontSize: 20,
-        fontWeight: '400'
+        fontFamily: 'josefin-regular',
     },
     savedScheduleLabel: {
         fontSize: 14,
-        fontWeight: '500',
+        fontFamily: 'josefin-regular',
         color: 'rgba(0,0,0,0.5)'
     }
 })
