@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Keyboard } from 'react-native';
 import { Box } from 'native-base';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -7,6 +7,7 @@ const SignupScreen = ({ navigation }) => {
     const [email, setEmail] = useState("sultan.singh.atwal@gmail.com");
     const [password, setPassword] = useState("sultan");
     const [username, setUsername] = useState("sultan");
+    const [hideImage, setHideImage] = useState(false);
 
     const signup = async () => {
         const response = await fetch("http://192.168.1.92:8080/auth/signup", {
@@ -50,9 +51,29 @@ const SignupScreen = ({ navigation }) => {
         }
     }
 
+    useEffect(() => {
+        const keyboardDidShowListener = Keyboard.addListener(
+            'keyboardDidShow',
+            () => {
+                setHideImage(true); // or some other action
+            }
+        );
+        const keyboardDidHideListener = Keyboard.addListener(
+            'keyboardDidHide',
+            () => {
+                setHideImage(false); // or some other action
+            }
+        );
+
+        return () => {
+            keyboardDidHideListener.remove();
+            keyboardDidShowListener.remove();
+        };
+    }, []);
+
     return (
         <Box style={styles.container} safeAreaTop>
-            <Box style={styles.image}></Box>
+            <Box style={[styles.image, { display: hideImage ? 'none' : 'flex' }]}></Box>
 
             <Text style={styles.h1}>Sign Up</Text>
             <Text style={styles.text}>It's time to do some exercises!</Text>
@@ -91,11 +112,14 @@ const styles = StyleSheet.create({
     container: {
         paddingHorizontal: 16,
         paddingBottom: 8,
-        paddingTop: 68,
+        paddingTop: 48,
         flex: 1,
     },
     image: {
-        height: '25%',
+        height: 175,
+        width: 175,
+        borderRadius: 87.5,
+        alignSelf: 'center',
         backgroundColor: 'rgba(0,0,0,0.05)',
         marginBottom: 32,
     },
@@ -119,13 +143,17 @@ const styles = StyleSheet.create({
         fontFamily: 'josefin-regular',
     },
     signupButton: {
-        backgroundColor: "rgba(0,0,0,0.1)",
+        backgroundColor: "#F94144",
         paddingVertical: 16,
         width: "45%",
+        height: 48,
+        borderRadius: 24,
+        alignItems: 'center',
+        justifyContent: 'center',
         alignSelf: "center",
     },
     signupButtonText: {
-        textAlign: 'center',
+        color: '#FFFFFF',
         fontSize: 18,
         fontFamily: 'josefin-regular',
     },

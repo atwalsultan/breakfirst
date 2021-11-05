@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Keyboard } from 'react-native';
 import { Box } from 'native-base';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LoginScreen = ({ navigation }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [hideImage, setHideImage] = useState(false);
 
     const login = async () => {
         const response = await fetch("http://192.168.1.92:8080/auth/login", {
@@ -33,7 +34,7 @@ const LoginScreen = ({ navigation }) => {
 
                 await AsyncStorage.setItem('user', JSON.stringify(user));
 
-                // So that user cannot get back to this page once navigated to the app stack
+                // So that user cannot get back to this screen once navigated to the app stack
                 navigation.replace("AppStack");
             }
             catch (e) {
@@ -49,12 +50,32 @@ const LoginScreen = ({ navigation }) => {
 
     }
 
+    useEffect(() => {
+        const keyboardDidShowListener = Keyboard.addListener(
+            'keyboardDidShow',
+            () => {
+                setHideImage(true); // or some other action
+            }
+        );
+        const keyboardDidHideListener = Keyboard.addListener(
+            'keyboardDidHide',
+            () => {
+                setHideImage(false); // or some other action
+            }
+        );
+
+        return () => {
+            keyboardDidHideListener.remove();
+            keyboardDidShowListener.remove();
+        };
+    }, []);
+
     return (
         <Box style={styles.container} safeAreaTop>
-            <Box style={styles.image}></Box>
+            <Box style={[styles.image, { display: hideImage ? 'none' : 'flex' }]}></Box>
 
             <Text style={styles.h1}>Log In</Text>
-            <Text style={styles.text}>Don't forget to take a break!</Text>
+            <Text style={styles.text}>It's time to do some exercise!</Text>
             <TextInput placeholder="Email" style={styles.input} value={email} onChangeText={(text) => setEmail(text)} />
             <TextInput secureTextEntry={true} placeholder="Password" style={styles.input} value={password} onChangeText={(text) => setPassword(text)} />
             <Text style={styles.forgotPassword}>Forgot password?</Text>
@@ -91,7 +112,10 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     image: {
-        height: '25%',
+        height: 175,
+        width: 175,
+        borderRadius: 87.5,
+        alignSelf: 'center',
         backgroundColor: 'rgba(0,0,0,0.05)',
         marginBottom: 32,
     },
@@ -121,13 +145,17 @@ const styles = StyleSheet.create({
         marginBottom: 32,
     },
     loginButton: {
-        backgroundColor: "rgba(0,0,0,0.1)",
+        backgroundColor: "#F94144",
         paddingVertical: 16,
         width: "45%",
         alignSelf: "center",
+        height: 48,
+        borderRadius: 24,
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     loginButtonText: {
-        textAlign: 'center',
+        color: '#FFFFFF',
         fontSize: 18,
         fontFamily: 'josefin-regular',
     },

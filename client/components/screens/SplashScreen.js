@@ -14,7 +14,9 @@ const SplashScreen = ({ navigation }) => {
                 setUser(JSON.parse(presentUser));
             }
             else {
-                navigation.replace("Login");
+                setTimeout(() => {
+                    navigation.replace("Login");
+                }, 2000);
             }
         }
         catch (e) {
@@ -47,11 +49,15 @@ const SplashScreen = ({ navigation }) => {
 
         // Token valid; navigate to home screen
         if(response.status == 200) {
-            navigation.replace("AppStack");
+            setTimeout(() => {
+                navigation.replace("AppStack");
+            }, 2000);
         }
         // Token invalid; navigate to login screen after deleting stored user data
         else {
-            logout();
+            setTimeout(() => {
+                logout();
+            }, 2000);
         }
     }
 
@@ -66,12 +72,22 @@ const SplashScreen = ({ navigation }) => {
     }, [user])
 
     return (
-        <Box safeAreaTop>
-            <Text style={{ textAlign: 'center' }}>This is the SplashScreen</Text>
+        <Box safeAreaTop style={styles.container}>
+            <Text style={styles.text}>BreakFirst</Text>
         </Box>
     )
 }
 
 export default SplashScreen
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    container: {
+        flexGrow: 1,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    text: {
+        fontSize: 25,
+        fontFamily: 'josefin-semi-bold',
+    }
+})

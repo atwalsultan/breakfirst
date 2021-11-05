@@ -33,7 +33,7 @@ router.post("/signup", async (req, res) => {
     if (!email || !username || !password) {
         return res
             .status(400)
-            .send({ message: "Expecting email, name and password" });
+            .send({ message: "Expecting email, username and password" });
     }
     try {
         const user = await User.create({ email, password, username, goal: 1, workspace: 1 });
@@ -57,7 +57,7 @@ router.post("/login", async (req, res) => {
         res.send({
             email: user.email,
             id: user._id,
-            userame: user.username,
+            username: user.username,
             token: generateToken(user),
         });
     }
