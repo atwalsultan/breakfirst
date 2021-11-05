@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { UserProvider } from '../contexts/UserContext';
 
 import HomeTabs from '../tabs/HomeTabs';
 import HomeStack from './HomeStack';
@@ -12,13 +13,15 @@ const Stack = createNativeStackNavigator();
 
 const AppStack = () => {
     return (
-        <Stack.Navigator>
-            <Stack.Screen name="HomeTabs" component={HomeTabs} options={{headerShown: false}} />
-            <Stack.Screen name="HomeStack" component={HomeStack} options={{headerShown: false}} />
-            <Stack.Screen name="LibraryStack" component={LibraryStack} options={{headerShown: false}} />
-            <Stack.Screen name="StatsStack" component={StatsStack} options={{headerShown: false}} />
-            <Stack.Screen name="ProfileStack" component={ProfileStack} options={{headerShown: false}} />
-        </Stack.Navigator>
+        <UserProvider>
+            <Stack.Navigator>
+                <Stack.Screen name="HomeTabs" component={HomeTabs} options={{headerShown: false}} />
+                <Stack.Screen name="HomeStack" component={HomeStack} options={{headerShown: false}} />
+                <Stack.Screen name="LibraryStack" component={LibraryStack} options={{headerShown: false}} />
+                <Stack.Screen name="StatsStack" component={StatsStack} options={{headerShown: false}} />
+                <Stack.Screen name="ProfileStack" component={ProfileStack} options={{headerShown: false}} />
+            </Stack.Navigator>
+        </UserProvider>
     )
 }
 

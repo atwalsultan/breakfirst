@@ -1,22 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useUser } from '../contexts/UserContext';
 
 const OBNextButton = ({ navigation, next, selected }) => {
-    const [user, setUser] = useState(null);
-
-    const getUser = async () => {
-        try {
-            const user = await AsyncStorage.getItem('user');
-            if (user !== null) {
-                setUser(JSON.parse(user));
-            }
-        }
-        catch (e) {
-            console.log(e);
-        }
-    }
+    const { user } = useUser();
 
     const updateGoal = async () => {
         const url = 'http://192.168.1.92:8080/app/onboarding/goal';
@@ -63,10 +51,6 @@ const OBNextButton = ({ navigation, next, selected }) => {
             console.log(responseJsonArray);
         }
     }
-
-    useEffect(() => {
-        getUser();
-    }, []);
 
     return (
         <TouchableOpacity style={styles.roundButton} onPress={() => {

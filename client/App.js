@@ -3,7 +3,7 @@ import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NativeBaseProvider, Text } from 'native-base';
+import { NativeBaseProvider } from 'native-base';
 
 import AuthenticationStack from './components/stacks/AuthenticationStack';
 

@@ -2,8 +2,11 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Box } from 'native-base';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useUser } from '../../contexts/UserContext';
 
 const ProfileScreen = ({ navigation }) => {
+    const { user } = useUser();
+
     const logout = async () => {
         try {
             await AsyncStorage.removeItem('user');
@@ -24,11 +27,11 @@ const ProfileScreen = ({ navigation }) => {
                 <Box style={styles.profilePic}></Box>
 
                 <Box>
-                    <Text style={styles.name}>Sultan Singh Atwal</Text>
+                    <Text style={styles.name}>{ user.username }</Text>
                 </Box>
 
                 <Box>
-                    <Text style={styles.email}>sultan.singh.atwal@gmail.com</Text>
+                    <Text style={styles.email}>{ user.email }</Text>
                 </Box>
             </Box>
 
