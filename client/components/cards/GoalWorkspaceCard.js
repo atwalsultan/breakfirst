@@ -1,14 +1,14 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, TouchableWithoutFeedback } from 'react-native';
 import { Box } from 'native-base';
 
 const GoalWorkspaceCard = ({ item, selected, setSelected }) => {
     return (
-        <TouchableOpacity onPress={() => setSelected(item.id)}>
+        <TouchableWithoutFeedback onPress={() => setSelected(item.id)}>
             <Box style={[styles.card, {borderColor: selected === item.id ? '#355C97' : 'transparent'}]}>
                 <Text style={styles.cardText}>{item.text}</Text>
             </Box>
-        </TouchableOpacity>
+        </TouchableWithoutFeedback>
     )
 }
 
