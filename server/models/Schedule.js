@@ -36,7 +36,14 @@ const ScheduleSchema = new Schema({
 		required: true,
         unique:true,
 	},
-    
+	from: {
+		type: String,
+		required: true
+	},
+	to: {
+		type: String,
+		required: true
+	}
 });
 
 module.exports = Schedule = mongoose.model("schedule", ScheduleSchema);

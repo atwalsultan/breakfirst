@@ -76,7 +76,8 @@ export default DaysList
 const styles = StyleSheet.create({
     days: {
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        marginBottom: 24
     },
     day: {
         height: 36,

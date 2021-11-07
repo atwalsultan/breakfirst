@@ -43,7 +43,9 @@ router.post("/weekly-schedule", async (req, res) => {
             friday: reqBody.friday,
             saturday: reqBody.saturday,
             sunday: reqBody.sunday,
-            userId: reqBody.userId
+            userId: reqBody.userId,
+            from: reqBody.from,
+            to: reqBody.to
         });
 
         return res.send(schedule);
