@@ -1,12 +1,57 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
 import { Box } from 'native-base';
 import { Entypo } from '@expo/vector-icons';
 
-import GoalWorkspaceCard from '../../cards/GoalWorkspaceCard';
+import { useUser } from '../../contexts/UserContext';
+import DaysList from '../../lists/DaysList';
 
 const OnboardingScreen3 = ({ navigation }) => {
-    const [selected, setSelected] = useState(1);
+    const [selected, setSelected] = useState(true);
+    const [selectedDays, setSelectedDays] = useState({
+        monday: false,
+        tuesday: false,
+        wednesday: false,
+        thursday: false,
+        friday: false,
+        saturday: false,
+        sunday: false,
+    });
+
+    const { user } = useUser();
+
+    const checkDays = () => {
+        if(!selectedDays.monday && !selectedDays.tuesday && !selectedDays.wednesday && !selectedDays.thursday && !selectedDays.friday && !selectedDays.saturday && !selectedDays.sunday) {
+            return true;
+        }
+        return false;
+    }
+
+    const createSchedule = async () => {
+        if(!selected) {
+            // Create weekly schedule for user
+            const url = 'http://192.168.1.92:8080/app/onboarding/weekly-schedule';
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    'content-type': 'application/json',
+                    'authorization': `Bearer ${user.token}`
+                },
+                body: JSON.stringify({
+                    ...selectedDays,
+                    userId: user.id,
+                })
+            });
+
+            if (response.status == 200) {
+                navigation.replace("AppStack")
+            }
+            else {
+                const responseJsonArray = await response.json();  // Get response text
+                console.log(responseJsonArray);
+            }
+        }
+    }
 
     return (
         <Box style={styles.container} safeAreaTop>
@@ -20,15 +65,27 @@ const OnboardingScreen3 = ({ navigation }) => {
             <Text style={styles.h1}>Your Schedule is:</Text>
             <Text style={styles.text}>You can change this anytime</Text>
 
-            <View style={styles.schedule}></View>
+            <Box style={styles.schedule}>
+                <DaysList selectedDays={selectedDays} setSelectedDays={setSelectedDays} checkDays={checkDays} setSelected={setSelected} />
+            </Box>
 
             <Text style={styles.or}>Or</Text>
 
-            <GoalWorkspaceCard item={{ text: "I don't have a fixed working schedule", id: 1 }} selected={selected} setSelected={setSelected} />
+            <TouchableWithoutFeedback onPress={() => {
+                if(checkDays()) {
+                    setSelected(true);
+                }
+                else {
+                    setSelected(!selected);
+                }
+            }}>
+                <Box style={[styles.card, { borderColor: selected ? '#355C97' : 'transparent' }]}>
+                    <Text style={styles.cardText}>I don't have a fixed working schedule</Text>
+                </Box>
+            </TouchableWithoutFeedback>
 
             <TouchableOpacity style={styles.startButton} onPress={() => {
-                navigation.replace("AppStack")
-                navigation.navigate("AppStack")
+                createSchedule();
             }}>
                 <Text style={styles.startButtonText}>Get Started</Text>
             </TouchableOpacity>
@@ -64,14 +121,32 @@ const styles = StyleSheet.create({
         color: 'rgba(20, 35, 57, 0.6)'
     },
     schedule: {
-        height: "35%",
-        backgroundColor: 'rgba(0,0,0,0.05)',
+        backgroundColor: '#FFFFFF',
         marginBottom: 24,
+        paddingVertical: 24,
+        paddingHorizontal: 16
+    },
+    daysText: {
+        fontSize: 20,
+        fontFamily: 'josefin-regular'
     },
     or: {
         fontSize: 20,
         fontFamily: 'josefin-semi-bold',
         marginBottom: 8
+    },
+    card: {
+        marginBottom: 16,
+        paddingVertical: 12,
+        paddingHorizontal: 16,
+        backgroundColor: '#FFFFFF',
+        borderRadius:4,
+        borderWidth: 1.5,
+        borderStyle: 'solid',
+    },
+    cardText: {
+        fontSize: 18,
+        fontFamily: 'josefin-regular',
     },
     flexEndView: {
         flexGrow: 1,
