@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Box } from 'native-base';
+import { Entypo } from '@expo/vector-icons';
+import { fontFamily } from 'styled-system';
 
 const SetIntervalScreen = ({ navigation }) => {
     return (
@@ -9,7 +11,7 @@ const SetIntervalScreen = ({ navigation }) => {
                 <TouchableOpacity style={styles.backLink} onPress={() => {
                     navigation.goBack();
                 }}>
-                    <Text style={styles.backLinkText}>Cancel</Text>
+                    <Entypo name="chevron-left" size={24} color="black" />
                 </TouchableOpacity>
                 <Text style={styles.heading}>Interval</Text>
             </Box>
@@ -37,6 +39,8 @@ const SetIntervalScreen = ({ navigation }) => {
                     <Text style={styles.cardTitle}>Decide for me</Text>
                 </Box>
             </TouchableOpacity>
+
+            <Text style={styles.text}>During your working time, we will fire reminders besed on the interval you choose.</Text>
         </Box>
     )
 }
@@ -54,32 +58,34 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        marginBottom: 24
+        marginBottom: 16
     },
     backLink: {
         position: 'absolute',
         left: 0,
     },
-    backLinkText: {
-        fontSize: 18,
-        fontWeight: '400',
-    },
     heading: {
         fontSize: 20,
-        fontWeight: '600',
+        fontFamily: 'josefin-semi-bold'
     },
     card: {
         paddingHorizontal: 16,
         paddingBottom: 10,
         paddingTop: 13,
-        backgroundColor: 'rgba(0,0,0,0.05)',
+        backgroundColor: '#FFFFFF',
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        marginTop: 16
+        marginBottom: 16,
+        borderRadius: 4
     },
     cardTitle: {
         fontSize: 18,
-        fontWeight: '400',
+        fontFamily: 'josefin-regular'
     },
+    text: {
+        fontSize: 15,
+        color: 'rgba(20, 35, 57, 0.6)',
+        fontFamily: 'josefin-regular'
+    }
 })

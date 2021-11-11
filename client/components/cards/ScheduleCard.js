@@ -5,10 +5,10 @@ import { Picker } from '@react-native-picker/picker';
 
 import DaysList from '../lists/DaysList';
 
-const ScheduleCard = ({ selectedDays, setSelectedDays, checkDays, setSelected, times, setFrom, setTo }) => {
+const ScheduleCard = ({ selectedDays, setSelectedDays, checkDays, setSelected, times, setFrom, setTo, to, from }) => {
     return (
         <Box style={styles.schedule}>
-            <DaysList selectedDays={selectedDays} setSelectedDays={setSelectedDays} checkDays={checkDays} setSelected={setSelected} />
+            {selectedDays !== null && <DaysList selectedDays={selectedDays} setSelectedDays={setSelectedDays} checkDays={checkDays} setSelected={setSelected} />}
 
             <Box style={styles.times}>
                 <Box style={styles.toFrom}>
@@ -16,7 +16,7 @@ const ScheduleCard = ({ selectedDays, setSelectedDays, checkDays, setSelected, t
                     <Box style={styles.pickerContainer}>
                         <Picker
                             style={styles.picker}
-                            selectedValue={times[1]}
+                            selectedValue={from}
                             onValueChange={(itemValue) => setFrom(itemValue)
                             }>
                             {
@@ -30,7 +30,7 @@ const ScheduleCard = ({ selectedDays, setSelectedDays, checkDays, setSelected, t
                     <Box style={styles.pickerContainer}>
                         <Picker
                             style={styles.picker}
-                            selectedValue={times[17]}
+                            selectedValue={to}
                             onValueChange={(itemValue) => setTo(itemValue)
                             }>
                             {
