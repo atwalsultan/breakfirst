@@ -7,6 +7,8 @@ const tests = require("./routes/tests");
 const users = require("./routes/users");
 const exercises = require("./routes/exercises");
 const onboarding = require("./routes/onboarding");
+const schedule = require("./routes/schedule");
+const routine = require("./routes/routine")
 
 // CORS
 const cors = require("cors");
@@ -38,9 +40,11 @@ app.get("/app/profile", (req, res)=>{
 });
 
 app.use("/app/tests", tests);
-app.use("/app/exercises", exercises);
 
+app.use("/app/exercises", exercises);
 app.use("/app/onboarding", onboarding);
+app.use("/app/schedule", schedule);
+app.use("/app/routine", routine);
 
 // Specify port and listen
 app.listen(PORT, () => {

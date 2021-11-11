@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { StyleSheet, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { Box } from 'native-base';
-import { AntDesign } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
 
 import ExerciseList from '../../lists/ExerciseList';
 
@@ -21,7 +21,7 @@ const LibraryScreen = ({ navigation }) => {
                 }}>
                     <Box style={styles.sedantaryFacts}>
                         <Text style={styles.sedantaryFactsText}>Know sedantary</Text>
-                        <AntDesign name="arrowright" size={24} color="black" />
+                        <Entypo name="chevron-right" size={24} color="#F94144" />
                     </Box>
                 </TouchableOpacity>
             </ScrollView>
@@ -55,7 +55,8 @@ const styles = StyleSheet.create({
         marginBottom: 32
     },
     sedantaryFacts: {
-        backgroundColor: 'rgba(0,0,0,0.04)',
+        backgroundColor: '#FFFFFF',
+        borderRadius: 4,
         paddingVertical: 20,
         paddingHorizontal: 16,
         flexDirection: 'row',

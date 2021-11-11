@@ -1,8 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Box } from 'native-base';
+import ScheduleCard from '../../cards/ScheduleCard';
+import { Entypo } from '@expo/vector-icons';
+
+import { useUser } from '../../contexts/UserContext';
 
 const SetReminderScreen = ({ navigation }) => {
+    const { user } = useUser();
+
+    const times = ["08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "01:00", "01:30", "02:00", "02:30", "03:00", "03:30", "04:00", "04:30", "05:00", "05:30", "06:00", "06:30", "07:00", "07:30", "08:00", "08:30"];
+
+    const [from, setFrom] = useState(times[1]);
+    const [to, setTo] = useState(times[17]);
+
+    const createRoutine = async () => {
+        const url = 'http://192.168.1.92:8080/app/routine/create';
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json',
+                'authorization': `Bearer ${user.token}`
+            },
+            body: JSON.stringify({
+                to,
+                from,
+                userId: user.id,
+                interval: 30,
+                silentMode: false,
+                saveForNextTime: false,
+                label: "Sultan",
+                sound: false,
+            })
+        });
+
+        if (response.status == 200) {
+            navigation.goBack();
+        }
+        else {
+            const responseJsonArray = await response.json();  // Get response text
+            console.log(responseJsonArray);
+        }
+    }
 
     return (
         <Box style={styles.container} safeAreaTop>
@@ -12,29 +51,40 @@ const SetReminderScreen = ({ navigation }) => {
                 }}>
                     <Text style={styles.backLinkText}>Cancel</Text>
                 </TouchableOpacity>
-                <Text style={styles.heading}>Reminder</Text>
+                <Text style={styles.heading}>New Task</Text>
             </Box>
 
-            <Box style={styles.times}></Box>
+            <ScheduleCard
+                selectedDays={null}
+                setSelectedDays={null}
+                checkDays={() => { return }}
+                setSelected={() => { return }}
+                times={times}
+                setFrom={setFrom}
+                setTo={setTo}
+                to={to}
+                from={from}
+            />
+
 
             <TouchableOpacity>
                 <Box style={styles.card}>
                     <Text style={styles.cardTitle}>Label</Text>
-                    <Text style={styles.cardText}>My task</Text>
+                    <Entypo name="chevron-right" size={24} color="#F94144" />
                 </Box>
             </TouchableOpacity>
 
             <TouchableOpacity onPress={() => navigation.navigate('SetIntervalScreen')}>
                 <Box style={styles.card}>
                     <Text style={styles.cardTitle}>Interval</Text>
-                    <Text style={styles.cardText}>30 mins</Text>
+                    <Entypo name="chevron-right" size={24} color="#F94144" />
                 </Box>
             </TouchableOpacity>
 
             <TouchableOpacity>
                 <Box style={styles.card}>
                     <Text style={styles.cardTitle}>Sound</Text>
-                    <Text style={styles.cardText}>Lazy Day</Text>
+                    <Entypo name="chevron-right" size={24} color="#F94144" />
                 </Box>
             </TouchableOpacity>
 
@@ -53,7 +103,7 @@ const SetReminderScreen = ({ navigation }) => {
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.nextButton} onPress={() => {
-                navigation.goBack();
+                createRoutine();
             }}>
                 <Text style={styles.nextButtonText}>Confirm</Text>
             </TouchableOpacity>
@@ -74,19 +124,21 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        marginBottom: 24
+        marginBottom: 16
     },
     backLink: {
         position: 'absolute',
-        left: 0,
+        left: 0
     },
     backLinkText: {
         fontSize: 18,
         fontWeight: '400',
+        fontFamily: 'josefin-regular',
+
     },
     heading: {
         fontSize: 20,
-        fontWeight: '600',
+        fontFamily: 'josefin-semi-bold'
     },
     times: {
         height: '22%',
@@ -96,7 +148,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: 16,
         paddingBottom: 10,
         paddingTop: 13,
-        backgroundColor: 'rgba(0,0,0,0.05)',
+        backgroundColor: '#FFFFFF',
+        borderRadius: 4,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
@@ -104,21 +157,23 @@ const styles = StyleSheet.create({
     },
     cardTitle: {
         fontSize: 18,
-        fontWeight: '400',
+        fontFamily: 'josefin-regular'
     },
     cardText: {
         color: 'rgba(0,0,0,0.45)',
     },
     nextButton: {
-        backgroundColor: 'rgba(0,0,0,0.1)',
+        backgroundColor: '#F94144',
         paddingVertical: 16,
         width: '45%',
         alignSelf: 'center',
-        marginTop: 72
+        marginTop: 32,
+        borderRadius: 24
     },
     nextButtonText: {
         fontSize: 18,
-        fontWeight: '400',
+        fontFamily: 'josefin-regular',
         textAlign: 'center',
+        color: '#FFFFFF'
     }
 })

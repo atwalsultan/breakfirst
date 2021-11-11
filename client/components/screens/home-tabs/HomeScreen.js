@@ -1,8 +1,39 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { Box } from 'native-base';
+import { AntDesign } from '@expo/vector-icons';
+
+import { useUser } from '../../contexts/UserContext';
+import HomeScreenScheduleCard from '../../cards/HomeScreenScheduleCard';
+import NoScheduleCard from '../../cards/NoScheduleCard'
 
 const HomeScreen = ({ navigation }) => {
+    const { user } = useUser();
+    const [schedule, setSchedule] = useState(null);
+
+    const getSchedule = async () => {
+        const url = `http://192.168.1.92:8080/app/schedule?id=${user["id"]}`;
+        const response = await fetch(url, {
+            method: "GET",
+            headers: {
+                'authorization': `Bearer ${user.token}`
+            }
+        });
+
+        if (response.status == 200) {
+            const responseJson = await response.json();
+            setSchedule(responseJson);
+        }
+        else {
+            const responseJson = await response.json();
+            console.log(responseJson);
+        }
+    }
+
+    useEffect(() => {
+        getSchedule();
+    }, [])
+
     return (
         <Box style={styles.container} safeAreaTop>
             <ScrollView style={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
@@ -36,14 +67,13 @@ const HomeScreen = ({ navigation }) => {
                     </Box>
                 </Box>
 
-                <Box style={styles.dailySchedule}>
-                    <Box style={styles.scheduleHeader}>
-                        <Text style={styles.dailyScheduleText}>My daily schedule</Text>
-                        <Box style={styles.nextBreakMarker}></Box>
-                    </Box>
-
-                    <Box style={styles.schedule}></Box>
-                </Box>
+                {
+                    schedule
+                    ?
+                        <HomeScreenScheduleCard schedule={schedule} />
+                    :
+                        <NoScheduleCard />
+                }
 
                 <Box style={styles.mySchedules}>
                     <Text style={styles.mySchedulesHeading}>My task schedules</Text>
@@ -52,14 +82,12 @@ const HomeScreen = ({ navigation }) => {
                         navigation.navigate("HomeStack", { screen: 'SetReminderScreen' });
                     }}>
                         <Box style={styles.newTaskSchedule}>
-                            <Box style={styles.nextBreakMarker}></Box>
                             <Text style={styles.newTaskScheduleText}>New task schedule</Text>
+                            <AntDesign name="plus" size={24} color="#F94144" />
                         </Box>
                     </TouchableOpacity>
 
                     <Box style={styles.savedSchedules}>
-                        <Text style={styles.savedSchedulesHeader}>Saved schedules</Text>
-
                         <TouchableOpacity onPress={() => {
                             navigation.navigate("HomeStack", { screen: 'ChangeScheduleScreen' });
                         }}>
@@ -162,23 +190,6 @@ const styles = StyleSheet.create({
         fontFamily: 'josefin-regular',
         marginLeft: 8
     },
-    dailySchedule: {
-        marginBottom: 40
-    },
-    scheduleHeader: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginBottom: 16
-    },
-    dailyScheduleText: {
-        fontSize: 22,
-        fontFamily: 'josefin-semi-bold',
-        marginRight: 8
-    },
-    schedule: {
-        height: 188,
-        backgroundColor: 'rgba(0,0,0,0.05)'
-    },
     mySchedules: {
 
     },
@@ -190,24 +201,19 @@ const styles = StyleSheet.create({
     newTaskSchedule: {
         flexDirection: 'row',
         alignItems: 'center',
+        justifyContent: 'space-between',
         paddingHorizontal: 16,
         paddingVertical: 12,
-        backgroundColor: 'rgba(0,0,0,0.05)',
-        marginBottom: 16
+        backgroundColor: '#FFFFFF',
+        marginBottom: 16,
+        borderRadius: 4
     },
     newTaskScheduleText: {
         fontSize: 18,
         fontFamily: 'josefin-regular',
-        marginLeft: 8
     },
     savedSchedules: {
 
-    },
-    savedSchedulesHeader: {
-        marginBottom: 8,
-        fontSize: 18,
-        fontFamily: 'josefin-regular',
-        color: 'rgba(0,0,0,0.8)'
     },
     savedSchedule: {
         flexDirection: 'row',
@@ -215,8 +221,9 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         paddingHorizontal: 16,
         paddingVertical: 8,
-        backgroundColor: 'rgba(0,0,0,0.05)',
-        marginBottom: 16
+        backgroundColor: '#FFFFFF',
+        marginBottom: 16,
+        borderRadius: 4
     },
     savedScheduleTime: {
         fontSize: 20,
@@ -225,6 +232,6 @@ const styles = StyleSheet.create({
     savedScheduleLabel: {
         fontSize: 14,
         fontFamily: 'josefin-regular',
-        color: 'rgba(0,0,0,0.5)'
+        color: 'rgba(20, 35, 57, 0.6)'
     }
 })

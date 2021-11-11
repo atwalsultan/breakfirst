@@ -57,6 +57,9 @@ const OnboardingScreen3 = ({ navigation }) => {
                 console.log(responseJsonArray);
             }
         }
+        else {
+            navigation.replace("AppStack");
+        }
     }
 
     return (
@@ -79,6 +82,8 @@ const OnboardingScreen3 = ({ navigation }) => {
                 times={times}
                 setFrom={setFrom}
                 setTo={setTo}
+                to={to}
+                from={from}
             />
 
             <Text style={styles.or}>Or</Text>
