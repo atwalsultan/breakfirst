@@ -8,7 +8,7 @@ import HomeStack from './HomeStack';
 import LibraryStack from './LibraryStack';
 import StatsStack from './StatsStack';
 import ProfileStack from './ProfileStack';
-import SplashScreen2 from '../screens/SplashScreen2';
+import SplashScreen2 from '../screens/splash/SplashScreen2';
 
 const Stack = createNativeStackNavigator();
 

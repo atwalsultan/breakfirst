@@ -10,7 +10,12 @@ const FactsTabs = () => {
     return (
         <Tab.Navigator
             screenOptions={{
-                tabBarIndicatorStyle: { backgroundColor: 'rgba(0,0,0,0.1)', height: '100%' },
+                tabBarStyle: { borderRadius: 28 },
+                tabBarIndicatorStyle: { backgroundColor: '#355C97', height: '100%', borderRadius: 28 },
+                tabBarLabelStyle: { fontFamily: 'josefin-regular', fontSize: 18, textTransform: 'none' },
+                tabBarActiveTintColor: '#FFFFFF',
+                tabBarInactiveTintColor: 'black',
+                tabBarPressColor: 'transparent'
             }}
         >
             <Tab.Screen name="Sedentary" component={SedentaryFactsScreen} options={{ tabBarLabel: "Facts" }} />

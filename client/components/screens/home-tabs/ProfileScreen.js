@@ -55,16 +55,16 @@ const ProfileScreen = ({ navigation }) => {
                         <Text style={styles.cardTitle}>Group management</Text>
                     </Box>
                 </TouchableOpacity>
-
             </Box>
 
+            <Text style={styles.settingsHeading}>Account</Text>
             <TouchableOpacity onPress={() => {
                 // Log user out
                 logout();
             }}>
-                <Text style={styles.logoutLink}>
-                    Log out Sultan Singh Atwal
-                </Text>
+                <Box style={styles.card}>
+                    <Text style={styles.cardTitle}>Log out Sultan Singh Atwal</Text>
+                </Box>
             </TouchableOpacity>
         </Box>
     )
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
         color: 'rgba(0,0,0,0.4)'
     },
     settings: {
-        marginBottom: 128,
+        marginBottom: 24,
     },
     settingsHeading: {
         fontSize: 20,
@@ -117,7 +117,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: 16,
         paddingBottom: 10,
         paddingTop: 13,
-        backgroundColor: 'rgba(0,0,0,0.05)',
+        backgroundColor: '#FFFFFF',
+        borderRadius: 4,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
@@ -127,8 +128,4 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontFamily: 'josefin-regular',
     },
-    logoutLink: {
-        fontSize: 18,
-        fontFamily: 'josefin-regular',
-    }
 })
