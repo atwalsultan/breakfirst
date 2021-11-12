@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { Box } from 'native-base';
 import { AntDesign } from '@expo/vector-icons';
+import { useIsFocused } from "@react-navigation/native";
 
 import { useUser } from '../../contexts/UserContext';
 import HomeScreenScheduleCard from '../../cards/HomeScreenScheduleCard';
@@ -10,6 +11,7 @@ import NoScheduleCard from '../../cards/NoScheduleCard'
 const HomeScreen = ({ navigation }) => {
     const { user } = useUser();
     const [schedule, setSchedule] = useState(null);
+    const [routines, setRoutines] = useState(null);
 
     const getSchedule = async () => {
         const url = `http://192.168.1.92:8080/app/schedule?id=${user["id"]}`;
@@ -30,9 +32,30 @@ const HomeScreen = ({ navigation }) => {
         }
     }
 
+    const getRoutines = async () => {
+        const url = `http://192.168.1.92:8080/app/routine/?id=${user["id"]}`;
+        const response = await fetch(url, {
+            method: "GET",
+            headers: {
+                'authorization': `Bearer ${user.token}`
+            }
+        });
+
+        if (response.status == 200) {
+            const responseJson = await response.json();
+            setRoutines(responseJson);
+        }
+        else {
+            const responseJson = await response.json();
+            console.log(responseJson);
+        }
+    }
+
+    const isFocused = useIsFocused();
     useEffect(() => {
         getSchedule();
-    }, [])
+        getRoutines();
+    }, [isFocused])
 
     return (
         <Box style={styles.container} safeAreaTop>
@@ -87,30 +110,27 @@ const HomeScreen = ({ navigation }) => {
                         </Box>
                     </TouchableOpacity>
 
-                    <Box style={styles.savedSchedules}>
-                        <TouchableOpacity onPress={() => {
-                            navigation.navigate("HomeStack", { screen: 'ChangeScheduleScreen' });
-                        }}>
-                            <Box style={styles.savedSchedule}>
-                                <Box>
-                                    <Text style={styles.savedScheduleTime}>14:30 - 18:30</Text>
-                                    <Text style={styles.savedScheduleLabel}>Write monthly report</Text>
-                                </Box>
-                                <Box style={styles.nextBreakMarker}></Box>
-                            </Box>
-                        </TouchableOpacity>
 
-                        <TouchableOpacity onPress={() => {
-                            navigation.navigate("HomeStack", { screen: 'ChangeScheduleScreen' });
-                        }}>
-                            <Box style={styles.savedSchedule}>
-                                <Box>
-                                    <Text style={styles.savedScheduleTime}>09:30 - 12:30</Text>
-                                    <Text style={styles.savedScheduleLabel}>Morning Study</Text>
-                                </Box>
-                                <Box style={styles.nextBreakMarker}></Box>
-                            </Box>
-                        </TouchableOpacity>
+                    <Box style={styles.routines}>
+                        {
+                            routines && 
+                            routines.map(routine => (
+                                <TouchableOpacity 
+                                    onPress={() => {
+                                        navigation.navigate("HomeStack", { screen: 'ChangeScheduleScreen' });
+                                    }}
+                                    key={routine._id}
+                                >
+                                    <Box style={styles.routine}>
+                                        <Box>
+                                            <Text style={styles.routineTime}>{ routine.from } - { routine.to }</Text>
+                                            <Text style={styles.routineLabel}>{ routine.label }</Text>
+                                        </Box>
+                                        <Box style={styles.nextBreakMarker}></Box>
+                                    </Box>
+                                </TouchableOpacity>
+                            ))
+                        }
                     </Box>
                 </Box>
             </ScrollView>
@@ -132,9 +152,9 @@ const styles = StyleSheet.create({
         marginBottom: 24
     },
     graphic: {
-        height: 144,
-        width: 144,
-        borderRadius: 71,
+        height: 120,
+        width: 120,
+        borderRadius: 60,
         backgroundColor: 'rgba(0,0,0,0.2)',
         alignSelf: 'center',
         marginBottom: 35
@@ -212,10 +232,10 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontFamily: 'josefin-regular',
     },
-    savedSchedules: {
+    routines: {
 
     },
-    savedSchedule: {
+    routine: {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -225,11 +245,11 @@ const styles = StyleSheet.create({
         marginBottom: 16,
         borderRadius: 4
     },
-    savedScheduleTime: {
+    routineTime: {
         fontSize: 20,
         fontFamily: 'josefin-regular',
     },
-    savedScheduleLabel: {
+    routineLabel: {
         fontSize: 14,
         fontFamily: 'josefin-regular',
         color: 'rgba(20, 35, 57, 0.6)'

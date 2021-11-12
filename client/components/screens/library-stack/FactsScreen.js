@@ -1,15 +1,21 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Box } from 'native-base';
+import { Entypo } from '@expo/vector-icons';
+
 import FactsTabs from '../../tabs/FactsTabs';
+
 
 const FactsScreen = ({ navigation }) => {
     return (
         <Box style={styles.container} safeAreaTop>
-            <TouchableOpacity onPress={() => {
-                navigation.goBack();
-            }}>
-                <Text style={styles.backLink}>Back</Text>
+            <TouchableOpacity 
+                onPress={() => {
+                    navigation.goBack();
+                }}
+                style={ styles.backLink }
+            >
+                <Entypo name="chevron-left" size={24} color="black" />
             </TouchableOpacity>
 
             <FactsTabs />
@@ -26,8 +32,6 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     backLink: {
-        fontSize: 18,
-        fontWeight: '400',
-        marginBottom: 16
+        marginBottom: 24
     }
 })

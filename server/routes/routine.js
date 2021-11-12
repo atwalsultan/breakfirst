@@ -27,4 +27,19 @@ router.post('/create', async (req, res) => {
     }
 });
 
+router.get('/', (req, res) => {
+	Routine.find({ userId: req.query.id })
+		.then((routines) => {
+            if(routines !== null) {
+                res.status(200).send(routines);
+            }
+            else {
+                res.status(404).send({message: "Routine does not exist for user."})
+            }
+		})
+		.catch((err) => {
+			res.status(500).send(err);
+		});
+});
+
 module.exports = router;

@@ -6,7 +6,7 @@ import LoginScreen from '../screens/authentication-stack/LoginScreen';
 import SignupScreen from '../screens/authentication-stack/SignupScreen';
 import OnboardingStack from './OnboardingStack';
 import AppStack from './AppStack';
-import SplashScreen from '../screens/SplashScreen';
+import SplashScreen from '../screens/splash/SplashScreen';
 
 const Stack = createNativeStackNavigator();
 

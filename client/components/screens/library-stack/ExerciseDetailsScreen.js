@@ -1,16 +1,21 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Box } from 'native-base';
+import { Entypo } from '@expo/vector-icons';
+
 
 const ExerciseDetailsScreen = ({ route, navigation }) => {
     const exercise = route.params.exercise;
 
     return (
         <Box style={styles.container} safeAreaTop>
-            <TouchableOpacity onPress={() => {
-                navigation.goBack();
-            }}>
-                <Text style={styles.backLink}>Back</Text>
+            <TouchableOpacity 
+                onPress={() => {
+                    navigation.goBack();
+                }}
+                style={ styles.backLink }
+            >
+                <Entypo name="chevron-left" size={24} color="black" />
             </TouchableOpacity>
 
             <Box style={styles.exerciseImage}></Box>
@@ -36,35 +41,35 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     backLink: {
-        fontSize: 18,
-        fontWeight: '400',
-        marginBottom: 16
+        marginBottom: 16,
     },
     exerciseImage: {
-        height: '50%',
+        height: '40%',
         backgroundColor: 'rgba(0,0,0,0.06)',
         marginBottom: 24,
     },
     exerciseTitle: {
         alignSelf: 'center',
-        fontSize: 20,
-        fontWeight: '700',
-        marginBottom: 16
+        fontSize: 22,
+        marginBottom: 16,
+        fontFamily: 'josefin-semi-bold'
     },
     exerciseDescription: {
         fontSize: 16,
-        fontWeight: '400',
-        marginBottom: 58
+        fontFamily: 'josefin-regular',
+        marginBottom: 40
     },
     saveButton: {
-        backgroundColor: 'rgba(0,0,0,0.1)',
+        backgroundColor: '#F94144',
         padding: 16,
         minWidth: '50%',
         alignSelf: 'center',
+        borderRadius: 24
     },
     saveButtonText: {
         fontSize: 18,
-        fontWeight: '400',
+        fontFamily: 'josefin-regular',
+        color: '#FFFFFF',
         textAlign: 'center',
     }
 })

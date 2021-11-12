@@ -10,8 +10,12 @@ const StatsTabs = () => {
     return (
         <Tab.Navigator
             screenOptions={{
-                tabBarIndicatorStyle: { backgroundColor: 'rgba(0,0,0,0.1)', height: '100%' },
-                tabBarLabelStyle: { fontFamily: 'josefin-regular', textTransform: 'capitalize', fontSize: 18 }
+                tabBarStyle: { borderRadius: 28 },
+                tabBarIndicatorStyle: { backgroundColor: '#355C97', height: '100%', borderRadius: 28 },
+                tabBarLabelStyle: { fontFamily: 'josefin-regular', textTransform: 'none', fontSize: 18 },
+                tabBarActiveTintColor: '#FFFFFF',
+                tabBarInactiveTintColor: 'black',
+                tabBarPressColor: 'transparent'
             }}
         >
             <Tab.Screen name="Report" component={ReportScreen} options={{ tabBarLabel: "My Record" }} />

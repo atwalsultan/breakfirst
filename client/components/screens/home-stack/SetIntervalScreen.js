@@ -2,7 +2,6 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Box } from 'native-base';
 import { Entypo } from '@expo/vector-icons';
-import { fontFamily } from 'styled-system';
 
 const SetIntervalScreen = ({ navigation }) => {
     return (
@@ -16,25 +15,33 @@ const SetIntervalScreen = ({ navigation }) => {
                 <Text style={styles.heading}>Interval</Text>
             </Box>
 
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => {
+                navigation.goBack();
+            }}>
                 <Box style={styles.card}>
                     <Text style={styles.cardTitle}>30 mins</Text>
                 </Box>
             </TouchableOpacity>
 
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => {
+                navigation.goBack();
+            }}>
                 <Box style={styles.card}>
                     <Text style={styles.cardTitle}>45 mins</Text>
                 </Box>
             </TouchableOpacity>
 
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => {
+                navigation.goBack();
+            }}>
                 <Box style={styles.card}>
                     <Text style={styles.cardTitle}>60 mins</Text>
                 </Box>
             </TouchableOpacity>
 
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => {
+                navigation.goBack();
+            }}>
                 <Box style={styles.card}>
                     <Text style={styles.cardTitle}>Decide for me</Text>
                 </Box>
