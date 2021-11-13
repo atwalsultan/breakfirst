@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, ScrollView, TouchableOpacity, Switch } from 'react-native';
 import { Box } from 'native-base';
 import { AntDesign } from '@expo/vector-icons';
 import { useIsFocused } from "@react-navigation/native";
@@ -7,6 +7,7 @@ import { useIsFocused } from "@react-navigation/native";
 import { useUser } from '../../contexts/UserContext';
 import HomeScreenScheduleCard from '../../cards/HomeScreenScheduleCard';
 import NoScheduleCard from '../../cards/NoScheduleCard'
+import HomeScreenRoutineCard from '../../cards/HomeScreenRoutineCard';
 
 const HomeScreen = ({ navigation }) => {
     const { user } = useUser();
@@ -93,7 +94,7 @@ const HomeScreen = ({ navigation }) => {
                 {
                     schedule
                     ?
-                        <HomeScreenScheduleCard schedule={schedule} />
+                        <HomeScreenScheduleCard schedule={schedule} navigation={navigation} user={user} />
                     :
                         <NoScheduleCard />
                 }
@@ -115,20 +116,7 @@ const HomeScreen = ({ navigation }) => {
                         {
                             routines && 
                             routines.map(routine => (
-                                <TouchableOpacity 
-                                    onPress={() => {
-                                        navigation.navigate("HomeStack", { screen: 'ChangeScheduleScreen' });
-                                    }}
-                                    key={routine._id}
-                                >
-                                    <Box style={styles.routine}>
-                                        <Box>
-                                            <Text style={styles.routineTime}>{ routine.from } - { routine.to }</Text>
-                                            <Text style={styles.routineLabel}>{ routine.label }</Text>
-                                        </Box>
-                                        <Box style={styles.nextBreakMarker}></Box>
-                                    </Box>
-                                </TouchableOpacity>
+                                <HomeScreenRoutineCard navigation={navigation} routine={routine} user={ user } key={routine._id} />
                             ))
                         }
                     </Box>
@@ -234,24 +222,5 @@ const styles = StyleSheet.create({
     },
     routines: {
 
-    },
-    routine: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        paddingHorizontal: 16,
-        paddingVertical: 8,
-        backgroundColor: '#FFFFFF',
-        marginBottom: 16,
-        borderRadius: 4
-    },
-    routineTime: {
-        fontSize: 20,
-        fontFamily: 'josefin-regular',
-    },
-    routineLabel: {
-        fontSize: 14,
-        fontFamily: 'josefin-regular',
-        color: 'rgba(20, 35, 57, 0.6)'
     }
 })

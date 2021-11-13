@@ -43,6 +43,14 @@ const ScheduleSchema = new Schema({
 	to: {
 		type: String,
 		required: true
+	},
+	silentMode: {
+		type: Boolean,
+		required: true
+	},
+	interval: {
+		type: Number,
+		required: true
 	}
 });
 

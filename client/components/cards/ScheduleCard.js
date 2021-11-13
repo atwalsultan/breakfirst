@@ -51,7 +51,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFFFFF',
         marginBottom: 24,
         paddingVertical: 24,
-        paddingHorizontal: 16
+        paddingHorizontal: 16,
+        borderRadius: 4
     },
     daysText: {
         fontSize: 20,

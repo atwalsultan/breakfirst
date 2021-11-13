@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Box } from 'native-base';
 import { Entypo } from '@expo/vector-icons';
 
+import IntervalCard from '../../cards/IntervalCard';
+
 const SetIntervalScreen = ({ navigation }) => {
+    const intervalLabels = ['30 mins', '45 mins', '60 mins', 'Decide for me'];
+    const [active, setActive] = useState(0);
+
     return (
         <Box style={styles.container} safeAreaTop>
             <Box style={styles.header}>
@@ -15,37 +20,12 @@ const SetIntervalScreen = ({ navigation }) => {
                 <Text style={styles.heading}>Interval</Text>
             </Box>
 
-            <TouchableOpacity onPress={() => {
-                navigation.goBack();
-            }}>
-                <Box style={styles.card}>
-                    <Text style={styles.cardTitle}>30 mins</Text>
-                </Box>
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={() => {
-                navigation.goBack();
-            }}>
-                <Box style={styles.card}>
-                    <Text style={styles.cardTitle}>45 mins</Text>
-                </Box>
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={() => {
-                navigation.goBack();
-            }}>
-                <Box style={styles.card}>
-                    <Text style={styles.cardTitle}>60 mins</Text>
-                </Box>
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={() => {
-                navigation.goBack();
-            }}>
-                <Box style={styles.card}>
-                    <Text style={styles.cardTitle}>Decide for me</Text>
-                </Box>
-            </TouchableOpacity>
+            {
+                intervalLabels.map((label, index) => (
+                    <IntervalCard text={label} key={index} index={index} active={active} setActive={setActive} />
+                ))
+                
+            }
 
             <Text style={styles.text}>During your working time, we will fire reminders besed on the interval you choose.</Text>
         </Box>
@@ -74,21 +54,6 @@ const styles = StyleSheet.create({
     heading: {
         fontSize: 20,
         fontFamily: 'josefin-semi-bold'
-    },
-    card: {
-        paddingHorizontal: 16,
-        paddingBottom: 10,
-        paddingTop: 13,
-        backgroundColor: '#FFFFFF',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        marginBottom: 16,
-        borderRadius: 4
-    },
-    cardTitle: {
-        fontSize: 18,
-        fontFamily: 'josefin-regular'
     },
     text: {
         fontSize: 15,

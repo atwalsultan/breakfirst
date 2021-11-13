@@ -54,7 +54,8 @@ const styles = StyleSheet.create({
     },
     factText: {
         fontSize: 16,
-        fontFamily: 'josefin-regular'
+        fontFamily: 'josefin-regular',
+        lineHeight: 22
     },
     factFooter: {
         flexDirection: 'row',

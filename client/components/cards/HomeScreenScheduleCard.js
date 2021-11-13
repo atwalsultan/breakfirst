@@ -1,10 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Box } from 'native-base';
 
 import DaysList from '../lists/DaysList';
 
-const HomeScreenScheduleCard = ({ schedule }) => {
+const HomeScreenScheduleCard = ({ schedule, navigation, user }) => {
     const selectedDays = {
         monday: schedule.monday,
         tuesday: schedule.tuesday,
@@ -17,7 +17,12 @@ const HomeScreenScheduleCard = ({ schedule }) => {
 
     return (
         <>
-            <Text style={ styles.scheduleHeading }>My dailly schedule</Text>
+            <Box style={styles.header}>
+                <Text style={ styles.scheduleHeading }>My dailly schedule</Text>
+                <TouchableOpacity style={styles.marker} onPress={() => navigation.navigate('HomeStack', { screen: 'ChangeScheduleScreen', params: { schedule: schedule, user: user } })}></TouchableOpacity>
+            </Box>
+
+
             <Box style={styles.schedule}>
                 <DaysList selectedDays={selectedDays} setSelectedDays={() => {return}} checkDays={() => {return}} setSelected={() => {return}} />
 
@@ -43,10 +48,21 @@ const HomeScreenScheduleCard = ({ schedule }) => {
 export default HomeScreenScheduleCard
 
 const styles = StyleSheet.create({
+    header: {
+        flexDirection: 'row',
+        alignItems: 'center'
+    },  
     scheduleHeading: {
         fontSize: 22,
         fontFamily: 'josefin-semi-bold',
         marginBottom: 8
+    },
+    marker: {
+        height: 20,
+        width: 20,
+        borderRadius: 10,
+        backgroundColor: 'rgba(0,0,0,0.5)',
+        marginLeft: 8,
     },  
     schedule: {
         backgroundColor: '#FFFFFF',

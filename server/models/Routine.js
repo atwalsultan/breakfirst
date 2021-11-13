@@ -31,10 +31,6 @@ const RoutineSchema = new Schema({
         type: String,
         required: true
     },
-    sound: {
-        type: Boolean,
-        required: true
-    }
 });
 
 module.exports = Routine = mongoose.model("routine", RoutineSchema);
