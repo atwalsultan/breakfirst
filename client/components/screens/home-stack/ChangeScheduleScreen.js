@@ -1,22 +1,54 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { Box } from 'native-base';
+import { Box, Switch } from 'native-base';
 import { Entypo } from '@expo/vector-icons';
 
 import ScheduleCard from '../../cards/ScheduleCard';
 
-const ChangeScheduleScreen = ({ navigation }) => {
-    const [selectedDays, setSelectedDays] = useState({
-        monday: false,
-        tuesday: false,
-        wednesday: false,
-        thursday: false,
-        friday: false,
-        saturday: false,
-        sunday: false,
-    });
+const ChangeScheduleScreen = ({ navigation, route }) => {
+    const { schedule, user } = route.params    
 
     const times = ["08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "01:00", "01:30", "02:00", "02:30", "03:00", "03:30", "04:00", "04:30", "05:00", "05:30", "06:00", "06:30", "07:00", "07:30", "08:00", "08:30"];
+
+    const [from, setFrom] = useState(schedule.from);
+    const [to, setTo] = useState(schedule.to);
+    const [silentMode, setSilentMode] = useState(schedule.silentMode);
+    const [selectedDays, setSelectedDays] = useState({
+        monday: schedule.monday,
+        tuesday: schedule.tuesday,
+        wednesday: schedule.wednesday,
+        thursday: schedule.thursday,
+        friday: schedule.friday,
+        saturday: schedule.saturday,
+        sunday: schedule.sunday
+    });
+
+    const changeSchedule = async () => {
+        const url = 'http://192.168.1.92:8080/app/schedule/change';
+        const response = await fetch(url, {
+            method: "PATCH",
+            headers: {
+                'content-type': 'application/json',
+                'authorization': `Bearer ${user.token}`
+            },
+            body: JSON.stringify({
+                ...selectedDays,
+                id: schedule._id,
+                to,
+                from,
+                interval: 30,
+                silentMode: silentMode,
+            })
+        });
+
+        if(response.status == 200) {
+            navigation.goBack();
+        }
+        else {
+            const responseJsonArray = await response.json();  // Get response text
+            console.log(responseJsonArray);
+        }
+    }
 
     return (
         <Box style={styles.container} safeAreaTop>
@@ -30,15 +62,15 @@ const ChangeScheduleScreen = ({ navigation }) => {
             </Box>
 
             <ScheduleCard
-                selectedDays={selectedDays} 
-                setSelectedDays={setSelectedDays} 
-                checkDays={() => {return}} 
-                setSelected={() => {return}}
+                selectedDays={selectedDays}
+                setSelectedDays={setSelectedDays}
+                checkDays={() => { return }}
+                setSelected={() => { return }}
                 times={times}
-                setFrom={() => {return}}
-                setTo={() => {return}}
-                to={times[1]}
-                from={times[17]}
+                setFrom={setFrom}
+                setTo={setTo}
+                to={to}
+                from={from}
             />
 
             <TouchableOpacity onPress={() => navigation.navigate('SetIntervalScreen')}>
@@ -65,12 +97,20 @@ const ChangeScheduleScreen = ({ navigation }) => {
             <TouchableOpacity>
                 <Box style={styles.card}>
                     <Text style={styles.cardTitle}>Silent Mode</Text>
-                    <Text style={styles.cardText}>PH</Text>
+                    <Switch
+                        size='lg'
+                        offTrackColor='#F4F4F4'
+                        onTrackColor='#355C97'
+                        onThumbColor='#FFFFFF'
+                        offThumbColor='#F4F4F4'
+                        onChange={() => setSilentMode(!silentMode)}
+                        defaultIsChecked={silentMode}
+                    />
                 </Box>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.nextButton} onPress={() => {
-                navigation.goBack();
+                changeSchedule();
             }}>
                 <Text style={styles.nextButtonText}>Confirm</Text>
             </TouchableOpacity>
@@ -111,9 +151,8 @@ const styles = StyleSheet.create({
     },
     card: {
         paddingHorizontal: 16,
-        paddingBottom: 10,
-        paddingTop: 13,
         backgroundColor: '#FFFFFF',
+        height: 48,
         borderRadius: 4,
         flexDirection: 'row',
         justifyContent: 'space-between',

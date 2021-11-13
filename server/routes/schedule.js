@@ -4,7 +4,7 @@ const router = express.Router();
 // Import model
 const Schedule = require("../models/Schedule");
 
-// Fetch and respond with documents/error
+// Read
 router.get('/', (req, res) => {
 	Schedule.findOne({ userId: req.query.id })
 		.then((schedule) => {
@@ -19,5 +19,18 @@ router.get('/', (req, res) => {
 			res.status(500).send(err);
 		});
 });
+
+// Update
+router.patch("/change", async (req, res) => {
+    const { monday, tuesday, wednesday, thursday, friday, saturday, sunday, to, from, interval, silentMode, id } = req.body;
+    
+    try {
+        const schedule = await Schedule.findOneAndUpdate({ _id: id }, { to, from, interval, silentMode, monday, tuesday, wednesday, thursday, friday, saturday, sunday }, { new: true });
+        return res.send(schedule);
+    }
+    catch(e) {
+        res.status(400).send({ message: 'Could not update routine' });
+    }
+})
 
 module.exports = router;

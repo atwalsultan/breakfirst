@@ -4,7 +4,7 @@ const User = require("../models/User");
 const Schedule = require("../models/Schedule");
 
 // Goal
-router.post("/goal", async (req, res) => {
+router.patch("/goal", async (req, res) => {
     const { id, goal } = req.body;
 
     try {
@@ -18,15 +18,14 @@ router.post("/goal", async (req, res) => {
 });
 
 // Workspace
-router.post("/workspace", async (req, res) => {
+router.patch("/workspace", async (req, res) => {
     const { id, workspace } = req.body;
 
     try {
         const user = await User.findOneAndUpdate({ _id: id }, { workspace: workspace }, { new: true });
         return res.send(user);
     }
-    catch (e) {
-        console.log(e);
+    catch(e) {
         res.status(400).send({ message: "Could not update user workspace" });
     }
 });
@@ -45,7 +44,9 @@ router.post("/weekly-schedule", async (req, res) => {
             sunday: reqBody.sunday,
             userId: reqBody.userId,
             from: reqBody.from,
-            to: reqBody.to
+            to: reqBody.to,
+            silentMode: false,
+            interval: 30
         });
 
         return res.send(schedule);

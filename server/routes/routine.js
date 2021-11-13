@@ -4,7 +4,7 @@ const router = express.Router();
 // Import model
 const Routine = require("../models/Routine");
 
-// Fetch and respond with documents/error
+// Create
 router.post('/create', async (req, res) => {
 	const reqBody = req.body;
 
@@ -17,7 +17,6 @@ router.post('/create', async (req, res) => {
             silentMode: reqBody.silentMode,
             saveForNextTime: reqBody.saveForNextTime,
             label: reqBody.label,
-            sound: reqBody.sound,
         });
 
         return res.send(routine);
@@ -27,6 +26,7 @@ router.post('/create', async (req, res) => {
     }
 });
 
+// Read
 router.get('/', (req, res) => {
 	Routine.find({ userId: req.query.id })
 		.then((routines) => {
@@ -40,6 +40,32 @@ router.get('/', (req, res) => {
 		.catch((err) => {
 			res.status(500).send(err);
 		});
+});
+
+// Update
+router.patch("/change", async (req, res) => {
+    const { id, to, from, interval, silentMode, label, saveForNextTime } = req.body;
+    
+    try {
+        const routine = await Routine.findOneAndUpdate({ _id: id }, { to, from, interval, silentMode, label, saveForNextTime }, { new: true });
+        return res.send(routine);
+    }
+    catch(e) {
+        res.status(400).send({ message: 'Could not update routine' });
+    }
+});
+
+// Delete
+router.delete("/delete", async(req, res) => {
+    const { id } = req.body;
+    
+    try {
+        const routine = await Routine.findOneAndDelete({ _id: id });
+        return res.send(routine);
+    }
+    catch(e) {
+        res.status(400).send({ message: "Could not delete routine" });
+    }
 });
 
 module.exports = router;

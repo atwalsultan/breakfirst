@@ -10,7 +10,7 @@ const OBNextButton = ({ navigation, next, selected }) => {
     const updateGoal = async () => {
         const url = 'http://192.168.1.92:8080/app/onboarding/goal';
         const response = await fetch(url, {
-            method: "POST",
+            method: "PATCH",
             headers: {
                 'content-type': 'application/json',
                 'authorization': `Bearer ${user.token}`
@@ -33,7 +33,7 @@ const OBNextButton = ({ navigation, next, selected }) => {
     const updateWorkspace = async () => {
         const url = 'http://192.168.1.92:8080/app/onboarding/workspace';
         const response = await fetch(url, {
-            method: "POST",
+            method: "PATCH",
             headers: {
                 'content-type': 'application/json',
                 'authorization': `Bearer ${user.token}`
