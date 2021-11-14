@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Box } from 'native-base';
-import { Entypo } from '@expo/vector-icons';
 
 import GoalWorkspaceList from '../../lists/GoalWorkspaceList';
 import OBNextButton from '../../buttons/OBNextButton';
+import ChevronLeftIcon from '../../svgs/ChevronLeftIcon';
 
 const OnboardingScreen2 = ({ navigation }) => {
     const data = [
@@ -20,7 +20,7 @@ const OnboardingScreen2 = ({ navigation }) => {
              <TouchableOpacity onPress={() => {
                 navigation.goBack()
             }}>
-                <Entypo name="chevron-left" size={24} color="black" style={styles.backLink} />
+                <ChevronLeftIcon />
             </TouchableOpacity>
 
             <Text style={styles.h1}>Your workspace is:</Text>

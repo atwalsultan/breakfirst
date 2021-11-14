@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Box } from 'native-base';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import { useUser } from '../../contexts/UserContext';
+import LogoutModal from '../../modals/LogoutModal';
+import ProfileImage from '../../svgs/ProfileImage';
 
 const ProfileScreen = ({ navigation }) => {
     const { user } = useUser();
+    const [modal, setModal] = useState(false);
 
     const logout = async () => {
         try {
             await AsyncStorage.removeItem('user');
-
             //  So that user can not navigate back to this page after logging out
             navigation.replace("Login");
         }
@@ -20,53 +23,55 @@ const ProfileScreen = ({ navigation }) => {
     }
 
     return (
-        <Box style={styles.container} safeAreaTop>
-            <Text style={styles.heading}>Profile</Text>
+        <>
+            <Box style={styles.container} safeAreaTop>
+                <Text style={styles.heading}>Profile</Text>
 
-            <Box style={styles.overview}>
-                <Box style={styles.profilePic}></Box>
+                <Box style={styles.overview}>
+                    <ProfileImage />
 
-                <Box>
-                    <Text style={styles.name}>{ user.username }</Text>
+                    <Box>
+                        <Text style={styles.name}>{ user.username }</Text>
+                    </Box>
+
+                    <Box>
+                        <Text style={styles.email}>{ user.email }</Text>
+                    </Box>
                 </Box>
 
-                <Box>
-                    <Text style={styles.email}>{ user.email }</Text>
+                <Box style={styles.settings}>
+                    <Text style={styles.settingsHeading}>Settings</Text>
+
+                    <TouchableOpacity>
+                        <Box style={styles.card}>
+                            <Text style={styles.cardTitle}>Notifications</Text>
+                        </Box>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity>
+                        <Box style={styles.card}>
+                            <Text style={styles.cardTitle}>Add daily schedule</Text>
+                        </Box>
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+
+                        <Box style={styles.card}>
+                            <Text style={styles.cardTitle}>Group management</Text>
+                        </Box>
+                    </TouchableOpacity>
                 </Box>
+
+                <Text style={styles.settingsHeading}>Account</Text>
+                <TouchableOpacity onPress={() => {
+                    setModal(true);
+                }}>
+                    <Box style={styles.card}>
+                        <Text style={styles.cardTitle}>Log out { user.username }</Text>
+                    </Box>
+                </TouchableOpacity>
             </Box>
-
-            <Box style={styles.settings}>
-                <Text style={styles.settingsHeading}>Settings</Text>
-
-                <TouchableOpacity>
-                    <Box style={styles.card}>
-                        <Text style={styles.cardTitle}>Notifications</Text>
-                    </Box>
-                </TouchableOpacity>
-
-                <TouchableOpacity>
-                    <Box style={styles.card}>
-                        <Text style={styles.cardTitle}>Add daily schedule</Text>
-                    </Box>
-                </TouchableOpacity>
-                <TouchableOpacity>
-
-                    <Box style={styles.card}>
-                        <Text style={styles.cardTitle}>Group management</Text>
-                    </Box>
-                </TouchableOpacity>
-            </Box>
-
-            <Text style={styles.settingsHeading}>Account</Text>
-            <TouchableOpacity onPress={() => {
-                // Log user out
-                logout();
-            }}>
-                <Box style={styles.card}>
-                    <Text style={styles.cardTitle}>Log out Sultan Singh Atwal</Text>
-                </Box>
-            </TouchableOpacity>
-        </Box>
+            {modal && <LogoutModal logout={ logout } setModal={ setModal } /> }
+        </>
     )
 }
 
@@ -87,13 +92,6 @@ const styles = StyleSheet.create({
     overview: {
         alignItems: 'center',
         marginBottom: 32
-    },
-    profilePic: {
-        height: 74,
-        width: 74,
-        borderRadius: 37,
-        backgroundColor: 'rgba(0,0,0,0.2)',
-        marginBottom: 16
     },
     name: {
         fontSize: 18,

@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity, Keyboard } from 'r
 import { Box } from 'native-base';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+import SignupImage from '../../svgs/SignupImage';
+
 const SignupScreen = ({ navigation }) => {
     const [email, setEmail] = useState("sultan.singh.atwal@gmail.com");
     const [password, setPassword] = useState("sultan");
@@ -73,7 +75,7 @@ const SignupScreen = ({ navigation }) => {
 
     return (
         <Box style={styles.container} safeAreaTop>
-            <Box style={[styles.image, { display: hideImage ? 'none' : 'flex' }]}></Box>
+            <SignupImage hideImage={ hideImage } />
 
             <Text style={styles.h1}>Sign Up</Text>
             <Text style={styles.text}>It's time to do some exercises!</Text>
@@ -114,14 +116,6 @@ const styles = StyleSheet.create({
         paddingBottom: 8,
         paddingTop: 48,
         flex: 1,
-    },
-    image: {
-        height: 175,
-        width: 175,
-        borderRadius: 87.5,
-        alignSelf: 'center',
-        backgroundColor: 'rgba(0,0,0,0.05)',
-        marginBottom: 32,
     },
     h1: {
         fontSize: 30,

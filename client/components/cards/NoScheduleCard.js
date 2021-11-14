@@ -1,14 +1,15 @@
 import React from 'react';
 import { StyleSheet, Text } from 'react-native';
 import { Box } from 'native-base';
-import { AntDesign } from '@expo/vector-icons'; 
+
+import CloseIcon from '../svgs/CloseIcon';
 
 const NoScheduleCard = () => {
     return (
         <Box style={ styles.container }>
             <Box style={ styles.header }>
                 <Text style={ styles.heading }>No fixed schedule</Text>
-                <AntDesign name="close" size={24} color="black" />
+                <CloseIcon />
             </Box>
             <Text style={ styles.text }>Add your daily schedule from profile</Text>
         </Box>

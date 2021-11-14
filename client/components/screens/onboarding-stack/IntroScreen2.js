@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Box } from 'native-base';
-import { Entypo } from '@expo/vector-icons';
 
 import OBNextButton from '../../buttons/OBNextButton';
+import ChevronLeftIcon from '../../svgs/ChevronLeftIcon';
 
 const IntroScreen2 = ({ navigation }) => {
     return (
@@ -11,7 +11,7 @@ const IntroScreen2 = ({ navigation }) => {
             <TouchableOpacity onPress={() => {
                 navigation.goBack()
             }}>
-                <Entypo name="chevron-left" size={24} color="black" style={styles.backLink} />
+                <ChevronLeftIcon />
             </TouchableOpacity>
 
             <Box style={styles.image}></Box>

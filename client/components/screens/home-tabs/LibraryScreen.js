@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { StyleSheet, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, ScrollView, TouchableOpacity, Image } from 'react-native';
 import { Box } from 'native-base';
-import { Entypo } from '@expo/vector-icons';
 
 import ExerciseList from '../../lists/ExerciseList';
+import ChevronRIghtIconTomatoFrog from '../../svgs/ChevronRightIconTomatoFrog';
 
 const LibraryScreen = ({ navigation }) => {
     return (
@@ -21,7 +21,7 @@ const LibraryScreen = ({ navigation }) => {
                 }}>
                     <Box style={styles.sedantaryFacts}>
                         <Text style={styles.sedantaryFactsText}>Know sedantary</Text>
-                        <Entypo name="chevron-right" size={24} color="#F94144" />
+                        <ChevronRIghtIconTomatoFrog />
                     </Box>
                 </TouchableOpacity>
             </ScrollView>
@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
     },
     sedantaryFacts: {
         backgroundColor: '#FFFFFF',
+        alignItems: 'center',
         borderRadius: 4,
         paddingVertical: 20,
         paddingHorizontal: 16,

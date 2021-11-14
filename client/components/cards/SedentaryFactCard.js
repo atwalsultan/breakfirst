@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, Image } from 'react-native';
 import { Box } from 'native-base';
-import { Entypo } from '@expo/vector-icons';
+
+import ChevronUpIcon from '../svgs/ChevronUpIcon';
+import ChevronDownIcon from '../svgs/ChevronDownIcon';
 
 const SedentaryFactCard = () => {
     const [active, setActive] = useState(false)
@@ -12,7 +14,7 @@ const SedentaryFactCard = () => {
 
             <Box style={styles.factHeader}>
                 <Text style={styles.factTitle}>Effects of a sedentary life</Text>
-                { !active && <Entypo name="chevron-down" size={24} color="black" />}
+                { !active && <ChevronDownIcon />}
             </Box>
 
             { active && <Text style={styles.factText}>Sedentary lifestyles increase all causes of mortality, double the risk of cardiovascular diseases, diabetes, and obesity, and increase the risks of colon cancer, high blood pressure, osteoporosis, lipid disorders, depression and anxiety.</Text>}
@@ -20,7 +22,7 @@ const SedentaryFactCard = () => {
            { 
                 active &&  
                 <Box style={styles.factFooter}>
-                    <Entypo name="chevron-up" size={24} color="black" />
+                   <ChevronUpIcon />
                 </Box>    
             }
         </TouchableOpacity>

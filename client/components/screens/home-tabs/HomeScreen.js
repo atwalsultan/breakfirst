@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, ScrollView, TouchableOpacity, Switch } from 'react-native';
 import { Box } from 'native-base';
-import { AntDesign } from '@expo/vector-icons';
 import { useIsFocused } from "@react-navigation/native";
 
 import { useUser } from '../../contexts/UserContext';
 import HomeScreenScheduleCard from '../../cards/HomeScreenScheduleCard';
 import NoScheduleCard from '../../cards/NoScheduleCard'
 import HomeScreenRoutineCard from '../../cards/HomeScreenRoutineCard';
+import AddIconTomatoFrog from '../../svgs/AddIconTomatoFrog';
 
 const HomeScreen = ({ navigation }) => {
     const { user } = useUser();
@@ -107,7 +107,7 @@ const HomeScreen = ({ navigation }) => {
                     }}>
                         <Box style={styles.newTaskSchedule}>
                             <Text style={styles.newTaskScheduleText}>New task schedule</Text>
-                            <AntDesign name="plus" size={24} color="#F94144" />
+                            <AddIconTomatoFrog />
                         </Box>
                     </TouchableOpacity>
 

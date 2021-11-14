@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Box } from 'native-base';
 
+import ExerciseUnsavedIcon from '../svgs/ExerciseUnsavedIcon';
+import ExerciseSavedIcon from '../svgs/ExerciseSavedIcon';
+
 const ExerciseCard = ({ exercise, index, navigation }) => {
     const [saved, setSaved] = useState(false)
 
@@ -17,7 +20,9 @@ const ExerciseCard = ({ exercise, index, navigation }) => {
                         <Text style={ styles.time }>1 min approx.</Text>
                     </Box>
 
-                    <TouchableOpacity style={[styles.savedExerciseMarker, { backgroundColor: saved ? '#F94144' : 'transparent', borderColor: saved ? 'transparent' : '#1B2F4D' }]} onPress={() => setSaved(!saved)}></TouchableOpacity>
+                    <TouchableOpacity onPress={ () => setSaved(!saved) }>
+                        { !saved ? <ExerciseUnsavedIcon /> : <ExerciseSavedIcon />}
+                    </TouchableOpacity>
                 </Box>
             </TouchableOpacity>
         </Box>

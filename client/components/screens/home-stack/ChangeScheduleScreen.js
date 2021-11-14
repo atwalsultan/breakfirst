@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Box, Switch } from 'native-base';
-import { Entypo } from '@expo/vector-icons';
 
 import ScheduleCard from '../../cards/ScheduleCard';
+import ChevronRIghtIconTomatoFrog from '../../svgs/ChevronRightIconTomatoFrog';
 
 const ChangeScheduleScreen = ({ navigation, route }) => {
     const { schedule, user } = route.params    
@@ -76,7 +76,7 @@ const ChangeScheduleScreen = ({ navigation, route }) => {
             <TouchableOpacity onPress={() => navigation.navigate('SetIntervalScreen')}>
                 <Box style={styles.card}>
                     <Text style={styles.cardTitle}>Interval</Text>
-                    <Entypo name="chevron-right" size={24} color="#F94144" />
+                    <ChevronRIghtIconTomatoFrog />
                 </Box>
             </TouchableOpacity>
 
@@ -90,7 +90,7 @@ const ChangeScheduleScreen = ({ navigation, route }) => {
             <TouchableOpacity>
                 <Box style={styles.card}>
                     <Text style={styles.cardTitle}>Sound</Text>
-                    <Entypo name="chevron-right" size={24} color="#F94144" />
+                    <ChevronRIghtIconTomatoFrog />
                 </Box>
             </TouchableOpacity>
 
