@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Box, Switch } from 'native-base';
 import ScheduleCard from '../../cards/ScheduleCard';
-import { Entypo } from '@expo/vector-icons';
 
 import { useUser } from '../../contexts/UserContext';
+import ChevronRightIconTomatoFrog from '../../svgs/ChevronRightIconTomatoFrog';
 
 const SetReminderScreen = ({ navigation }) => {
     const { user } = useUser();
@@ -71,21 +71,21 @@ const SetReminderScreen = ({ navigation }) => {
             <TouchableOpacity>
                 <Box style={styles.card}>
                     <Text style={styles.cardTitle}>Label</Text>
-                    <Entypo name="chevron-right" size={24} color="#F94144" />
+                    <ChevronRightIconTomatoFrog />
                 </Box>
             </TouchableOpacity>
 
             <TouchableOpacity onPress={() => navigation.navigate('SetIntervalScreen')}>
                 <Box style={styles.card}>
                     <Text style={styles.cardTitle}>Interval</Text>
-                    <Entypo name="chevron-right" size={24} color="#F94144" />
+                    <ChevronRightIconTomatoFrog />
                 </Box>
             </TouchableOpacity>
 
             <TouchableOpacity>
                 <Box style={styles.card}>
                     <Text style={styles.cardTitle}>Sound</Text>
-                    <Entypo name="chevron-right" size={24} color="#F94144" />
+                    <ChevronRightIconTomatoFrog />
                 </Box>
             </TouchableOpacity>
 

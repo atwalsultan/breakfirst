@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
 import { Box } from 'native-base';
-import { Entypo } from '@expo/vector-icons';
 
 import { useUser } from '../../contexts/UserContext';
 import ScheduleCard from '../../cards/ScheduleCard';
+import ChevronLeftIcon from '../../svgs/ChevronLeftIcon';
 
 const OnboardingScreen3 = ({ navigation }) => {
     const [selected, setSelected] = useState(true);
@@ -68,7 +68,7 @@ const OnboardingScreen3 = ({ navigation }) => {
             <TouchableOpacity onPress={() => {
                 navigation.goBack()
             }}>
-                <Entypo name="chevron-left" size={24} color="black" style={styles.backLink} />
+                <ChevronLeftIcon />
             </TouchableOpacity>
 
             <Text style={styles.h1}>Your Schedule is:</Text>

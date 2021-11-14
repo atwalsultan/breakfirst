@@ -1,9 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 import { Box } from 'native-base';
-import { Entypo } from '@expo/vector-icons';
 
 import FactsTabs from '../../tabs/FactsTabs';
+import ChevronLeftIcon from '../../svgs/ChevronLeftIcon';
 
 
 const FactsScreen = ({ navigation }) => {
@@ -13,9 +13,8 @@ const FactsScreen = ({ navigation }) => {
                 onPress={() => {
                     navigation.goBack();
                 }}
-                style={ styles.backLink }
             >
-                <Entypo name="chevron-left" size={24} color="black" />
+                <ChevronLeftIcon />
             </TouchableOpacity>
 
             <FactsTabs />
@@ -31,7 +30,4 @@ const styles = StyleSheet.create({
         paddingTop: 34,
         flex: 1,
     },
-    backLink: {
-        marginBottom: 24
-    }
 })

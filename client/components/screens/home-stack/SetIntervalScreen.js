@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { Box } from 'native-base';
-import { Entypo } from '@expo/vector-icons';
+import { Box, View } from 'native-base';
 
 import IntervalCard from '../../cards/IntervalCard';
+import ChevronLeftIcon from '../../svgs/ChevronLeftIcon'
 
 const SetIntervalScreen = ({ navigation }) => {
     const intervalLabels = ['30 mins', '45 mins', '60 mins', 'Decide for me'];
@@ -12,12 +12,13 @@ const SetIntervalScreen = ({ navigation }) => {
     return (
         <Box style={styles.container} safeAreaTop>
             <Box style={styles.header}>
-                <TouchableOpacity style={styles.backLink} onPress={() => {
+                <TouchableOpacity onPress={() => {
                     navigation.goBack();
                 }}>
-                    <Entypo name="chevron-left" size={24} color="black" />
+                    <ChevronLeftIcon header={true} />
                 </TouchableOpacity>
                 <Text style={styles.heading}>Interval</Text>
+                <View style={{ width: '5%' }}></View>
             </Box>
 
             {
@@ -44,12 +45,8 @@ const styles = StyleSheet.create({
     header: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         marginBottom: 16
-    },
-    backLink: {
-        position: 'absolute',
-        left: 0,
     },
     heading: {
         fontSize: 20,

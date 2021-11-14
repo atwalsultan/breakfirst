@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Box } from 'native-base';
-import { Entypo } from '@expo/vector-icons';
 
+import ChevronLeftIcon from '../../svgs/ChevronLeftIcon';
 
 const ExerciseDetailsScreen = ({ route, navigation }) => {
     const exercise = route.params.exercise;
@@ -13,9 +13,8 @@ const ExerciseDetailsScreen = ({ route, navigation }) => {
                 onPress={() => {
                     navigation.goBack();
                 }}
-                style={ styles.backLink }
             >
-                <Entypo name="chevron-left" size={24} color="black" />
+                <ChevronLeftIcon />
             </TouchableOpacity>
 
             <Box style={styles.exerciseImage}></Box>
@@ -39,9 +38,6 @@ const styles = StyleSheet.create({
         paddingHorizontal: 16,
         paddingTop: 34,
         flex: 1,
-    },
-    backLink: {
-        marginBottom: 16,
     },
     exerciseImage: {
         height: '40%',

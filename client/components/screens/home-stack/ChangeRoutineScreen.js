@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Box, Switch } from 'native-base';
-import { Entypo } from '@expo/vector-icons';
 
 import ScheduleCard from '../../cards/ScheduleCard';
+import DeleteModal from '../../modals/DeleteModal';
+import ChevronRightIconTomatoFrog from '../../svgs/ChevronRightIconTomatoFrog'
 
 const ChangeRoutineScreen = ({ navigation, route }) => {
 
@@ -15,6 +16,7 @@ const ChangeRoutineScreen = ({ navigation, route }) => {
     const [to, setTo] = useState(routine.to);
     const [silentMode, setSilentMode] = useState(routine.silentMode);
     const [saveForNextTime, setsaveForNextTime] = useState(routine.saveForNextTime);
+    const [modal, setModal] = useState(false);
 
     const changeRoutine = async () => {
         const url = 'http://192.168.1.92:8080/app/routine/change';
@@ -67,93 +69,98 @@ const ChangeRoutineScreen = ({ navigation, route }) => {
     }
 
     return (
-        <Box style={styles.container} safeAreaTop>
-            <Box style={styles.header}>
-                <TouchableOpacity style={styles.backLink} onPress={() => {
-                    navigation.goBack();
-                }}>
-                    <Text style={styles.backLinkText}>Cancel</Text>
+        <>
+            <Box style={styles.container} safeAreaTop>
+                <Box style={styles.header}>
+                    <TouchableOpacity style={styles.backLink} onPress={() => {
+                        navigation.goBack();
+                    }}>
+                        <Text style={styles.backLinkText}>Cancel</Text>
+                    </TouchableOpacity>
+
+                    <Text style={styles.heading}>My task</Text>
+
+                    <TouchableOpacity style={styles.deleteButton} onPress={() => {
+                        // deleteRoutine();
+                        setModal(true);
+                    }}>
+                        <Text style={styles.deleteButtonText}>Delete</Text>
+                    </TouchableOpacity>
+                </Box>
+
+                <ScheduleCard
+                    selectedDays={null}
+                    setSelectedDays={null}
+                    checkDays={() => {return}} 
+                    setSelected={() => {return}}
+                    times={times}
+                    setFrom={setFrom}
+                    setTo={setTo}
+                    to={to}
+                    from={from}
+                />
+                
+                <TouchableOpacity>
+                    <Box style={styles.card}>
+                        <Text style={styles.cardTitle}>Label</Text>
+                        <Text style={styles.cardText}>{ routine.label }</Text>
+                    </Box>
                 </TouchableOpacity>
 
-                <Text style={styles.heading}>My task</Text>
+                <TouchableOpacity onPress={() => navigation.navigate('SetIntervalScreen')}>
+                    <Box style={styles.card}>
+                        <Text style={styles.cardTitle}>Interval</Text>
+                        <ChevronRightIconTomatoFrog />
+                    </Box>
+                </TouchableOpacity>
 
-                <TouchableOpacity style={styles.deleteButton} onPress={() => {
-                    deleteRoutine();
+
+                <TouchableOpacity>
+                    <Box style={styles.card}>
+                        <Text style={styles.cardTitle}>Sound</Text>
+                        <ChevronRightIconTomatoFrog />
+                    </Box>
+                </TouchableOpacity>
+
+                <TouchableOpacity>
+                    <Box style={styles.card}>
+                        <Text style={styles.cardTitle}>Silent Mode</Text>
+                        <Switch 
+                            size='lg'
+                            offTrackColor='#F4F4F4'
+                            onTrackColor='#355C97'
+                            onThumbColor='#FFFFFF'
+                            offThumbColor='#F4F4F4'
+                            onChange={() => setSilentMode(!silentMode)}
+                            defaultIsChecked={routine.silentMode}
+                        />
+                    </Box>
+                </TouchableOpacity>
+
+                <TouchableOpacity>
+                    <Box style={styles.card}>
+                        <Text style={styles.cardTitle}>Save for next time</Text>
+                        <Switch 
+                            size='lg'
+                            offTrackColor='#F4F4F4'
+                            onTrackColor='#355C97'
+                            onThumbColor='#FFFFFF'
+                            offThumbColor='#F4F4F4'
+                            onChange={() => setsaveForNextTime(!saveForNextTime)}
+                            defaultIsChecked={routine.saveForNextTime}
+                        />
+                    </Box>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.nextButton} onPress={() => {
+                    changeRoutine();
                 }}>
-                    <Text style={styles.deleteButtonText}>Delete</Text>
+                    <Text style={styles.nextButtonText}>Confirm</Text>
                 </TouchableOpacity>
             </Box>
 
-            <ScheduleCard
-                selectedDays={null}
-                setSelectedDays={null}
-                checkDays={() => {return}} 
-                setSelected={() => {return}}
-                times={times}
-                setFrom={setFrom}
-                setTo={setTo}
-                to={to}
-                from={from}
-            />
-            
-            <TouchableOpacity>
-                <Box style={styles.card}>
-                    <Text style={styles.cardTitle}>Label</Text>
-                    <Text style={styles.cardText}>{ routine.label }</Text>
-                </Box>
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={() => navigation.navigate('SetIntervalScreen')}>
-                <Box style={styles.card}>
-                    <Text style={styles.cardTitle}>Interval</Text>
-                    <Entypo name="chevron-right" size={24} color="#F94144" />
-                </Box>
-            </TouchableOpacity>
-
-
-            <TouchableOpacity>
-                <Box style={styles.card}>
-                    <Text style={styles.cardTitle}>Sound</Text>
-                    <Entypo name="chevron-right" size={24} color="#F94144" />
-                </Box>
-            </TouchableOpacity>
-
-            <TouchableOpacity>
-                <Box style={styles.card}>
-                    <Text style={styles.cardTitle}>Silent Mode</Text>
-                    <Switch 
-                        size='lg'
-                        offTrackColor='#F4F4F4'
-                        onTrackColor='#355C97'
-                        onThumbColor='#FFFFFF'
-                        offThumbColor='#F4F4F4'
-                        onChange={() => setSilentMode(!silentMode)}
-                        defaultIsChecked={routine.silentMode}
-                    />
-                </Box>
-            </TouchableOpacity>
-
-            <TouchableOpacity>
-                <Box style={styles.card}>
-                    <Text style={styles.cardTitle}>Save for next time</Text>
-                    <Switch 
-                        size='lg'
-                        offTrackColor='#F4F4F4'
-                        onTrackColor='#355C97'
-                        onThumbColor='#FFFFFF'
-                        offThumbColor='#F4F4F4'
-                        onChange={() => setsaveForNextTime(!saveForNextTime)}
-                        defaultIsChecked={routine.saveForNextTime}
-                    />
-                </Box>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.nextButton} onPress={() => {
-                changeRoutine();
-            }}>
-                <Text style={styles.nextButtonText}>Confirm</Text>
-            </TouchableOpacity>
-        </Box>
+            {modal && <DeleteModal deleteRoutine={ deleteRoutine } setModal={ setModal } /> }
+        </>
     )
 }
 
