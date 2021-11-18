@@ -3,6 +3,7 @@ import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Box } from 'native-base';
 
 import DaysList from '../lists/DaysList';
+import ChangeScheduleIcon from '../svgs/ChangeScheduleIcon';
 
 const HomeScreenScheduleCard = ({ schedule, navigation, user }) => {
     const selectedDays = {
@@ -19,7 +20,9 @@ const HomeScreenScheduleCard = ({ schedule, navigation, user }) => {
         <>
             <Box style={styles.header}>
                 <Text style={ styles.scheduleHeading }>My dailly schedule</Text>
-                <TouchableOpacity style={styles.marker} onPress={() => navigation.navigate('HomeStack', { screen: 'ChangeScheduleScreen', params: { schedule: schedule, user: user } })}></TouchableOpacity>
+                <TouchableOpacity style={ styles.changeScheduleIcon } onPress={() => navigation.navigate('HomeStack', { screen: 'ChangeScheduleScreen', params: { schedule: schedule, user: user } })}>
+                    <ChangeScheduleIcon />
+                </TouchableOpacity>
             </Box>
 
 
@@ -57,11 +60,7 @@ const styles = StyleSheet.create({
         fontFamily: 'josefin-semi-bold',
         marginBottom: 8
     },
-    marker: {
-        height: 20,
-        width: 20,
-        borderRadius: 10,
-        backgroundColor: 'rgba(0,0,0,0.5)',
+    changeScheduleIcon: {
         marginLeft: 8,
     },  
     schedule: {
