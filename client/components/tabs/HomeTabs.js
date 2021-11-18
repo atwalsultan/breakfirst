@@ -20,18 +20,32 @@ import ProfileTabIconActive from '../svgs/ProfileTabIconActive';
 // const Tab = createBottomTabNavigator();
 const Tab = createMaterialTopTabNavigator();
 
-const HomeTabs = () => {
+const HomeTabs = ({
+    schedulePushNotification,
+    notification,
+    expoPushToken
+}) => {
     return (
-        <Tab.Navigator 
-            tabBarPosition='bottom' 
+        <Tab.Navigator
+            tabBarPosition='bottom'
             screenOptions={{
                 tabBarShowLabel: false,
                 tabBarShowIcon: true,
-                tabBarIndicatorStyle: {backgroundColor: 'transparent'},
+                tabBarIndicatorStyle: { backgroundColor: 'transparent' },
                 tabBarPressColor: 'transparent'
             }}
         >
-            <Tab.Screen name="Home" component={HomeScreen} options={{ tabBarIcon: ({ focused }) => !focused ? <HomeTabIcon /> : <HomeTabIconActive /> }} />
+            <Tab.Screen name="Home" options={{ tabBarIcon: ({ focused }) => !focused ? <HomeTabIcon /> : <HomeTabIconActive /> }}>
+                {(props) => (
+                    <HomeScreen
+                        {...props}
+                        schedulePushNotification={schedulePushNotification}
+                        notification={notification}
+                        expoPushToken={expoPushToken}
+                    />
+                )}
+            </Tab.Screen>
+
             <Tab.Screen name="Library" component={LibraryScreen} options={{ tabBarIcon: ({ focused }) => !focused ? <ExerciseTabIcon /> : <ExerciseTabIconActive /> }} />
             <Tab.Screen name="Stats" component={StatsScreen} options={{ tabBarIcon: ({ focused }) => !focused ? <StatsTabIcon /> : <StatsTabIconActive /> }} />
             <Tab.Screen name="Profile" component={ProfileScreen} options={{ tabBarIcon: ({ focused }) => !focused ? <ProfileTabIcon /> : <ProfileTabIconActive /> }} />

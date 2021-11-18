@@ -73,7 +73,7 @@ const OnboardingScreen3 = ({ navigation }) => {
   const createSchedule = async () => {
     if (!selected) {
       // Create weekly schedule for user
-      const url = "http://192.168.1.79:8080/app/onboarding/weekly-schedule";
+      const url = "http://192.168.1.92:8080/app/onboarding/weekly-schedule";
       const response = await fetch(url, {
         method: "POST",
         headers: {

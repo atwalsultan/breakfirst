@@ -2,29 +2,14 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import HomeScreen from "../screens/exercise-stack/Home";
-import FeaturesScreen from "../screens/exercise-stack/Features";
-import DetailsScreen from "../screens/exercise-stack/Details";
+import FeaturesScreen from "../screens/exercise-stack/ExerciseDescriptionScreens";
+import DetailsScreen from "../screens/exercise-stack/ExerciseOngoingScreen";
 
 const Stack = createNativeStackNavigator();
 
-const ExerciseStack = ({
-  schedulePushNotification,
-  notification,
-  expoPushToken,
-}) => {
+const ExerciseStack = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Home" options={{ headerShown: false }}>
-        {(props) => (
-          <HomeScreen
-            {...props}
-            schedulePushNotification={schedulePushNotification}
-            notification={notification}
-            expoPushToken={expoPushToken}
-          />
-        )}
-      </Stack.Screen>
       <Stack.Screen
         name="Features"
         component={FeaturesScreen}
