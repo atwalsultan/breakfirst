@@ -50,7 +50,7 @@ const ChangeScheduleScreen = ({ navigation, route }) => {
   });
 
   const changeSchedule = async () => {
-    const url = "http://192.168.1.79:8080/app/schedule/change";
+    const url = "http://192.168.1.92:8080/app/schedule/change";
     const response = await fetch(url, {
       method: "PATCH",
       headers: {

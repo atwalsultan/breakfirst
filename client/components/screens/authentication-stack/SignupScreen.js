@@ -19,7 +19,7 @@ const SignupScreen = ({ navigation }) => {
   const [hideImage, setHideImage] = useState(false);
 
   const signup = async () => {
-    const response = await fetch("http://192.168.1.79:8080/auth/signup", {
+    const response = await fetch("http://192.168.1.92:8080/auth/signup", {
       method: "POST",
       headers: {
         "content-type": "application/json",

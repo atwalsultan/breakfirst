@@ -46,7 +46,7 @@ const ChangeRoutineScreen = ({ navigation, route }) => {
   const [modal, setModal] = useState(false);
 
   const changeRoutine = async () => {
-    const url = "http://192.168.1.79:8080/app/routine/change";
+    const url = "http://192.168.1.92:8080/app/routine/change";
     const response = await fetch(url, {
       method: "PATCH",
       headers: {
@@ -73,7 +73,7 @@ const ChangeRoutineScreen = ({ navigation, route }) => {
   };
 
   const deleteRoutine = async () => {
-    const url = "http://192.168.1.79:8080/app/routine/delete";
+    const url = "http://192.168.1.92:8080/app/routine/delete";
     const response = await fetch(url, {
       method: "DELETE",
       headers: {

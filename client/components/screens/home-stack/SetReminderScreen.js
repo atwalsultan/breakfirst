@@ -43,7 +43,7 @@ const SetReminderScreen = ({ navigation }) => {
   const [saveForNextTime, setSaveForNextTime] = useState(false);
 
   const createRoutine = async () => {
-    const url = "http://192.168.1.79:8080/app/routine/create";
+    const url = "http://192.168.1.92:8080/app/routine/create";
     const response = await fetch(url, {
       method: "POST",
       headers: {

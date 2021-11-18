@@ -18,7 +18,7 @@ const LoginScreen = ({ navigation }) => {
   const [hideImage, setHideImage] = useState(false);
 
   const login = async () => {
-    const response = await fetch("http://192.168.1.79:8080/auth/login", {
+    const response = await fetch("http://192.168.1.92:8080/auth/login", {
       method: "POST",
       headers: {
         "content-type": "application/json",

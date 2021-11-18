@@ -4,9 +4,8 @@ import {
   Text,
   ScrollView,
   TouchableOpacity,
-  Switch,
 } from "react-native";
-import { Box, Button } from "native-base";
+import { Box } from "native-base";
 import { useIsFocused } from "@react-navigation/native";
 
 import { useUser } from "../../contexts/UserContext";
@@ -15,13 +14,16 @@ import NoScheduleCard from "../../cards/NoScheduleCard";
 import HomeScreenRoutineCard from "../../cards/HomeScreenRoutineCard";
 import AddIconTomatoFrog from "../../svgs/AddIconTomatoFrog";
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = ({
+  navigation,
+  schedulePushNotification,
+}) => {
   const { user } = useUser();
   const [schedule, setSchedule] = useState(null);
   const [routines, setRoutines] = useState(null);
 
   const getSchedule = async () => {
-    const url = `http://192.168.1.79:8080/app/schedule?id=${user["id"]}`;
+    const url = `http://192.168.1.92:8080/app/schedule?id=${user["id"]}`;
     const response = await fetch(url, {
       method: "GET",
       headers: {
@@ -39,7 +41,7 @@ const HomeScreen = ({ navigation }) => {
   };
 
   const getRoutines = async () => {
-    const url = `http://192.168.1.79:8080/app/routine/?id=${user["id"]}`;
+    const url = `http://192.168.1.92:8080/app/routine/?id=${user["id"]}`;
     const response = await fetch(url, {
       method: "GET",
       headers: {
@@ -65,7 +67,9 @@ const HomeScreen = ({ navigation }) => {
   return (
     <Box style={styles.container} safeAreaTop>
       <ScrollView style={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
-        <Text style={styles.heading}>Today's sitting time</Text>
+        <TouchableOpacity onPress={async () => await schedulePushNotification()}>
+          <Text style={styles.heading}>Today's sitting time</Text>
+        </TouchableOpacity>
 
         <Box style={styles.graphic}></Box>
 
@@ -130,15 +134,6 @@ const HomeScreen = ({ navigation }) => {
                 />
               ))}
           </Box>
-
-          <TouchableOpacity
-            style={styles.confirmButton}
-            onPress={() =>
-              navigation.navigate("AppStack", { screen: "ExerciseStack" })
-            }
-          >
-            <Text style={styles.confirmButtonText}>Schedule a Task</Text>
-          </TouchableOpacity>
         </Box>
       </ScrollView>
     </Box>

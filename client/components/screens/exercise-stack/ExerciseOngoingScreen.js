@@ -1,40 +1,41 @@
-import React from 'react'
-import {  Box } from 'native-base';
+import React, { useState } from 'react'
+import { Box } from 'native-base';
 import {
   StyleSheet,
   Text,
-  View,
-  TextInput,
   TouchableOpacity,
-  Keyboard,
 } from "react-native";
+import ExerciseCompleteModal from '../../modals/ExerciseCompleteModal';
 
 
-export default function DetailsScreen({navigation}) {
-    return (
-      
+export default function DetailsScreen({ navigation }) {
+  const [finished, setFinished] = useState(false)
+
+  return (
+    <>
       <Box style={styles.container} safeAreaTop>
-      <TouchableOpacity
-        onPress={() => {
-          // logic
-          navigation.navigate("Home")
-        }}
-      >
-      <Text style={styles.rightText}>Skip</Text>
-      </TouchableOpacity>
-      <Box
-        style={styles.image}
-      ></Box>
-      <Text style={styles.h1}>Body twister</Text>
-      <Box
-        style={styles.image}
-      ></Box>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("Home")
+          }}
+        >
+          <Text style={styles.rightText}>Skip</Text>
+        </TouchableOpacity>
+        <Box
+          style={styles.image}
+        ></Box>
+        <Text style={styles.h1}>Body twister</Text>
+        <Box
+          style={styles.image}
+        ></Box>
       </Box>
-    
-    );
-  }
+      { !finished && <ExerciseCompleteModal setFinished={setFinished} navigation={navigation} /> }
+    </>
 
-  const styles = StyleSheet.create({
+  );
+}
+
+const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 16,
     paddingBottom: 8,
@@ -61,8 +62,8 @@ export default function DetailsScreen({navigation}) {
     textAlign: "center",
     marginBottom: 32,
   },
-  blue:{
-    color:'#355C97',
+  blue: {
+    color: '#355C97',
     fontSize: 18,
     fontFamily: "josefin-regular",
     textAlign: "center",
@@ -72,7 +73,7 @@ export default function DetailsScreen({navigation}) {
     fontSize: 16,
     fontFamily: "josefin-regular",
     textAlign: "right",
-    
+
   },
-  
+
 });

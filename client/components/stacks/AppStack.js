@@ -26,31 +26,42 @@ const AppStack = ({
           component={SplashScreen2}
           options={{ headerShown: false }}
         />
-        <Stack.Screen
-          name="HomeTabs"
-          component={HomeTabs}
-          options={{ headerShown: false }}
-        />
+
+        <Stack.Screen name="HomeTabs" options={{ headerShown: false }}>
+          {(props) => (
+            <HomeTabs
+              {...props}
+              schedulePushNotification={schedulePushNotification}
+              notification={notification}
+              expoPushToken={expoPushToken}
+            />
+          )}
+        </Stack.Screen>
+
         <Stack.Screen
           name="HomeStack"
           component={HomeStack}
           options={{ headerShown: false }}
         />
+
         <Stack.Screen
           name="LibraryStack"
           component={LibraryStack}
           options={{ headerShown: false }}
         />
+
         <Stack.Screen
           name="StatsStack"
           component={StatsStack}
           options={{ headerShown: false }}
         />
+
         <Stack.Screen
           name="ProfileStack"
           component={ProfileStack}
           options={{ headerShown: false }}
         />
+
         <Stack.Screen name="ExerciseStack" options={{ headerShown: false }}>
           {(props) => (
             <ExerciseStack
@@ -61,6 +72,7 @@ const AppStack = ({
             />
           )}
         </Stack.Screen>
+        
       </Stack.Navigator>
     </UserProvider>
   );

@@ -16,7 +16,7 @@ import { navigationRef } from "./rootNavigation";
 async function schedulePushNotification() {
   await Notifications.scheduleNotificationAsync({
     content: {
-      title: "You've got mail! 📬",
+      title: "Here is the notification header",
       body: "Here is the notification body",
       data: { screen: "Features" },
     },
@@ -39,7 +39,7 @@ async function registerForPushNotificationsAsync() {
       return;
     }
     token = (await Notifications.getExpoPushTokenAsync()).data;
-    console.log(token);
+    // console.log(token);
   } else {
     alert("Must use physical device for Push Notifications");
   }
@@ -98,8 +98,8 @@ export default function App() {
 
     responseListener.current =
       Notifications.addNotificationResponseReceivedListener((response) => {
-        console.log("clicked");
-        navigation.navigate(targetScreen);
+        // console.log("clicked");
+        navigation.navigate("ExerciseStack", {screen: 'Features'});
         // navigation.navigate("Features");
       });
 
