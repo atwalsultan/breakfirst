@@ -135,7 +135,7 @@ const ChangeRoutineScreen = ({ navigation, route }) => {
           from={from}
         />
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("SetLabelScreen", { label: "Walk 100 metres" })}>
           <Box style={styles.card}>
             <Text style={styles.cardTitle}>Label</Text>
             <Text style={styles.cardText}>{routine.label}</Text>

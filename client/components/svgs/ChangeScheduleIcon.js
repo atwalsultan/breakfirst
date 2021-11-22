@@ -1,6 +1,6 @@
 import * as React from "react";
 import Svg, { Path } from "react-native-svg";
-import { StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native';
 
 const ChangeScheduleIcon = () => {
     return (

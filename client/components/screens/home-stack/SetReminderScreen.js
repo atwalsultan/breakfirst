@@ -57,7 +57,7 @@ const SetReminderScreen = ({ navigation }) => {
         interval: 30,
         silentMode: silentMode,
         saveForNextTime: saveForNextTime,
-        label: "Sultan",
+        label: "Walk 100 metres",
       }),
     });
 
@@ -99,7 +99,9 @@ const SetReminderScreen = ({ navigation }) => {
         from={from}
       />
 
-      <TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("SetLabelScreen", { label: "My task" })}
+      >
         <Box style={styles.card}>
           <Text style={styles.cardTitle}>Label</Text>
           <ChevronRightIconTomatoFrog />
