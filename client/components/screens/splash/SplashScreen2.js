@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native'
+import React, { useEffect } from 'react';
+import { StyleSheet, Text } from 'react-native'
 import { Box } from 'native-base';
+import AppLogo from '../../svgs/AppLogo';
 
 const SplashScreen2 = ({ navigation }) => {
     useEffect(() => {
@@ -11,7 +12,10 @@ const SplashScreen2 = ({ navigation }) => {
 
     return (
         <Box safeAreaTop style={styles.container}>
-            <Text style={styles.text}>BreakFirst</Text>
+            <Box style={ styles.logoContainer }>
+                <AppLogo />
+            </Box>
+            <Text style={styles.text}>Please wait while we set up the app</Text>
         </Box>
     )
 }
@@ -24,8 +28,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center'
     },
+    logoContainer: {
+        marginBottom: 16,
+        alignSelf: 'center'
+    },
     text: {
-        fontSize: 25,
-        fontFamily: 'josefin-semi-bold',
+        fontSize: 16,
+        lineHeight: 22,
+        fontFamily: 'josefin-regular',
     }
 })

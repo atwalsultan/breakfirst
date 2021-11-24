@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, Text } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Box } from "native-base";
+import AppLogo from "../../svgs/AppLogo";
 
 const SplashScreen = ({ navigation }) => {
   const [user, setUser] = useState(null);
@@ -70,6 +71,9 @@ const SplashScreen = ({ navigation }) => {
 
   return (
     <Box safeAreaTop style={styles.container}>
+      <Box style={ styles.logoContainer }>
+        <AppLogo />
+      </Box>
       <Text style={styles.text}>BreakFirst</Text>
     </Box>
   );
@@ -82,6 +86,10 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     alignItems: "center",
     justifyContent: "center",
+  },
+  logoContainer: {
+    marginBottom: 16,
+    alignSelf: 'center'
   },
   text: {
     fontSize: 25,
