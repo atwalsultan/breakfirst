@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Box } from 'native-base';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -10,6 +10,7 @@ import ProfileImage from '../../svgs/ProfileImage';
 const ProfileScreen = ({ navigation }) => {
     const { user } = useUser();
     const [modal, setModal] = useState(false);
+    const [schedule, setSchedule] = useState(null);
 
     const logout = async () => {
         try {
@@ -21,6 +22,28 @@ const ProfileScreen = ({ navigation }) => {
             console.log(e);
         }
     }
+
+    const getSchedule = async () => {
+		const url = `http://192.168.1.92:8080/app/schedule?id=${user["id"]}`;
+		const response = await fetch(url, {
+			method: "GET",
+			headers: {
+				authorization: `Bearer ${user.token}`,
+			},
+		});
+
+		if (response.status == 200) {
+			const responseJson = await response.json();
+			setSchedule(responseJson);
+		} else {
+			const responseJson = await response.json();
+			console.log(responseJson);
+		}
+	};
+
+    useEffect(() => {
+		getSchedule();
+	}, []);
 
     return (
         <>
@@ -48,11 +71,13 @@ const ProfileScreen = ({ navigation }) => {
                         </Box>
                     </TouchableOpacity>
 
-                    <TouchableOpacity>
-                        <Box style={styles.card}>
-                            <Text style={styles.cardTitle}>Add daily schedule</Text>
-                        </Box>
-                    </TouchableOpacity>
+                    { !schedule && 
+                        <TouchableOpacity>
+                            <Box style={styles.card}>
+                                <Text style={styles.cardTitle}>Add daily schedule</Text>
+                            </Box>
+                        </TouchableOpacity>
+                    }
                     <TouchableOpacity>
 
                         <Box style={styles.card}>

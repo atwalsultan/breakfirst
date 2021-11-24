@@ -9,6 +9,7 @@ import NoScheduleCard from "../../cards/NoScheduleCard";
 import HomeScreenRoutineCard from "../../cards/HomeScreenRoutineCard";
 import AddIconTomatoFrog from "../../svgs/AddIconTomatoFrog";
 import BreakIcon from "../../svgs/BreakIcon";
+import HomeScreenGraphic from "../../svgs/HomeScreenGraphic";
 
 const HomeScreen = ({ navigation, schedulePushNotification }) => {
 	const { user } = useUser();
@@ -87,11 +88,14 @@ const HomeScreen = ({ navigation, schedulePushNotification }) => {
 				</TouchableOpacity>
 
 			<Box style={{ backgroundColor: '#FFFFFF', padding: 32, marginBottom: 32 }}>
+				<Box style={ styles.graphic }>
+					<HomeScreenGraphic/>
+				</Box>
 				<Box style={styles.sittingTimes}>
 					<Box style={styles.sittingTime}>
 						<Box style={[styles.marker, { backgroundColor: '#355C97' }]}></Box>
 						<Text style={styles.sittingTimeLabel}>Sitting</Text>
-						<Text style={styles.sittingTimeText}>6 H 35 M</Text>
+						<Text style={styles.sittingTimeText}>6 H 30 M</Text>
 					</Box>
 					<Box style={[styles.sittingTime, {marginHorizontal: 32}]}>
 						<Box style={[styles.marker, { backgroundColor: '#FC9C9E' }]}></Box>
@@ -162,6 +166,10 @@ const styles = StyleSheet.create({
 		paddingHorizontal: 16,
 		paddingTop: 34,
 		flex: 1,
+	},
+	graphic: {
+		alignItems: 'center',
+		marginBottom: 24
 	},
 	confirmButtonText: {
 		color: "#FFFFFF",
