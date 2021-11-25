@@ -2,7 +2,7 @@ import * as React from 'react';
 import { StyleSheet } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import ReportScreen from '../screens/stats-stack/ReportScreen';
-import GroupScreen from '../screens/stats-stack/GroupScreen';
+import GroupStack from '../stacks/GroupStack';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -19,7 +19,7 @@ const StatsTabs = () => {
             }}
         >
             <Tab.Screen name="Report" component={ReportScreen} options={{ tabBarLabel: "My Record" }} />
-            <Tab.Screen name="Group" component={GroupScreen} options={{ tabBarLabel: "My Groups" }} />
+            <Tab.Screen name="Groups" component={GroupStack} options={{ tabBarLabel: "My Groups" }} />
         </Tab.Navigator>
     )
 }

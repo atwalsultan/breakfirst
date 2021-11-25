@@ -1,8 +1,7 @@
 import * as React from "react";
 import Svg, { Path } from "react-native-svg";
-import { StyleSheet, Text, View } from 'react-native';
 
-const AddIconTomatoFrog = () => {
+const AddIconWhite = () => {
     return (
         <Svg
             width={24}
@@ -12,7 +11,7 @@ const AddIconTomatoFrog = () => {
         >
             <Path
                 d="M3 12h18M12 3v18"
-                stroke="#F94144"
+                stroke="#FFFFFF"
                 strokeWidth={2}
                 strokeMiterlimit={10}
                 strokeLinecap="round"
@@ -21,6 +20,4 @@ const AddIconTomatoFrog = () => {
     )
 }
 
-export default AddIconTomatoFrog
-
-const styles = StyleSheet.create({})
+export default AddIconWhite

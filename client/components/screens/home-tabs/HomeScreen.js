@@ -87,7 +87,7 @@ const HomeScreen = ({ navigation, schedulePushNotification }) => {
 					<Text style={styles.heading}>Today's sitting time</Text>
 				</TouchableOpacity>
 
-			<Box style={{ backgroundColor: '#FFFFFF', padding: 32, marginBottom: 32 }}>
+			<Box style={{ backgroundColor: '#FFFFFF', padding: 32, marginBottom: 32, borderRadius: 4 }}>
 				<Box style={ styles.graphic }>
 					<HomeScreenGraphic/>
 				</Box>
