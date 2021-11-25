@@ -10,6 +10,7 @@ const onboarding = require("./routes/onboarding");
 const schedule = require("./routes/schedule");
 const routine = require("./routes/routine");
 const contactForm = require("./routes/contact");
+const groups = require("./routes/groups");
 
 // CORS
 const cors = require("cors");
@@ -47,6 +48,7 @@ app.use("/app/exercises", exercises);
 app.use("/app/onboarding", onboarding);
 app.use("/app/schedule", schedule);
 app.use("/app/routine", routine);
+app.use("/app/groups", groups);
 
 // Specify port and listen
 app.listen(PORT, () => {
