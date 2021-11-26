@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Box } from 'native-base';
 
 import ProportionIcon from '../../svgs/ProportionIcon';
@@ -11,33 +11,33 @@ import StatsScreenGraphic from '../../svgs/StatsScreenGraphic';
 const ReportScreen = () => {
     return (
         <Box style={styles.container}>
-            <Box style={styles.dailyAverage}>
+            <TouchableOpacity style={styles.dailyAverage}>
                 <Text style={ styles.cardHeading }>Daily Average</Text>
                 <Text style={ styles.cardBigText }>6h 30m</Text>
                 <Box style={{ alignSelf:'center', marginTop: 20 }}>
                     <StatsScreenGraphic />
                 </Box>
-            </Box>
+            </TouchableOpacity>
 
             <Box style={styles.twoColumns}>
-                <Box style={[styles.column, { marginRight: 16 }]}>
+                <TouchableOpacity style={[styles.column, { marginRight: 16 }]}>
                     <Text style={ styles.cardHeading }>Proportion</Text>
                     <Box style={ styles.cardContent }>
                         <Text style={ [styles.cardBigText, { marginRight: 6 }] }>25%</Text>
                         <ProportionIcon />
                     </Box>
                     <Text style={ styles.cardSmallText }>* Proportion of sitting time</Text>
-                </Box>
-                <Box style={[styles.column]}>
+                </TouchableOpacity>
+                <TouchableOpacity style={[styles.column]}>
                     <Text style={ styles.cardHeading }>Your lifestyle</Text>
                     <Box style={ styles.cardContent }>
                         <SadFaceIcon />
                     </Box>
                     <Text style={ styles.cardSmallText }>* Medium risk</Text>
-                </Box>
+                </TouchableOpacity>
             </Box>
 
-            <Box style={styles.trends}>
+            <TouchableOpacity style={styles.trends}>
                 <Text style={ styles.cardHeading }>Trends</Text>
 
                 <Box style={ styles.trendsContent }>
@@ -59,7 +59,7 @@ const ReportScreen = () => {
                 </Box>
 
                 <Text style={ styles.cardSmallText }>* Compared to last week</Text>
-            </Box>
+            </TouchableOpacity>
         </Box>
     )
 }

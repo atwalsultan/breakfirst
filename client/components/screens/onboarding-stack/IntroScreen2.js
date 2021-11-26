@@ -4,6 +4,7 @@ import { Box } from 'native-base';
 
 import OBNextButton from '../../buttons/OBNextButton';
 import ChevronLeftIcon from '../../svgs/ChevronLeftIcon';
+import IntroScreen2Image from '../../svgs/IntroScreen2Image';
 
 const IntroScreen2 = ({ navigation }) => {
     return (
@@ -14,7 +15,9 @@ const IntroScreen2 = ({ navigation }) => {
                 <ChevronLeftIcon />
             </TouchableOpacity>
 
-            <Box style={styles.image}></Box>
+            <Box style={styles.image}>
+                <IntroScreen2Image />
+            </Box>
 
             <Text style={styles.h1}>Sit less and move more.</Text>
             <Text style={styles.text}>BreakFirst will help you relieve stress, minimize the risk of injury and improve your health. Set the reminder now!</Text>
@@ -47,9 +50,8 @@ const styles = StyleSheet.create({
         marginBottom: 25
     },
     image: {
-        height: '40%',
-        backgroundColor: 'rgba(0,0,0,0.05)',
         marginBottom: 32,
+        alignItems: 'center'
     },
     h1: {
         fontSize: 28,

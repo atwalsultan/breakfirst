@@ -16,8 +16,8 @@ const HomeScreen = ({ navigation, schedulePushNotification }) => {
 	const [schedule, setSchedule] = useState(null);
 	const [routines, setRoutines] = useState(null);
 	const [hours, setHours] = useState(1);
-	const [minutes, setMinutes] = useState(45);
-	const [seconds, setSeconds] = useState(8);
+	const [minutes, setMinutes] = useState(44);
+	const [seconds, setSeconds] = useState(59);
 
 	useEffect(() => {
 		const interval = setInterval(() => {

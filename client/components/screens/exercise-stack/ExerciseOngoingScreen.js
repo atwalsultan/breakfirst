@@ -29,8 +29,7 @@ export default function DetailsScreen({ navigation }) {
 		setValue(0)
 		DeviceMotion.addListener((devicemotionData) => {
 			if (devicemotionData.acceleration.y < -6 && valueRef.current - devicemotionData.acceleration.y >= 2) {
-				// console.log(1, devicemotionData.acceleration.y);
-				if(repsRef.current >= 3) {
+				if(repsRef.current >= 5) {
 					unsubscribe();
 					setFinished(true);
 				}

@@ -21,6 +21,7 @@ const HomeScreenRoutineCard = ({ navigation, routine, user }) => {
                     onTrackColor='#355C97'
                     onThumbColor='#FFFFFF'
                     offThumbColor='#F4F4F4'
+                    defaultIsChecked={true}
                 />
             </Box>
         </TouchableOpacity>

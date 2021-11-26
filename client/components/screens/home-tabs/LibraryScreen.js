@@ -20,7 +20,7 @@ const LibraryScreen = ({ navigation }) => {
                     navigation.navigate("LibraryStack", { screen: 'FactsScreen' });
                 }}>
                     <Box style={styles.sedantaryFacts}>
-                        <Text style={styles.sedantaryFactsText}>Know sedantary</Text>
+                        <Text style={styles.sedantaryFactsText}>More on a Sedentary Life</Text>
                         <ChevronRIghtIconTomatoFrog />
                     </Box>
                 </TouchableOpacity>

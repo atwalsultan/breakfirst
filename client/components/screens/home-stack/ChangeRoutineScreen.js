@@ -59,7 +59,7 @@ const ChangeRoutineScreen = ({ navigation, route }) => {
         from,
         interval: 30,
         silentMode: silentMode,
-        label: "Sultan",
+        label: "Exercise",
         saveForNextTime: saveForNextTime,
       }),
     });

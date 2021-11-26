@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Box } from 'native-base';
 
@@ -7,20 +7,50 @@ import InclineTrendIcon from '../svgs/InclineTrendIcon';
 import HappyFaceIcon from '../svgs/HappyFaceIcon';
 
 const LeaderboardCard = ({ member, index }) => {
-    return (
-        <TouchableOpacity style={styles.leaderBoardCard}>
-            <Text style={styles.cardIndex}>{index + 1}</Text>
-            <Box style={styles.profilePic}></Box>
+    const [active, setActive] = useState(false)
 
-            <Box style={styles.memberInfo}>
-                <Text style={styles.memberName}>{member.name}</Text>
-                <Box style={styles.memberScoreInfo}>
-                    <Text style={styles.memberScoreInfoText}>{member.points} pts</Text>
-                    <ProportionIcon />
-                    <InclineTrendIcon />
-                    <HappyFaceIcon />
+    return (
+        <TouchableOpacity style={styles.leaderBoardCard} onPress={() => setActive(!active)}>
+            <Box style={styles.inactiveCard}>
+                <Text style={styles.cardIndex}>{index + 1}</Text>
+                <Box style={styles.profilePic}></Box>
+
+                <Box style={styles.memberInfo}>
+                    <Text style={styles.memberName}>{member.name}</Text>
+                    <Box style={styles.memberScoreInfo}>
+                        <Text style={styles.memberScoreInfoText}>{member.points} pts</Text>
+                        {
+                            !active && 
+                            <>
+                                <ProportionIcon />
+                                <InclineTrendIcon />
+                                <HappyFaceIcon />
+                            </>
+                        }
+                    </Box>
                 </Box>
             </Box>
+
+            { 
+                active && 
+                <Box style={ styles.activeInfo }>
+                    <Box style={ styles.activeInfoColoumn }>
+                        <ProportionIcon />
+                        <Text style={ styles.activeInfoTextPrimary }>Average sitting time</Text>
+                        <Text style={ styles.activeInfoTextSecondary }>25%</Text>
+                    </Box>
+                    <Box style={ styles.activeInfoColoumn }>
+                        <InclineTrendIcon />
+                        <Text style={ styles.activeInfoTextPrimary }>Compared to last week</Text>
+                        <Text style={ styles.activeInfoTextSecondary }>34%</Text>
+                    </Box>
+                    <Box style={ styles.activeInfoColoumn }>
+                        <HappyFaceIcon />
+                        <Text style={ styles.activeInfoTextPrimary }>Lifestyle assessment</Text>
+                        <Text style={ styles.activeInfoTextSecondary }>Healthy</Text>
+                    </Box>
+                </Box>
+            }
         </TouchableOpacity>
     )
 }
@@ -33,6 +63,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: 16,
         backgroundColor: '#FFFFFF',
         marginBottom: 16,
+    },
+    inactiveCard: {
         flexDirection: 'row',
         alignItems: 'center',
     },
@@ -64,5 +96,28 @@ const styles = StyleSheet.create({
         fontFamily: 'josefin-regular',
         color: 'rgba(20, 35, 57, 0.6)',
         marginRight: 16
+    },
+    activeInfo: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        marginTop: 16
+    },
+    activeInfoColoumn: {
+        alignItems: 'center',
+        flexBasis: 1,
+        flexGrow: 1
+    },
+    activeInfoTextPrimary: {
+        fontSize: 16,
+        fontFamily: 'josefin-regular',
+        marginTop: 16,
+        marginBottom: 6,
+        textAlign: 'center'
+    },
+    activeInfoTextSecondary: {
+        fontSize: 16,
+        fontFamily: 'josefin-regular',
+        color: '#355C97'
     }
 })
