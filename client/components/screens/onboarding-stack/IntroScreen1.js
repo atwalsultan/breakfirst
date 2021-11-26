@@ -1,12 +1,16 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Box } from 'native-base';
+
 import OBNextButton from '../../buttons/OBNextButton';
+import IntroScreen1Image from '../../svgs/IntroScreen1Image';
 
 const IntroScreen1 = ({ navigation }) => {
     return (
         <Box style={styles.container} safeAreaTop>
-            <Box style={styles.image}></Box>
+            <Box style={ styles.image }>
+                <IntroScreen1Image />
+            </Box>
 
             <Text style={styles.h1}>Did you know this?</Text>
             <Text style={styles.text}>A sedentary lifestyle increases all causes of mortality, while moving just 2 minutes every hour can decrease the risk by up to 33%</Text>
@@ -36,9 +40,8 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     image: {
-        height: '40%',
-        backgroundColor: 'rgba(0,0,0,0.05)',
-        marginBottom: 32,
+        marginVertical: 32,
+        alignItems: 'center'
     },
     h1: {
         fontSize: 28,

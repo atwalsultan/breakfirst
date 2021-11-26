@@ -6,6 +6,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useUser } from '../../contexts/UserContext';
 import LogoutModal from '../../modals/LogoutModal';
 import ProfileImage from '../../svgs/ProfileImage';
+import ChangeScheduleIcon from '../../svgs/ChangeScheduleIcon';
+import NotificationIcon from '../../svgs/NotificationIcon';
+import ScheduleIcon from '../../svgs/ScheduleIcon';
+import LogoutIcon from '../../svgs/LogoutIcon';
 
 const ProfileScreen = ({ navigation }) => {
     const { user } = useUser();
@@ -53,8 +57,9 @@ const ProfileScreen = ({ navigation }) => {
                 <Box style={styles.overview}>
                     <ProfileImage />
 
-                    <Box>
+                    <Box style={ styles.nameContainer }>
                         <Text style={styles.name}>{ user.username }</Text>
+                        <TouchableOpacity><ChangeScheduleIcon /></TouchableOpacity>
                     </Box>
 
                     <Box>
@@ -67,6 +72,7 @@ const ProfileScreen = ({ navigation }) => {
 
                     <TouchableOpacity>
                         <Box style={styles.card}>
+                            <NotificationIcon />
                             <Text style={styles.cardTitle}>Notifications</Text>
                         </Box>
                     </TouchableOpacity>
@@ -74,16 +80,17 @@ const ProfileScreen = ({ navigation }) => {
                     { !schedule && 
                         <TouchableOpacity>
                             <Box style={styles.card}>
+                                <ScheduleIcon />
                                 <Text style={styles.cardTitle}>Add daily schedule</Text>
                             </Box>
                         </TouchableOpacity>
                     }
-                    <TouchableOpacity>
 
+                    {/* <TouchableOpacity>
                         <Box style={styles.card}>
                             <Text style={styles.cardTitle}>Group management</Text>
                         </Box>
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                 </Box>
 
                 <Text style={styles.settingsHeading}>Account</Text>
@@ -91,6 +98,7 @@ const ProfileScreen = ({ navigation }) => {
                     setModal(true);
                 }}>
                     <Box style={styles.card}>
+                        <LogoutIcon />
                         <Text style={styles.cardTitle}>Log out { user.username }</Text>
                     </Box>
                 </TouchableOpacity>
@@ -118,10 +126,15 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginBottom: 32
     },
+    nameContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
     name: {
         fontSize: 18,
         fontFamily: 'josefin-regular',
-        marginBottom: 6
+        marginBottom: 6,
+        marginRight: 6
     },
     email: {
         fontSize: 16,
@@ -143,12 +156,12 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFFFFF',
         borderRadius: 4,
         flexDirection: 'row',
-        justifyContent: 'space-between',
         alignItems: 'center',
         marginBottom: 16
     },
     cardTitle: {
         fontSize: 18,
         fontFamily: 'josefin-regular',
+        marginLeft: 6
     },
 })

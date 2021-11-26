@@ -57,7 +57,7 @@ const SetReminderScreen = ({ navigation }) => {
         interval: 30,
         silentMode: silentMode,
         saveForNextTime: saveForNextTime,
-        label: "Walk 100 metres",
+        label: "Exercise",
       }),
     });
 
