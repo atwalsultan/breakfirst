@@ -15,7 +15,7 @@ import SignupImage from "../../svgs/SignupImage";
 const SignupScreen = ({ navigation }) => {
   const [email, setEmail] = useState("sultan.singh.atwal@gmail.com");
   const [password, setPassword] = useState("sultan");
-  const [username, setUsername] = useState("sultan");
+  const [username, setUsername] = useState("atwalsultan");
   const [hideImage, setHideImage] = useState(false);
 
   const signup = async () => {
@@ -105,6 +105,7 @@ const SignupScreen = ({ navigation }) => {
       <TextInput
         placeholder="Confirm Password"
         secureTextEntry={true}
+        value={"sultan"}
         style={styles.input}
       />
 

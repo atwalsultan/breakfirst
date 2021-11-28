@@ -19,7 +19,7 @@ const HomeScreenScheduleCard = ({ schedule, navigation, user }) => {
     return (
         <>
             <Box style={styles.header}>
-                <Text style={ styles.scheduleHeading }>My dailly schedule</Text>
+                <Text style={ styles.scheduleHeading }>My daily schedule</Text>
                 <TouchableOpacity style={ styles.changeScheduleIcon } onPress={() => navigation.navigate('HomeStack', { screen: 'ChangeScheduleScreen', params: { schedule: schedule, user: user } })}>
                     <ChangeScheduleIcon />
                 </TouchableOpacity>
