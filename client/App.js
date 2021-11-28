@@ -16,8 +16,8 @@ import { navigationRef } from "./rootNavigation";
 async function schedulePushNotification() {
   await Notifications.scheduleNotificationAsync({
     content: {
-      title: "Here is the notification header",
-      body: "Here is the notification body",
+      title: "Break Reminder!",
+      body: "Exercise",
       data: { screen: "Features" },
     },
     trigger: { seconds: 2 },

@@ -28,7 +28,7 @@ const UserSchema = new Schema({
     workspace: {
       type:Number,
       required:true,
-    }
+    },
 });
 
 UserSchema.pre('save', async function(next){

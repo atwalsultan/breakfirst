@@ -8,10 +8,10 @@ export default function FeaturesScreen({ navigation }) {
 			<Box
 				style={styles.image}
 			></Box>
-			<Text style={styles.h1}>Body twister</Text>
-			<Text style={styles.text}>Hold your phone with two hands. Don’t bend your elbows. Twist your upper body left and right. Keep your knees forward.
+			<Text style={styles.h1}>Wing Flap</Text>
+			<Text style={styles.text}>Hold your phone in one hand. Don’t bend your elbows. Raise your arm to the side of your body.
 			</Text>
-			<Text style={styles.blue}>Click start and the app will begin to detect yout motion and record your exercise.</Text>
+			<Text style={styles.blue}>Click the button below and the app will start tracking your movements.</Text>
 			<TouchableOpacity
 				style={styles.exerciseButton}
 				onPress={() => {

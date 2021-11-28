@@ -18,7 +18,7 @@ const LeaderboardCard = ({ member, index }) => {
                 <Box style={styles.memberInfo}>
                     <Text style={styles.memberName}>{member.name}</Text>
                     <Box style={styles.memberScoreInfo}>
-                        <Text style={styles.memberScoreInfoText}>10 pts</Text>
+                        <Text style={styles.memberScoreInfoText}>{ 5 * (10 - index) - 15} pts</Text>
                         {
                             !active && 
                             <>

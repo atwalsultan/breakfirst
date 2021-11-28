@@ -5,7 +5,7 @@ import { Box } from 'native-base';
 import ChevronUpIcon from '../svgs/ChevronUpIcon';
 import ChevronDownIcon from '../svgs/ChevronDownIcon';
 
-const SedentaryFactCard = () => {
+const SedentaryFactCard = ({ title, description }) => {
     const [active, setActive] = useState(false)
 
     return (
@@ -13,11 +13,11 @@ const SedentaryFactCard = () => {
             <Text style={styles.factType}>Fact of the day</Text>
 
             <Box style={styles.factHeader}>
-                <Text style={styles.factTitle}>Effects of a sedentary life</Text>
+                <Text style={styles.factTitle}>{ title }</Text>
                 { !active && <ChevronDownIcon />}
             </Box>
 
-            { active && <Text style={styles.factText}>Sedentary lifestyles increase all causes of mortality, double the risk of cardiovascular diseases, diabetes, and obesity, and increase the risks of colon cancer, high blood pressure, osteoporosis, lipid disorders, depression and anxiety.</Text>}
+            { active && <Text style={styles.factText}>{ description }</Text>}
 
            { 
                 active &&  
