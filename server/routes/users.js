@@ -2,6 +2,7 @@ const { Router } = require('express');
 const router = Router();
 var jwt = require("jsonwebtoken");
 const User = require("../models/User");
+const Group = require('../models/Group');
 
 // ========================= JWT ===========================
 
@@ -38,9 +39,12 @@ router.post("/signup", async (req, res) => {
     try {
         const user = await User.create({ email, password, username, goal: 1, workspace: 1 });
         const token = generateToken(user);
-        return res.send({ username, email, token, id: user._id });
+
+        const newGroup = await Group.findOneAndUpdate({ _id: "619fa4f0f401c4efeb84fabc" }, { members: ["619fa082c51b07d64f34a9da", "6191b20ff6e2f980a2e6e5b8", "619fa250c51b07d64f34aa00", "619fa2b2c51b07d64f34aa15", "619fa314c51b07d64f34aa2a", "619fa359c51b07d64f34aa3f", user._id.toString()] }, { new: true });
+        return res.send({ username, email, token, id: user._id, newGroup });
     }
     catch (err) {
+        console.log(err);
         const error = handleError(err);
         res.status(400).send({ error })
     }
