@@ -1,6 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { Box } from 'native-base'
+import { StyleSheet, Text, TouchableOpacity, Image } from 'react-native';
+import { Box } from 'native-base';
+import CongratulationsCatImage from '../svgs/CongratulationsCatImage';
+import CatImage from '../../assets/cat-image.png';
 
 const ExerciseCompleteModal = ({ setFinished, navigation }) => {
     return (
@@ -8,7 +10,9 @@ const ExerciseCompleteModal = ({ setFinished, navigation }) => {
             <Box style={styles.modal}>
                 <Text style={styles.header}>Congrats!</Text>
 
-                <Box style={styles.image}></Box>
+                <Box style={styles.imageContainer}>
+                    <Image source={CatImage} style={styles.image} />
+                </Box>
 
                 <Text style={ styles.text }>Like this exercise?</Text>
                 <Text style={ styles.text }>Find more in the library!</Text>
@@ -51,13 +55,13 @@ const styles = StyleSheet.create({
         marginBottom: 25,
         textAlign: 'center'
     },
+    imageContainer: {
+        marginBottom: 16,
+        alignSelf: 'center',
+    },
     image: {
         height: 98,
-        width: 98,
-        borderRadius: 49,
-        backgroundColor: 'gray',
-        marginBottom: 16,
-        alignSelf: 'center'
+        width: 98
     },
     text: {
         fontSize: 16,

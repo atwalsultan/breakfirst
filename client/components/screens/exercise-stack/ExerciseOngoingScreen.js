@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import { Box } from 'native-base';
 import { StyleSheet, Text, TouchableOpacity} from "react-native";
 import { DeviceMotion } from 'expo-sensors';
+import CircularProgress from 'react-native-circular-progress-indicator';
 
 import ExerciseCompleteModal from '../../modals/ExerciseCompleteModal';
 
@@ -62,13 +63,24 @@ export default function DetailsScreen({ navigation }) {
 				>
 					<Text style={styles.rightText}>Skip</Text>
 				</TouchableOpacity>
-				<Box
-					style={styles.image}
-				></Box>
-				<Text style={styles.h1}>{reps}</Text>
-				<Box
-					style={styles.image}
-				></Box>
+
+				<Box style={ styles.screenContent }>
+					<Box style={ styles.image }></Box>
+
+					<Text style={ styles.h1 }>Wing Flap</Text>
+
+					<CircularProgress 
+						value={reps * 20}
+						textStyle={{ display: 'none' }} 
+						activeStrokeColor="#0CD9B4" 
+						inActiveStrokeColor="#C4C4C4" 
+						title={ reps < 1 ? "Start!" : "Keep going!"} 
+						titleColor="#142339" 
+						titleFontSize={18} 
+						titleStyle={{ fontFamily: 'josefin-regular' }} 
+						radius={85} 
+					/>
+				</Box>
 			</Box>
 
 			{finished && <ExerciseCompleteModal setFinished={setFinished} navigation={navigation} />}
@@ -84,38 +96,25 @@ const styles = StyleSheet.create({
 		paddingTop: 68,
 		flex: 1,
 	},
-	image: {
-		height: 175,
-		width: 175,
-		borderRadius: 87.5,
-		alignSelf: "center",
-		backgroundColor: "rgba(0,0,0,0.05)",
-		marginBottom: 32,
-	},
-	h1: {
-		fontSize: 28,
-		fontFamily: "josefin-bold",
-		textAlign: "center",
-		marginBottom: 8,
-	},
-	text: {
-		fontSize: 18,
-		fontFamily: "josefin-regular",
-		textAlign: "center",
-		marginBottom: 32,
-	},
-	blue: {
-		color: '#355C97',
-		fontSize: 18,
-		fontFamily: "josefin-regular",
-		textAlign: "center",
-		marginBottom: 32,
-	},
 	rightText: {
 		fontSize: 16,
 		fontFamily: "josefin-regular",
 		textAlign: "right",
 
 	},
-
+	screenContent: {
+		alignItems: 'center',
+		marginTop: 24
+	},
+	image: {
+		height: 275,
+		width: '100%',
+		backgroundColor: 'rgba(0,0,0,0.1)',
+		marginBottom: 48
+	},
+	h1: {
+		fontSize: 22,
+		fontFamily: 'josefin-semi-bold',
+		marginBottom: 52
+	}
 });
