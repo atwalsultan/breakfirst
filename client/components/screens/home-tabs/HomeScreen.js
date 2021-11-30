@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, ScrollView, TouchableOpacity } from "react-native";
 import { Box } from "native-base";
 import { useIsFocused } from "@react-navigation/native";
+import { CircularProgressWithChild } from 'react-native-circular-progress-indicator';
 
 import { useUser } from "../../contexts/UserContext";
 import HomeScreenScheduleCard from "../../cards/HomeScreenScheduleCard";
@@ -9,7 +10,6 @@ import NoScheduleCard from "../../cards/NoScheduleCard";
 import HomeScreenRoutineCard from "../../cards/HomeScreenRoutineCard";
 import AddIconTomatoFrog from "../../svgs/AddIconTomatoFrog";
 import BreakIcon from "../../svgs/BreakIcon";
-import HomeScreenGraphic from "../../svgs/HomeScreenGraphic";
 
 const HomeScreen = ({ navigation, schedulePushNotification }) => {
 	const { user } = useUser();
@@ -29,7 +29,7 @@ const HomeScreen = ({ navigation, schedulePushNotification }) => {
 	useEffect(() => {
 		if(seconds === 0) {
 			setMinutes(minutes => minutes - 1);
-			setSeconds(60);
+			setSeconds(59);
 
 			if(minutes === 0) {
 				setMinutes(59);
@@ -87,9 +87,13 @@ const HomeScreen = ({ navigation, schedulePushNotification }) => {
 					<Text style={styles.heading}>Today's sitting time</Text>
 				</TouchableOpacity>
 
-			<Box style={{ backgroundColor: '#FFFFFF', padding: 32, marginBottom: 32, borderRadius: 4 }}>
-				<Box style={ styles.graphic }>
-					<HomeScreenGraphic/>
+			<Box style={{ backgroundColor: '#FFFFFF', padding: 32, marginBottom: 32, borderRadius: 4, maxHeight: 365 }}>
+				<Box style={ [styles.graphic, {alignSelf: 'center', width: 190, overflow: 'hidden', transform: [{ rotate: "-90deg" }]}] }>
+					<CircularProgressWithChild delay={500} value={45} valueSuffix={"Keep Going"} radius={95} inActiveStrokeColor="#FFFFFF" activeStrokeColor="#355C97" textStyle={{ display: 'none' }}>
+						<CircularProgressWithChild delay={500} value={40} valueSuffix={"Keep Going"} radius={78} inActiveStrokeColor="#FFFFFF" activeStrokeColor="#FC9C9E" textStyle={{ display: 'none' }}>
+						<CircularProgressWithChild delay={500} value={50} valueSuffix={"Keep Going"} radius={61} inActiveStrokeColor="#FFFFFF" activeStrokeColor="#F94144" textStyle={{ display: 'none' }} />
+						</CircularProgressWithChild>
+					</CircularProgressWithChild>
 				</Box>
 				<Box style={styles.sittingTimes}>
 					<Box style={styles.sittingTime}>
@@ -195,6 +199,10 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		justifyContent: 'center',
 		marginBottom: 24,
+		position: 'relative',
+		backgroundColor: '#FFFFFF',
+		paddingTop: 24,
+		top: -105,
 	},
 	sittingTime: {
 		alignItems: 'center'
@@ -218,6 +226,10 @@ const styles = StyleSheet.create({
 	nextBreak: {
 		alignSelf: "center",
 		alignItems: "center",
+		position: 'relative',
+		backgroundColor: '#FFFFFF',
+		// paddingTop: 24,
+		top: -105,
 	},
 	nextBreakLabel: {
 		fontSize: 14,
@@ -233,6 +245,7 @@ const styles = StyleSheet.create({
 		fontSize: 28,
 		fontFamily: "josefin-regular",
 		marginLeft: 8,
+		width: 160
 	},
 	mySchedules: {},
 	mySchedulesHeading: {
