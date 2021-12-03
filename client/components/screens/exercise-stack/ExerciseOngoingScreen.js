@@ -30,16 +30,21 @@ export default function DetailsScreen({ navigation }) {
 	const subscribe = () => {
 		setValue(0)
 		DeviceMotion.addListener((devicemotionData) => {
-			if (devicemotionData.acceleration.y < -6 && valueRef.current - devicemotionData.acceleration.y >= 2) {
-				if(repsRef.current >= 5) {
-					unsubscribe();
-					setFinished(true);
+			try {
+				if (devicemotionData.acceleration.y < -6 && valueRef.current - devicemotionData.acceleration.y >= 2) {
+					if(repsRef.current >= 5) {
+						unsubscribe();
+						setFinished(true);
+					}
+					else {
+						setReps(repsRef.current + 1);
+					}
 				}
-				else {
-					setReps(repsRef.current + 1);
-				}
+				setValue(devicemotionData.acceleration.y);
 			}
-			setValue(devicemotionData.acceleration.y);
+			catch(error) {
+				console.log(e);
+			}
 		});
 
 		DeviceMotion.setUpdateInterval(500);
