@@ -81,6 +81,6 @@ const styles = StyleSheet.create({
     },
     picker: {
         height: 40,
-        width: '80%',
+        width: '100%',
     }
 })

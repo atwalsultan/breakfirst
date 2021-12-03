@@ -12,7 +12,7 @@ const LeaderboardScreen = ({ route, navigation }) => {
     const [members, setMembers] = useState([]);
 
     const getMemberData = async () => {
-        const response = await fetch("http://192.168.1.92:8080/app/groups/members", {
+        const response = await fetch("http://3.98.75.199/app/groups/members", {
             method: "POST",
             headers: {
                 "authorization": `Bearer ${user.token}`,

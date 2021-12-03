@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Box } from 'native-base';
 
 import ExerciseUnsavedIcon from '../svgs/ExerciseUnsavedIcon';
 import ExerciseSavedIcon from '../svgs/ExerciseSavedIcon';
+import WingFlap from '../../assets/wing-flap.gif';
+import LockClosedIcon from '../svgs/LockClosedIcon';
 
 const ExerciseCard = ({ exercise, index, navigation }) => {
     const [saved, setSaved] = useState(false)
@@ -11,18 +13,32 @@ const ExerciseCard = ({ exercise, index, navigation }) => {
     return (
         <Box style={[styles.exerciseCard, index % 2 !== 0 && { marginLeft: 16 }]}>
             <TouchableOpacity onPress={() => {
-                navigation.navigate("LibraryStack", { screen: 'ExerciseDetailsScreen', params: { exercise } });
+                if(index < 2) {
+                    navigation.navigate("LibraryStack", { screen: 'ExerciseDetailsScreen', params: { exercise } });
+                }
             }}>
-                <Box style={ styles.exerciseImage }></Box>
+                <Box style={ styles.exerciseImage }>
+                    <Image source={WingFlap} resizeMode="contain" style={{ height: undefined, width: undefined, flex: 1 }} />
+                    {
+                        index > 1 && 
+                        <Box style={ styles.lockedExerciseTextContainer }>
+                            <Text style={ styles.lockedExerciseText }>Earn { index * 10 } points to unlock this exercise.</Text>
+                        </Box>
+                    }
+                </Box>
                 <Box style={ styles.exerciseInfo }>
                     <Box>
                         <Text style={ styles.exerciseName }>{ exercise.name }</Text>
                         <Text style={ styles.time }>1 min approx.</Text>
                     </Box>
 
-                    <TouchableOpacity onPress={ () => setSaved(!saved) }>
-                        { !saved ? <ExerciseUnsavedIcon /> : <ExerciseSavedIcon />}
-                    </TouchableOpacity>
+                    { index < 2 ?
+                        <TouchableOpacity onPress={ () => setSaved(!saved) }>
+                            { !saved ? <ExerciseUnsavedIcon /> : <ExerciseSavedIcon />}
+                        </TouchableOpacity>
+                        :
+                        <LockClosedIcon />
+                    }
                 </Box>
             </TouchableOpacity>
         </Box>
@@ -44,8 +60,8 @@ const styles = StyleSheet.create({
         height: 125,
         width: '100%',
         flexGrow: 1,
-        backgroundColor: 'rgba(0,0,0,0.1)',
-        marginBottom: 12
+        marginBottom: 12,
+        justifyContent: 'center'
     },
     exerciseInfo: {
         flexDirection: 'row',
@@ -66,5 +82,17 @@ const styles = StyleSheet.create({
         fontSize: 14,
         fontFamily: 'josefin-regular',
         color: 'rgba(20, 35, 57, 0.6)'
+    },
+    lockedExerciseTextContainer: {
+        position: 'absolute',
+        height: '100%',
+        justifyContent: 'center',
+        backgroundColor: 'rgba(256, 256, 256, 0.95)'
+    },
+    lockedExerciseText: {
+        fontSize: 14,
+        fontFamily: 'josefin-regular',
+        color: '#1B2F4D',
+        textAlign: 'center'
     }
 })

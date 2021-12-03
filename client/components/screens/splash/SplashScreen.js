@@ -37,7 +37,7 @@ const SplashScreen = ({ navigation }) => {
 
   // Check if user is already logged in and token is valid
   const verifyUser = async () => {
-    const url = "http://192.168.1.92:8080/app/exercises";
+    const url = "http://3.98.75.199/app/exercises";
     const response = await fetch(url, {
       method: "GET",
       headers: {
