@@ -15,8 +15,8 @@ const HomeScreen = ({ navigation, schedulePushNotification }) => {
 	const { user } = useUser();
 	const [schedule, setSchedule] = useState(null);
 	const [routines, setRoutines] = useState(null);
-	const [hours, setHours] = useState(1);
-	const [minutes, setMinutes] = useState(44);
+	const [hours, setHours] = useState(0);
+	const [minutes, setMinutes] = useState(59);
 	const [seconds, setSeconds] = useState(59);
 
 	useEffect(() => {
@@ -39,7 +39,7 @@ const HomeScreen = ({ navigation, schedulePushNotification }) => {
 	}, [seconds, minutes])
 
 	const getSchedule = async () => {
-		const url = `http://192.168.1.92:8080/app/schedule?id=${user["id"]}`;
+		const url = `http://3.98.75.199/app/schedule?id=${user["id"]}`;
 		const response = await fetch(url, {
 			method: "GET",
 			headers: {
@@ -57,7 +57,7 @@ const HomeScreen = ({ navigation, schedulePushNotification }) => {
 	};
 
 	const getRoutines = async () => {
-		const url = `http://192.168.1.92:8080/app/routine/?id=${user["id"]}`;
+		const url = `http://3.98.75.199/app/routine/?id=${user["id"]}`;
 		const response = await fetch(url, {
 			method: "GET",
 			headers: {
@@ -89,9 +89,9 @@ const HomeScreen = ({ navigation, schedulePushNotification }) => {
 
 			<Box style={{ backgroundColor: '#FFFFFF', padding: 32, marginBottom: 32, borderRadius: 4, maxHeight: 365 }}>
 				<Box style={ [styles.graphic, {alignSelf: 'center', width: 190, overflow: 'hidden', transform: [{ rotate: "-90deg" }]}] }>
-					<CircularProgressWithChild delay={500} value={45} valueSuffix={"Keep Going"} radius={95} inActiveStrokeColor="#FFFFFF" activeStrokeColor="#355C97" textStyle={{ display: 'none' }}>
-						<CircularProgressWithChild delay={500} value={40} valueSuffix={"Keep Going"} radius={78} inActiveStrokeColor="#FFFFFF" activeStrokeColor="#FC9C9E" textStyle={{ display: 'none' }}>
-						<CircularProgressWithChild delay={500} value={50} valueSuffix={"Keep Going"} radius={61} inActiveStrokeColor="#FFFFFF" activeStrokeColor="#F94144" textStyle={{ display: 'none' }} />
+					<CircularProgressWithChild delay={500} duration={750} value={45} valueSuffix={"Keep Going"} radius={95} inActiveStrokeColor="#FFFFFF" activeStrokeColor="#355C97" textStyle={{ display: 'none' }}>
+						<CircularProgressWithChild delay={750} value={40} duration={750} valueSuffix={"Keep Going"} radius={78} inActiveStrokeColor="#FFFFFF" activeStrokeColor="#FC9C9E" textStyle={{ display: 'none' }}>
+						<CircularProgressWithChild delay={1000} value={50} duration={750} valueSuffix={"Keep Going"} radius={61} inActiveStrokeColor="#FFFFFF" activeStrokeColor="#F94144" textStyle={{ display: 'none' }} />
 						</CircularProgressWithChild>
 					</CircularProgressWithChild>
 				</Box>
@@ -228,7 +228,6 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 		position: 'relative',
 		backgroundColor: '#FFFFFF',
-		// paddingTop: 24,
 		top: -105,
 	},
 	nextBreakLabel: {

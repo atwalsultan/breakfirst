@@ -8,7 +8,7 @@ const OBNextButton = ({ navigation, next, selected }) => {
   const { user } = useUser();
 
   const updateGoal = async () => {
-    const url = "http://192.168.1.92:8080/app/onboarding/goal";
+    const url = "http://3.98.75.199/app/onboarding/goal";
     const response = await fetch(url, {
       method: "PATCH",
       headers: {
@@ -30,7 +30,7 @@ const OBNextButton = ({ navigation, next, selected }) => {
   };
 
   const updateWorkspace = async () => {
-    const url = "http://192.168.1.92:8080/app/onboarding/workspace";
+    const url = "http://3.98.75.199/app/onboarding/workspace";
     const response = await fetch(url, {
       method: "PATCH",
       headers: {

@@ -1,10 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { Box } from 'native-base';
-import { StyleSheet, Text, TouchableOpacity} from "react-native";
+import { StyleSheet, Text, TouchableOpacity, Image } from "react-native";
 import { DeviceMotion } from 'expo-sensors';
 import CircularProgress from 'react-native-circular-progress-indicator';
 
 import ExerciseCompleteModal from '../../modals/ExerciseCompleteModal';
+import WingFlap from '../../../assets/wing-flap.gif';
 
 export default function DetailsScreen({ navigation }) {
 	const [finished, setFinished] = useState(false);
@@ -65,7 +66,9 @@ export default function DetailsScreen({ navigation }) {
 				</TouchableOpacity>
 
 				<Box style={ styles.screenContent }>
-					<Box style={ styles.image }></Box>
+					<Box style={ styles.image }>
+						<Image source={WingFlap} resizeMode="contain" style={{ height: undefined, width: undefined, flex: 1 }} />
+					</Box>
 
 					<Text style={ styles.h1 }>Wing Flap</Text>
 
@@ -95,6 +98,7 @@ const styles = StyleSheet.create({
 		paddingBottom: 8,
 		paddingTop: 68,
 		flex: 1,
+		backgroundColor: '#FFFFFF'
 	},
 	rightText: {
 		fontSize: 16,
@@ -104,12 +108,13 @@ const styles = StyleSheet.create({
 	},
 	screenContent: {
 		alignItems: 'center',
-		marginTop: 24
+		marginTop: 24,
 	},
 	image: {
-		height: 275,
+		height: "40%",
 		width: '100%',
-		backgroundColor: 'rgba(0,0,0,0.1)',
+		backgroundColor: '#FFFFFF',
+		paddingVertical: 8,
 		marginBottom: 48
 	},
 	h1: {

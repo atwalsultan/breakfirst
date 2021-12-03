@@ -11,7 +11,7 @@ const GroupScreen = ({ navigation }) => {
     const [groups, setGroups] = useState([])
 
     const getGroups = async () => {
-        const url = "http://192.168.1.92:8080/app/groups";
+        const url = "http://3.98.75.199/app/groups";
         const response = await fetch(url, {
             method: "GET",
             headers: {

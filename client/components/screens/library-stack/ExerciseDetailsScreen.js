@@ -1,8 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Box } from 'native-base';
 
 import ChevronLeftIcon from '../../svgs/ChevronLeftIcon';
+import WingFlap from '../../../assets/wing-flap.gif';
 
 const ExerciseDetailsScreen = ({ route, navigation }) => {
     const exercise = route.params.exercise;
@@ -17,7 +18,9 @@ const ExerciseDetailsScreen = ({ route, navigation }) => {
                 <ChevronLeftIcon />
             </TouchableOpacity>
 
-            <Box style={styles.exerciseImage}></Box>
+            <Box style={styles.exerciseImage}>
+                <Image source={WingFlap} resizeMode="contain" style={{ height: undefined, width: undefined, flex: 1 }} />
+            </Box>
 
             <Text style={styles.exerciseTitle}>{exercise.name}</Text>
             <Text style={styles.exerciseDescription}>{exercise.description}</Text>
@@ -38,10 +41,12 @@ const styles = StyleSheet.create({
         paddingHorizontal: 16,
         paddingTop: 34,
         flex: 1,
+        backgroundColor: '#FFFFFF'
     },
     exerciseImage: {
         height: '40%',
-        backgroundColor: 'rgba(0,0,0,0.06)',
+        backgroundColor: '#FFFFFF',
+        paddingVertical: 8,
         marginBottom: 24,
     },
     exerciseTitle: {

@@ -1,13 +1,15 @@
 import React from 'react'
 import { Box } from 'native-base';
-import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity } from "react-native";
+
+import WingFlap from '../../../assets/wing-flap.gif';
 
 export default function FeaturesScreen({ navigation }) {
 	return (
 		<Box style={styles.container} safeAreaTop>
-			<Box
-				style={styles.image}
-			></Box>
+			<Box style={styles.image}>
+				<Image source={WingFlap} resizeMode="contain" style={{ height: undefined, width: undefined, flex: 1 }} />
+			</Box>
 			<Text style={styles.h1}>Wing Flap</Text>
 			<Text style={styles.text}>Hold your phone in one hand. Don’t bend your elbows. Raise your arm to the side of your body.
 			</Text>
@@ -30,14 +32,13 @@ const styles = StyleSheet.create({
 		paddingBottom: 8,
 		paddingTop: 68,
 		flex: 1,
+		backgroundColor: '#FFFFFF'
 	},
 	image: {
-		height: 175,
-		width: 175,
-		borderRadius: 87.5,
-		alignSelf: "center",
-		backgroundColor: "rgba(0,0,0,0.05)",
+		height: "40%",
+		backgroundColor: "#FFFFFF",
 		marginBottom: 32,
+		paddingVertical: 8
 	},
 	h1: {
 		fontSize: 28,
