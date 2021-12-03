@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "client",
-    "slug": "client",
-    "version": "1.0.0",
+    "name": "BreakFirst",
+    "slug": "BreakFirst",
+    "version": "1.0.1",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/breakfirst.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -21,10 +21,11 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/breakfirst.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.atwalsultan.BreakFirst"
+      "package": "com.atwalsultan.breakfirst",
+      "versionCode": 2
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -33,7 +34,7 @@
       [
         "expo-notifications",
         {
-          "icon": "./assets/splash.png"
+          "icon": "./assets/breakfirst.png"
         }
       ]
     ]
