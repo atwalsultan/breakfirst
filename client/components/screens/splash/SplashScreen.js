@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text } from "react-native";
+import { StyleSheet, Text, Image } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Box } from "native-base";
 import AppLogo from "../../svgs/AppLogo";
+// import AppLogo from '../../../assets/loading.gif';
 
 const SplashScreen = ({ navigation }) => {
   const [user, setUser] = useState(null);
@@ -73,6 +74,7 @@ const SplashScreen = ({ navigation }) => {
     <Box safeAreaTop style={styles.container}>
       <Box style={ styles.logoContainer }>
         <AppLogo />
+        {/* <Image source={AppLogo} /> */}
       </Box>
       <Text style={styles.text}>BreakFirst</Text>
     </Box>

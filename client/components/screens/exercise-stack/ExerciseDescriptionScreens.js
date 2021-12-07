@@ -11,8 +11,7 @@ export default function FeaturesScreen({ navigation }) {
 				<Image source={WingFlap} resizeMode="contain" style={{ height: undefined, width: undefined, flex: 1 }} />
 			</Box>
 			<Text style={styles.h1}>Wing Flap</Text>
-			<Text style={styles.text}>Hold your phone in one hand. Don’t bend your elbows. Raise your arm to the side of your body.
-			</Text>
+			<Text style={styles.text}>Hold your phone in one hand. Don’t bend your elbows. Raise your arms to the side of your body.</Text>
 			<Text style={styles.blue}>Click the button below and the app will start tracking your movements.</Text>
 			<TouchableOpacity
 				style={styles.exerciseButton}
@@ -49,7 +48,6 @@ const styles = StyleSheet.create({
 	text: {
 		fontSize: 18,
 		fontFamily: "josefin-regular",
-		textAlign: "center",
 		marginBottom: 32,
 	},
 	blue: {

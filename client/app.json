@@ -5,11 +5,6 @@
     "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/breakfirst.png",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
     "updates": {
       "fallbackToCacheTimeout": 0
     },

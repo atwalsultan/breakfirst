@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Box } from 'native-base';
 
 import ProportionIcon from '../svgs/ProportionIcon';
 import InclineTrendIcon from '../svgs/InclineTrendIcon';
 import HappyFaceIcon from '../svgs/HappyFaceIcon';
+import AmanImage from '../../assets/aman-1.png';
+import AbhishekImage from '../../assets/abhishek-1.png';
+import QiImage from '../../assets/qi-1.png';
+import JasmeetImage from '../../assets/jasmeet-1.png';
+import SultanImage from '../../assets/sultan-1.png';
+import YuvImage from '../../assets/yuv-1.png';
+import ProfileImage from '../../assets/profile-image.png';
 
 const LeaderboardCard = ({ member, index }) => {
     const [active, setActive] = useState(false)
@@ -13,7 +20,15 @@ const LeaderboardCard = ({ member, index }) => {
         <TouchableOpacity style={styles.leaderBoardCard} onPress={() => setActive(!active)}>
             <Box style={styles.inactiveCard}>
                 <Text style={styles.cardIndex}>{index + 1}</Text>
-                <Box style={styles.profilePic}></Box>
+                <Box style={styles.profilePicContainer}>
+                    { member.name.toString().toLowerCase().includes("sultan") && !member.name.toString().toLowerCase().includes("atwal") && <Image source={SultanImage} style={ styles.profilePic } /> }
+                    { member.name.toString().toLowerCase().includes("qi") && <Image source={QiImage} style={ styles.profilePic } /> }
+                    { member.name.toString().toLowerCase().includes("abhishek") && <Image source={AbhishekImage} style={ styles.profilePic } /> }
+                    { member.name.toString().toLowerCase().includes("aman") && <Image source={AmanImage} style={ styles.profilePic } /> }
+                    { member.name.toString().toLowerCase().includes("jasmeet") && <Image source={JasmeetImage} style={ styles.profilePic } /> }
+                    { member.name.toString().toLowerCase().includes("yuvraj") && <Image source={YuvImage} style={ styles.profilePic } /> }
+                    { member.name.toString().toLowerCase().includes("atwal") && <Image source={ProfileImage} style={ styles.profilePic } /> }
+                </Box>
 
                 <Box style={styles.memberInfo}>
                     <Text style={styles.memberName}>{member.name}</Text>
@@ -73,12 +88,13 @@ const styles = StyleSheet.create({
         fontFamily: 'josefin-regular',
         marginRight: 16
     },
+    profilePicContainer: {
+        marginRight: 16
+    },
     profilePic: {
         height: 56,
         width: 56,
         borderRadius: 28,
-        backgroundColor: 'rgba(0,0,0,0.2)',
-        marginRight: 16
     },
     memberInfo: {
         flexGrow: 1,

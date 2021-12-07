@@ -5,6 +5,7 @@ import { Box } from 'native-base';
 import ExerciseUnsavedIcon from '../svgs/ExerciseUnsavedIcon';
 import ExerciseSavedIcon from '../svgs/ExerciseSavedIcon';
 import WingFlap from '../../assets/wing-flap.gif';
+import StaticCat from '../../assets/static-cat.png';
 import LockClosedIcon from '../svgs/LockClosedIcon';
 
 const ExerciseCard = ({ exercise, index, navigation }) => {
@@ -14,11 +15,12 @@ const ExerciseCard = ({ exercise, index, navigation }) => {
         <Box style={[styles.exerciseCard, index % 2 !== 0 && { marginLeft: 16 }]}>
             <TouchableOpacity onPress={() => {
                 if(index < 2) {
-                    navigation.navigate("LibraryStack", { screen: 'ExerciseDetailsScreen', params: { exercise } });
+                    navigation.navigate("LibraryStack", { screen: 'ExerciseDetailsScreen', params: { exercise, index } });
                 }
             }}>
                 <Box style={ styles.exerciseImage }>
-                    <Image source={WingFlap} resizeMode="contain" style={{ height: undefined, width: undefined, flex: 1 }} />
+
+                    { index <= 1 ? <Image source={WingFlap} resizeMode="contain" style={{ height: undefined, width: undefined, flex: 1 }} /> :  <Image source={StaticCat} resizeMode="contain" style={{ height: undefined, width: undefined, flex: 1 }} />}
                     {
                         index > 1 && 
                         <Box style={ styles.lockedExerciseTextContainer }>
