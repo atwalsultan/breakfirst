@@ -16,7 +16,7 @@ const transporter = nodemailer.createTransport({
 
 // Send out mails
 router.post("/", (req, res) => {
-	// To team member (Abhishek)
+	// To team member (Sultan)
 	const mailOptionsSelf = {
 		to: process.env.EMAIL,
 		subject: `BreakFirst | Message from ${req.body.firstName}${req.body.lastName && " " + req.body.lastName}`,

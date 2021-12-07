@@ -5,12 +5,12 @@ import { Box } from 'native-base';
 import ChevronUpIcon from '../svgs/ChevronUpIcon';
 import ChevronDownIcon from '../svgs/ChevronDownIcon';
 
-const SedentaryFactCard = ({ title, description }) => {
+const SedentaryFactCard = ({ title, description, type }) => {
     const [active, setActive] = useState(false)
 
     return (
         <TouchableOpacity style={styles.fact} onPress={() => {setActive(!active)}}>
-            <Text style={styles.factType}>Fact of the day</Text>
+            <Text style={styles.factType}>{type === 'prevention' ? 'Tip of the day' : 'Fact of the day'}</Text>
 
             <Box style={styles.factHeader}>
                 <Text style={styles.factTitle}>{ title }</Text>
