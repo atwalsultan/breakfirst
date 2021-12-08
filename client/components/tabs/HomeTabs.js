@@ -32,7 +32,8 @@ const HomeTabs = ({
                 tabBarShowLabel: false,
                 tabBarShowIcon: true,
                 tabBarIndicatorStyle: { backgroundColor: 'transparent' },
-                tabBarPressColor: 'transparent'
+                tabBarPressColor: 'transparent',
+                tabBarIconStyle: { position: 'relative', top: -5 }
             }}
         >
             <Tab.Screen name="Home" options={{ tabBarIcon: ({ focused }) => !focused ? <HomeTabIcon /> : <HomeTabIconActive /> }}>

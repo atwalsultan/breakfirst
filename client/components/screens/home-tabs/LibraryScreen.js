@@ -34,7 +34,7 @@ export default LibraryScreen
 const styles = StyleSheet.create({
     container: {
         paddingHorizontal: 16,
-        paddingTop: 34,
+        paddingTop: 42,
         flex: 1,
     },
     heading: {
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         flexWrap: 'wrap',
         justifyContent: 'center',
-        marginBottom: 32
+        marginBottom: 8
     },
     sedantaryFacts: {
         backgroundColor: '#FFFFFF',
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 16,
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginBottom: 16
+        marginBottom: 32
     },
     sedantaryFactsText: {
         fontSize: 22,

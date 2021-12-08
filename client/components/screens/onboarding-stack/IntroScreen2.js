@@ -56,12 +56,14 @@ const styles = StyleSheet.create({
     h1: {
         fontSize: 28,
         fontFamily: 'josefin-bold',
-        marginBottom: 16
+        marginBottom: 16,
+        color: '#142339'
     },
     text: {
         fontSize: 18,
         fontFamily: 'josefin-regular',
-        marginBottom: 64
+        marginBottom: 64,
+        color: '#142339'
     },
     skipInfo: {
         flexGrow: 1,
@@ -73,5 +75,6 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 18,
         fontFamily: 'josefin-semi-bold',
+        color: '#142339'
     }
 })

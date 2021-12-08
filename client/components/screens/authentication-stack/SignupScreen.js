@@ -148,6 +148,7 @@ const styles = StyleSheet.create({
     fontFamily: "josefin-bold",
     textAlign: "center",
     marginBottom: 8,
+    color: '#142339'
   },
   text: {
     fontSize: 18,
@@ -161,6 +162,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginBottom: 16,
     fontFamily: "josefin-regular",
+    color: '#142339'
   },
   signupButton: {
     backgroundColor: "#F94144",
@@ -171,11 +173,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     alignSelf: "center",
+    marginTop: 28
   },
   signupButtonText: {
     color: "#FFFFFF",
     fontSize: 18,
     fontFamily: "josefin-regular",
+    position: 'relative',
+    top: -2
   },
   loginInfo: {
     flexGrow: 1,
@@ -191,5 +196,6 @@ const styles = StyleSheet.create({
     fontFamily: "josefin-bold",
     fontSize: 16,
     marginLeft: 2,
+    color: '#142339',
   },
 });

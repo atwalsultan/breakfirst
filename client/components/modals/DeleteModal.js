@@ -50,16 +50,21 @@ const styles = StyleSheet.create({
         marginBottom: 32,
     },
     deleteButton: {
-        backgroundColor: '#F94144',
-        paddingVertical: 13,
-        alignItems: 'center',
+        marginBottom: 24,
+        backgroundColor: "#F94144",
+        height: 48,
+        justifyContent: "center",
+        width: "65%",
+        alignSelf: "center",
         borderRadius: 24,
-        marginBottom: 24
     },
     deleteButtonText: {
         color: '#FFFFFF',
         fontSize: 18,
         fontFamily: 'josefin-regular',
+        textAlign: 'center',
+        position: 'relative',
+        top: -2
     },
     cancelButton: {
         alignItems: 'center'

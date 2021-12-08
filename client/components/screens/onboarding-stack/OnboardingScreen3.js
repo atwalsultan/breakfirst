@@ -176,6 +176,7 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontFamily: "josefin-bold",
     marginBottom: 8,
+    color: '#142339'
   },
   text: {
     fontSize: 16,
@@ -187,6 +188,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontFamily: "josefin-semi-bold",
     marginBottom: 8,
+    color: '#142339'
   },
   card: {
     marginBottom: 16,
@@ -200,6 +202,7 @@ const styles = StyleSheet.create({
   cardText: {
     fontSize: 18,
     fontFamily: "josefin-regular",
+    color: '#142339'
   },
   flexEndView: {
     flexGrow: 1,
@@ -222,6 +225,8 @@ const styles = StyleSheet.create({
     fontFamily: "josefin-regular",
     textAlign: "center",
     color: "#FFFFFF",
+    position: 'relative',
+    top: -2
   },
   questionNumber: {
     fontSize: 18,

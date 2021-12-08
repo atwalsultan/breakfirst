@@ -73,17 +73,20 @@ const styles = StyleSheet.create({
         marginBottom: 16
     },
     saveButton: {
-        backgroundColor: '#F94144',
-        padding: 16,
-        minWidth: '50%',
-        alignSelf: 'center',
-        borderRadius: 24
+        backgroundColor: "#F94144",
+        height: 48,
+        justifyContent: "center",
+        width: "55%",
+        alignSelf: "center",
+        borderRadius: 24,
     },
     saveButtonText: {
         fontSize: 18,
         fontFamily: 'josefin-regular',
         color: '#FFFFFF',
         textAlign: 'center',
+        position: 'relative',
+        top: -2
     },
     benefits: {
         marginBottom: 32

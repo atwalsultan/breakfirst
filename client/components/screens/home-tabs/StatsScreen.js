@@ -23,7 +23,7 @@ export default StatsScreen
 const styles = StyleSheet.create({
     container: {
         paddingHorizontal: 16,
-        paddingTop: 34,
+        paddingTop: 42,
         flex: 1,
     },
     heading: {
