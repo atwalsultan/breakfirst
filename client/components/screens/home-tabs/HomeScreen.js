@@ -116,7 +116,9 @@ const HomeScreen = ({ navigation, schedulePushNotification }) => {
 				<Box style={[styles.nextBreak]}>
 					<Text style={styles.nextBreakLabel}>Next break in:</Text>
 					<Box style={styles.nextBreakTime}>
-						<BreakIcon />
+						<Box style={{ position: 'relative', top: 3 }}>
+							<BreakIcon />
+						</Box>
 						<Text style={styles.nextBreakTimeText}>{hours < 10 ? `0${hours}` : hours} : {minutes < 10 ? `0${minutes}` : minutes} : {seconds < 10 ? `0${seconds}` : seconds}</Text>
 					</Box>
 				</Box>
@@ -168,7 +170,7 @@ export default HomeScreen;
 const styles = StyleSheet.create({
 	container: {
 		paddingHorizontal: 16,
-		paddingTop: 34,
+		paddingTop: 42,
 		flex: 1,
 	},
 	graphic: {
@@ -194,6 +196,7 @@ const styles = StyleSheet.create({
 		fontSize: 25,
 		fontFamily: "josefin-semi-bold",
 		marginBottom: 24,
+		color: '#142339'
 	},
 	sittingTimes: {
 		flexDirection: 'row',
@@ -244,7 +247,8 @@ const styles = StyleSheet.create({
 		fontSize: 28,
 		fontFamily: "josefin-regular",
 		marginLeft: 8,
-		width: 160
+		width: 160,
+		color: '#142339'
 	},
 	mySchedules: {},
 	mySchedulesHeading: {

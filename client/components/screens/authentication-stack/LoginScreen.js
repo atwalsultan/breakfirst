@@ -135,6 +135,7 @@ const styles = StyleSheet.create({
     fontFamily: "josefin-bold",
     textAlign: "center",
     marginBottom: 8,
+    color: '#142339'
   },
   text: {
     fontSize: 18,
@@ -148,6 +149,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: "josefin-regular",
     marginBottom: 16,
+    color: '#142339'
   },
   forgotPassword: {
     fontSize: 16,
@@ -169,6 +171,8 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
     fontSize: 18,
     fontFamily: "josefin-regular",
+    position: 'relative',
+    top: -2
   },
   signupInfo: {
     flexGrow: 1,
@@ -184,5 +188,6 @@ const styles = StyleSheet.create({
     fontFamily: "josefin-bold",
     fontSize: 16,
     marginLeft: 2,
+    color: '#142339',
   },
 });

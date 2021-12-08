@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFFFFF',
         marginBottom: 24,
         paddingVertical: 24,
+        paddingBottom: 28,
         paddingHorizontal: 16,
         borderRadius: 4
     },
@@ -69,7 +70,8 @@ const styles = StyleSheet.create({
     timeHeader: {
         fontSize: 20,
         fontFamily: 'josefin-regular',
-        marginBottom: 8
+        marginBottom: 8,
+        color: '#142339'
     },
     pickerContainer: {
         borderWidth: 1.5,

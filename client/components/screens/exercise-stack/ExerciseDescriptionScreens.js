@@ -54,22 +54,24 @@ const styles = StyleSheet.create({
 		color: '#355C97',
 		fontSize: 18,
 		fontFamily: "josefin-regular",
-		textAlign: "center",
 		marginBottom: 32,
 	},
 	exerciseButton: {
 		backgroundColor: "#F94144",
-		width: "45%",
-		alignSelf: "center",
 		height: 48,
-		borderRadius: 24,
-		alignItems: "center",
-		justifyContent: "center",
+        justifyContent: "center",
+        width: "48%",
+        alignSelf: "center",
+        borderRadius: 24,
+        marginBottom: 24,
 	},
 	exerciseButtonText: {
 		color: "#FFFFFF",
 		fontSize: 18,
 		fontFamily: "josefin-regular",
+		textAlign: 'center',
+		position: 'relative',
+		top: -2
 	},
 
 });

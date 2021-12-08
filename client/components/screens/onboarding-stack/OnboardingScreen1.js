@@ -51,7 +51,8 @@ const styles = StyleSheet.create({
     h1: {
         fontSize: 28    ,
         fontFamily: 'josefin-bold',
-        marginBottom: 8
+        marginBottom: 8,
+        color: '#142339'
     },
     text: {
         fontSize: 16,
@@ -70,5 +71,6 @@ const styles = StyleSheet.create({
     questionNumber: {
         fontSize: 18,
         fontFamily: 'josefin-semi-bold',
+        color: '#142339'
     }
 })

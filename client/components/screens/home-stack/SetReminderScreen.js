@@ -170,7 +170,7 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 16,
     paddingBottom: 24,
-    paddingTop: 34,
+    paddingTop: 42,
     flex: 1,
   },
   header: {
@@ -212,7 +212,8 @@ const styles = StyleSheet.create({
   },
   nextButton: {
     backgroundColor: "#F94144",
-    paddingVertical: 16,
+    height: 48,
+    justifyContent: "center",
     width: "45%",
     alignSelf: "center",
     marginTop: 32,
@@ -223,5 +224,7 @@ const styles = StyleSheet.create({
     fontFamily: "josefin-regular",
     textAlign: "center",
     color: "#FFFFFF",
+    position: 'relative',
+    top: -2
   },
 });

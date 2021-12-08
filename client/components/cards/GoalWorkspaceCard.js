@@ -27,5 +27,6 @@ const styles = StyleSheet.create({
     cardText: {
         fontSize: 18,
         fontFamily: 'josefin-regular',
+        color: '#142339'
     }
 })

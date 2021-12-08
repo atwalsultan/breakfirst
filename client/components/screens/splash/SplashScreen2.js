@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         lineHeight: 22,
         fontFamily: 'josefin-regular',
+        color: '#142339'
     },
     image: {
         width: 60,

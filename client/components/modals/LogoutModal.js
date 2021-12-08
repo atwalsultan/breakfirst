@@ -51,15 +51,20 @@ const styles = StyleSheet.create({
     },
     logoutButton: {
         backgroundColor: '#F94144',
-        paddingVertical: 13,
-        alignItems: 'center',
+        height: 48,
+        justifyContent: "center",
+        width: "65%",
+        alignSelf: "center",
         borderRadius: 24,
-        marginBottom: 24
+        marginBottom: 24,
     },
     logoutButtonText: {
         color: '#FFFFFF',
         fontSize: 18,
         fontFamily: 'josefin-regular',
+        textAlign: 'center',
+        position: 'relative',
+        top: -2
     },
     cancelButton: {
         alignItems: 'center'

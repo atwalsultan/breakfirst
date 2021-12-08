@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 16,
     paddingBottom: 24,
-    paddingTop: 34,
+    paddingTop: 42,
     flex: 1,
   },
   header: {
@@ -219,5 +219,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "#FFFFFF",
     fontFamily: "josefin-regular",
+    position: 'relative',
+    top: -2
   },
 });

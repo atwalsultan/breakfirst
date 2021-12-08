@@ -71,14 +71,20 @@ const styles = StyleSheet.create({
     },
     button: {
         backgroundColor: '#355C97',
-        paddingVertical: 13,
-        alignItems: 'center',
+        marginTop: 16,
+        height: 48,
+        justifyContent: "center",
+        width: "80%",
+        alignSelf: "center",
         borderRadius: 24,
-        marginTop: 16
+        marginBottom: 24,
     },
     buttonText: {
         color: '#FFFFFF',
         fontSize: 18,
         fontFamily: 'josefin-regular',
+        textAlign: 'center',
+        position: 'relative',
+        top: -2
     }
 })

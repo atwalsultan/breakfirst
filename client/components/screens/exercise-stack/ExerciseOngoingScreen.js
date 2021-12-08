@@ -85,7 +85,7 @@ export default function DetailsScreen({ navigation }) {
 						title={ reps < 1 ? "Start!" : "Keep going!"} 
 						titleColor="#142339" 
 						titleFontSize={18} 
-						titleStyle={{ fontFamily: 'josefin-regular' }} 
+						titleStyle={{ fontFamily: 'josefin-regular', position: 'relative', top: -4 }} 
 						radius={85} 
 					/>
 				</Box>
