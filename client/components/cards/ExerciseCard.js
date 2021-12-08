@@ -5,6 +5,7 @@ import { Box } from 'native-base';
 import ExerciseUnsavedIcon from '../svgs/ExerciseUnsavedIcon';
 import ExerciseSavedIcon from '../svgs/ExerciseSavedIcon';
 import WingFlap from '../../assets/wing-flap.gif';
+import SayHello from '../../assets/say-hello.gif';
 import StaticCat from '../../assets/static-cat.png';
 import LockClosedIcon from '../svgs/LockClosedIcon';
 
@@ -20,7 +21,10 @@ const ExerciseCard = ({ exercise, index, navigation }) => {
             }}>
                 <Box style={ styles.exerciseImage }>
 
-                    { index <= 1 ? <Image source={WingFlap} resizeMode="contain" style={{ height: undefined, width: undefined, flex: 1 }} /> :  <Image source={StaticCat} resizeMode="contain" style={{ height: undefined, width: undefined, flex: 1 }} />}
+                    { index == 0 && <Image source={SayHello} resizeMode="contain" style={{ height: undefined, width: undefined, flex: 1 }} />}
+                    { index == 1 && <Image source={WingFlap} resizeMode="contain" style={{ height: undefined, width: undefined, flex: 1 }} />}
+                    { index > 1 && <Image source={StaticCat} resizeMode="contain" style={{ height: undefined, width: undefined, flex: 1 }} />}
+
                     {
                         index > 1 && 
                         <Box style={ styles.lockedExerciseTextContainer }>

@@ -1,19 +1,19 @@
 import React, { useEffect } from 'react';
-import { StyleSheet, Text } from 'react-native'
+import { Image, StyleSheet, Text } from 'react-native'
 import { Box } from 'native-base';
-import AppLogo from '../../svgs/AppLogo';
+import AppLogo from '../../../assets/loading.gif';
 
 const SplashScreen2 = ({ navigation }) => {
     useEffect(() => {
         setTimeout(() => {
             navigation.replace("HomeTabs");
-        }, 2000)
+        }, 3000)
     }, [])
 
     return (
         <Box safeAreaTop style={styles.container}>
             <Box style={ styles.logoContainer }>
-                <AppLogo />
+                <Image source={AppLogo} style={ styles.image } />
             </Box>
             <Text style={styles.text}>Please wait while we set up the app</Text>
         </Box>
@@ -36,5 +36,9 @@ const styles = StyleSheet.create({
         fontSize: 16,
         lineHeight: 22,
         fontFamily: 'josefin-regular',
+    },
+    image: {
+        width: 60,
+        height: 60
     }
 })
