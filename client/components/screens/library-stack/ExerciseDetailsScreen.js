@@ -4,6 +4,7 @@ import { Box } from 'native-base';
 
 import ChevronLeftIcon from '../../svgs/ChevronLeftIcon';
 import WingFlap from '../../../assets/wing-flap.gif';
+import SayHello from '../../../assets/say-hello.gif';
 
 const ExerciseDetailsScreen = ({ route, navigation }) => {
     const exercise = route.params.exercise;
@@ -20,7 +21,8 @@ const ExerciseDetailsScreen = ({ route, navigation }) => {
             </TouchableOpacity>
 
             <Box style={styles.exerciseImage}>
-                <Image source={WingFlap} resizeMode="contain" style={{ height: undefined, width: undefined, flex: 1 }} />
+                {exercise.name === "Wing flap" && <Image source={WingFlap} resizeMode="contain" style={{ height: undefined, width: undefined, flex: 1 }} />}
+                {exercise.name === "Say hello" && <Image source={SayHello} resizeMode="contain" style={{ height: undefined, width: undefined, flex: 1 }} />}
             </Box>
 
             <Text style={styles.exerciseTitle}>{exercise.name}</Text>
